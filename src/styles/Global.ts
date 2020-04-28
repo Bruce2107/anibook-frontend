@@ -7,7 +7,7 @@ export default createGlobalStyle`
     box-sizing: border-box
   }
   body{
-    background: ${(props) => props.theme.colors.primary};
+    background: ${(props) => props.theme.colors.background};
     font-size: 14px;
     color: ${(props) => props.theme.colors.text};
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
