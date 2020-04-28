@@ -1,11 +1,14 @@
 import React from 'react';
-import Card from './components/Card';
-
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from './styles/Global';
+import ligth from './styles/themes/light';
+import dark from './styles/themes/dark';
 function App() {
   return (
-    <div className="App">
-      <Card />
-    </div>
+    <ThemeProvider theme={dark}>
+      <GlobalStyle />
+      <h1>Oi</h1>
+    </ThemeProvider>
   );
 }
 
