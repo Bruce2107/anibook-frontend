@@ -9,7 +9,7 @@ declare module 'styled-components' {
       background: string;
       text: string;
       footer: string;
-
+      black: string;
       upColor: string;
       upColor_inverted: string;
       downColor: string;

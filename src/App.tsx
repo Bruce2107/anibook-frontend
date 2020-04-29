@@ -5,6 +5,7 @@ import light from './styles/themes/light';
 import dark from './styles/themes/dark';
 
 import usePersistedState from './utils/usePersistedState';
+import Navbar from './components/Navbar';
 
 function App() {
   const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
@@ -13,7 +14,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <>
-        <button onClick={toggleTheme}>dark</button>
+        <Navbar toggleTheme={toggleTheme} />
       </>
     </ThemeProvider>
   );
