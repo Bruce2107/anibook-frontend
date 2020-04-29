@@ -10,7 +10,7 @@ export default createGlobalStyle`
     background: ${({ theme }) => theme.colors.background};
     font-size: 14px;
     color: ${(props) => props.theme.colors.text};
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif,
+    font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', 'sans-serif';
   }
   /* Scrollbar */
   ::-webkit-scrollbar{

@@ -20,33 +20,39 @@ const Navbar: React.FC<Props> = ({ toggleTheme }) => {
   return (
     <>
       <StyledNavbar>
-        <StyledLogo>AniBook</StyledLogo>
+        <StyledLogo visible={false}>AniBook</StyledLogo>
         <div>
-          <StyledButton>
+          <StyledButton visible={false}>
             <FaHome title="Home" />
           </StyledButton>
-          <StyledButton>
+          <StyledButton visible={true}>
             <GoDeviceDesktop title="Animes" />
           </StyledButton>
-          <StyledButton>
+          <StyledButton visible={true}>
             <FaBookOpen title="Mangás" />
           </StyledButton>
           <StyledButton
+            visible={true}
             href="https://twitter.com/AniBookOficial"
             target="_blank"
           >
             <FaTwitter title="Twitter" />
           </StyledButton>
-          <StyledButton href="https://discord.gg/TsuMHBd" target="_blank">
+          <StyledButton
+            visible={true}
+            href="https://discord.gg/TsuMHBd"
+            target="_blank"
+          >
             <FaDiscord title="Discord" />
           </StyledButton>
           <StyledButton
+            visible={true}
             href="https://github.com/Bruce2107/anibook-frontend"
             target="_blank"
           >
             <FaGithubAlt title="GitHub" />
           </StyledButton>
-          <StyledButton onClick={toggleTheme}>
+          <StyledButton onClick={toggleTheme} visible={true} as='button'>
             {title === 'light' ? (
               <FaMoon title="Alterar Tema" />
             ) : (
