@@ -1,24 +1,25 @@
-import React from 'react';
-import { ThemeProvider, DefaultTheme } from 'styled-components';
+import React, { useEffect } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { useSelector } from 'react-redux';
+
 import GlobalStyle from './styles/Global';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
+import { Theme } from './constants/Types';
+import Home from './pages/Home';
 
-import usePersistedState from './utils/usePersistedState';
-import Navbar from './components/Navbar';
-
-function App() {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', dark);
-  const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light);
-  };
-
+const App: React.FC = () => {
+  const tema = useSelector((state: Theme) => state.theme.darkMode);
+  useEffect(() => {
+    
+  }, []);
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={!tema ? light : dark}>
       <GlobalStyle />
-      <Navbar toggleTheme={toggleTheme} />
+      {/* <Navbar /> */}
+      <Home />
     </ThemeProvider>
   );
-}
+};
 
 export default App;
