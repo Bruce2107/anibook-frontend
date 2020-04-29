@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import theme from '../../styles/themes/light';
 
 export const StyledNavbar = styled.div`
   width: 100vw;
@@ -23,13 +22,38 @@ export const StyledLogo = styled.a`
   font-size: 24px;
   font-weight: bold;
   font-style: oblique;
+  padding: 0 20px;
   background: ${({ theme }) =>
     `-webkit-linear-gradient(100deg, ${theme.colors.upColor},${theme.colors.downColor})`};
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   &:hover {
     background: ${({ theme }) =>
       `-webkit-linear-gradient(100deg, ${theme.colors.upColor_inverted},${theme.colors.downColor_inverted})`};
     background-clip: text;
+    -webkit-background-clip: text;
+  }
+`;
+
+export const StyledButton = styled.a`
+  font-size: 24px;
+  height: 50px;
+  width: 100px;
+  line-height: 50px;
+  padding: 0 35px;
+  display: inline-block;
+  color: ${({ theme }) =>
+    theme.title === 'light' ? theme.colors.downColor : theme.colors.upColor};
+  &:hover {
+    background: #ffea;
+    color: ${({ theme }) =>
+      theme.title === 'light'
+        ? theme.colors.upColor_inverted
+        : theme.colors.downColor_inverted};
+    cursor: pointer;
+  }
+  svg {
+    margin-top: 0.5em;
   }
 `;
