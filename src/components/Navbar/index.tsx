@@ -11,12 +11,18 @@ import {
 import { GoDeviceDesktop } from 'react-icons/go';
 import { StyledNavbar, StyledLogo, StyledButton } from './styles';
 import { ThemeContext } from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { ToggleTheme } from '../../redux/actions/Theme';
+import { Theme } from '../../constants/Types';
 
-interface Props {
-  toggleTheme(): void;
-}
-const Navbar: React.FC<Props> = ({ toggleTheme }) => {
+const Navbar: React.FC = () => {
   const { title } = useContext(ThemeContext);
+  const tema = useSelector((state: Theme) => state.theme.darkMode);
+  const dispacth = useDispatch();
+  const themeChange = () => {
+    localStorage.setItem('theme', `${tema ? 'light' : 'dark'}`);
+    dispacth(ToggleTheme());
+  };
   return (
     <>
       <StyledNavbar>
@@ -52,7 +58,7 @@ const Navbar: React.FC<Props> = ({ toggleTheme }) => {
           >
             <FaGithubAlt title="GitHub" />
           </StyledButton>
-          <StyledButton onClick={toggleTheme} visible={true} as='button'>
+          <StyledButton onClick={() => themeChange()}>
             {title === 'light' ? (
               <FaMoon title="Alterar Tema" />
             ) : (
