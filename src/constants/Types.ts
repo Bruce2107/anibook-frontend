@@ -11,3 +11,8 @@ export interface Theme {
     darkMode: boolean;
   };
 }
+
+export interface Image {
+  name: string;
+  extension: string;
+}

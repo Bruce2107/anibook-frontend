@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import getImage from '../utils/backgroundImage';
 
 export default createGlobalStyle`
   *{
@@ -8,6 +9,8 @@ export default createGlobalStyle`
   }
   body{
     background: ${({ theme }) => theme.colors.background};
+    background-image: url(${getImage()});
+    background-size: 240px;
     font-size: 14px;
     color: ${(props) => props.theme.colors.text};
     font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', 'sans-serif';

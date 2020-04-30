@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   FaSun,
   FaMoon,
@@ -6,14 +6,16 @@ import {
   FaTwitter,
   FaGithubAlt,
   FaBookOpen,
-  FaHome,
+  FaBars,
 } from 'react-icons/fa';
+import { IoMdClose } from 'react-icons/io';
 import { GoDeviceDesktop } from 'react-icons/go';
-import { StyledNavbar, StyledLogo, StyledButton } from './styles';
 import { ThemeContext } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { StyledNavbar, StyledLogo, StyledButton } from './styles';
 import { ToggleTheme } from '../../redux/actions/Theme';
 import { Theme } from '../../constants/Types';
+import Sidebar from './Sidebar';
 
 const Navbar: React.FC = () => {
   const { title } = useContext(ThemeContext);
@@ -23,204 +25,62 @@ const Navbar: React.FC = () => {
     localStorage.setItem('theme', `${tema ? 'light' : 'dark'}`);
     dispacth(ToggleTheme());
   };
+  const [sideOpen, setSideOpen] = useState(false);
+  const toggleSideBar = () => {
+    setSideOpen(!sideOpen);
+    console.log(sideOpen);
+  };
   return (
     <>
       <StyledNavbar>
-        <StyledLogo visible={false}>AniBook</StyledLogo>
-        <div>
-          <StyledButton visible={false}>
-            <FaHome title="Home" />
-          </StyledButton>
-          <StyledButton visible={true}>
-            <GoDeviceDesktop title="Animes" />
-          </StyledButton>
-          <StyledButton visible={true}>
-            <FaBookOpen title="Mangás" />
-          </StyledButton>
-          <StyledButton
-            visible={true}
-            href="https://twitter.com/AniBookOficial"
-            target="_blank"
-          >
-            <FaTwitter title="Twitter" />
-          </StyledButton>
-          <StyledButton
-            visible={true}
-            href="https://discord.gg/TsuMHBd"
-            target="_blank"
-          >
-            <FaDiscord title="Discord" />
-          </StyledButton>
-          <StyledButton
-            visible={true}
-            href="https://github.com/Bruce2107/anibook-frontend"
-            target="_blank"
-          >
-            <FaGithubAlt title="GitHub" />
-          </StyledButton>
-          <StyledButton onClick={() => themeChange()}>
-            {title === 'light' ? (
-              <FaMoon title="Alterar Tema" />
-            ) : (
-              <FaSun title="Aterar Tema" />
-            )}
-          </StyledButton>
-        </div>
+        {sideOpen && <Sidebar />}
+        <StyledLogo>AniBook</StyledLogo>
+        <ul>
+          <li>
+            <StyledButton>
+              <GoDeviceDesktop title="Animes" />
+            </StyledButton>
+          </li>
+          <li>
+            <StyledButton>
+              <FaBookOpen title="Mangás" />
+            </StyledButton>
+          </li>
+          <li>
+            <StyledButton
+              href="https://twitter.com/AniBookOficial"
+              target="_blank"
+            >
+              <FaTwitter title="Twitter" />
+            </StyledButton>
+          </li>
+          <li>
+            <StyledButton href="https://discord.gg/TsuMHBd" target="_blank">
+              <FaDiscord title="Discord" />
+            </StyledButton>
+          </li>
+          <li>
+            <StyledButton
+              href="https://github.com/Bruce2107/anibook-frontend"
+              target="_blank"
+            >
+              <FaGithubAlt title="GitHub" />
+            </StyledButton>
+          </li>
+          <li>
+            <StyledButton onClick={() => themeChange()} as="button">
+              {title === 'light' ? (
+                <FaMoon title="Alterar Tema" />
+              ) : (
+                <FaSun title="Aterar Tema" />
+              )}
+            </StyledButton>
+          </li>
+        </ul>
+        <StyledButton id="bars" onClick={() => toggleSideBar()}>
+          {sideOpen ? <IoMdClose /> : <FaBars />}
+        </StyledButton>
       </StyledNavbar>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </>
   );
 };

@@ -11,13 +11,20 @@ export const StyledNavbar = styled.nav`
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
   z-index: 999;
   opacity: 0.9;
-  padding: 0 50px;
   position: fixed;
+  ul {
+    list-style: none;
+    display: flex;
+  }
+  #bars{
+    display: none;
+    @media (max-width: 769px){
+      display: flex;
+    }
+  }
+  
 `;
-interface Props {
-  readonly visible?: boolean;
-}
-export const StyledLogo = styled.a<Props>`
+export const StyledLogo = styled.a`
   cursor: pointer;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
@@ -36,21 +43,16 @@ export const StyledLogo = styled.a<Props>`
     background-clip: text;
     -webkit-background-clip: text;
   }
-  /* @media (max-width: 992px) {
-    display: ${(props) => (props.visible ? 'inline-block' : 'none')};
-    width: 0;
-  } */
 `;
 
-export const StyledButton = styled.a<Props>`
+export const StyledButton = styled.a`
   font-size: 24px;
-  background: transparent;
   border: none;
+  background: none;
   height: 50px;
   width: 100px;
-  line-height: 50px;
   padding: 0 35px;
-  display: inline-block;
+  display: flex;
   color: ${({ theme }) =>
     theme.title === 'light' ? theme.colors.downColor : theme.colors.upColor};
   &:hover {
@@ -64,40 +66,7 @@ export const StyledButton = styled.a<Props>`
   svg {
     margin-top: 0.5em;
   }
-  @media (max-width: 992px) {
-    display: ${(props) => (props.visible ? 'inline-block' : 'none')};
-    width: 30px;
-    padding: 0 20px;
-  }
-`;
-
-export const StyledBurger = styled.button`
-  position: absolute;
-  top: 5%;
-  left: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 10;
-
-  &:focus {
-    outline: none;
-  }
-
-  div {
-    width: 2rem;
-    height: 0.25rem;
-    background: ${({ theme }) =>
-      theme.title === 'light' ? theme.colors.downColor : theme.colors.upColor};
-    border-radius: 10px;
-    transition: all 0.3s linear;
-    position: relative;
-    transform-origin: 1px;
+  @media (max-width: 770px) {
+    display: none;
   }
 `;
