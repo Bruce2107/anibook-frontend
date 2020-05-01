@@ -1,6 +1,6 @@
 import { Image } from '../constants/Types';
 
-const backgroundImages: Image[] = [
+export const backgroundImages: Image[] = [
   { name: 'AkariAkaza', extension: '.webp' },
   { name: 'AkariAkazaManga', extension: '.webp' },
   { name: 'Akko', extension: '.webp' },
@@ -69,7 +69,7 @@ const backgroundImages: Image[] = [
   { name: 'YuiFunami', extension: '.webp' },
 ];
 
-const generateRandomIndex = () => {
+export const generateRandomIndex = () => {
   const size = backgroundImages.length;
   return Math.floor(Math.random() * size);
 };
