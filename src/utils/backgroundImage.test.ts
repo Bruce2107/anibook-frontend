@@ -11,7 +11,7 @@ describe('Background Image', () => {
   test('should return a integer', () => {
     const number = generateRandomIndex();
 
-    expect(number).toBeGreaterThan(0);
+    expect(number).toBeGreaterThanOrEqual(0);
     expect(number).toBeLessThan(size);
   });
   test('should return a string with the name of image', () => {

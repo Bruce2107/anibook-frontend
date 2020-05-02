@@ -28,12 +28,11 @@ const Navbar: React.FC = () => {
   const [sideOpen, setSideOpen] = useState(false);
   const toggleSideBar = () => {
     setSideOpen(!sideOpen);
-    console.log(sideOpen);
   };
   return (
     <>
+      <Sidebar title={title} themeChange={themeChange} visible={sideOpen} />
       <StyledNavbar>
-        {sideOpen && <Sidebar />}
         <StyledLogo>AniBook</StyledLogo>
         <ul>
           <li>
