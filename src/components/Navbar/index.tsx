@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
     <>
       <Sidebar title={title} themeChange={themeChange} visible={sideOpen} />
       <StyledNavbar>
-        <StyledLogo>AniBook</StyledLogo>
+        <StyledLogo title="Anibook" data-testid="logo">AniBook</StyledLogo>
         <ul>
           <li>
             <StyledButton>

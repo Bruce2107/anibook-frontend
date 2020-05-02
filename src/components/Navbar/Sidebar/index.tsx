@@ -15,6 +15,7 @@ type SideBarProps = {
   themeChange: Function;
   visible: boolean;
 };
+
 const Sidebar: React.FC<SideBarProps> = ({ title, themeChange, visible }) => {
   return (
     <Container visible={visible}>
@@ -54,12 +55,11 @@ const Sidebar: React.FC<SideBarProps> = ({ title, themeChange, visible }) => {
           <StyledButton
             onClick={() => themeChange()}
             as="button"
-            data-testid="theme"
           >
             {title === 'light' ? (
-              <FaMoon title="Alterar Tema" />
+              <FaMoon title="Alterar Tema" data-testid="Moon" />
             ) : (
-              <FaSun title="Aterar Tema" />
+              <FaSun title="Aterar Tema" data-testid="Sun" />
             )}
           </StyledButton>
         </li>
