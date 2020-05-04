@@ -19,11 +19,16 @@ describe('Sidebar', () => {
   it('should have a Moon icon', () => {
     expect(screen.getByTestId('Moon')).toBeInTheDocument();
   });
-//   it('sidebar', () => {
-//     const headerClass = Sidebar({themeChange = ()=>{}, })?.type.styledComponentId;
-//     const MyHeaderRoots = document.getElementsByClassName(headerClass);
-//     const style = window.getComputedStyle(MyHeaderRoots[0])
-//     console.log(style)
-//     expect(screen.getByTestId('navbar')).toBeVisible();
-//   });
+
+  it('should use the dark theme', () => {
+    const headerClass = Sidebar({
+      themeChange: () => {},
+      title: 'dark',
+      visible: false,
+    })?.type.styledComponentId;
+
+    const MyHeaderRoots = document.getElementsByClassName(headerClass);
+    const style = window.getComputedStyle(MyHeaderRoots[0]);
+    expect(style.backgroundColor).toBe('rgb(51, 51, 51)')
+  });
 });
