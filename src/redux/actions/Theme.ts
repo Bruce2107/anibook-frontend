@@ -1,7 +1,7 @@
-import { constTheme } from '../../constants';
+import { Theme } from '../../constants';
 
 export function ToggleTheme() {
   return {
-    type: constTheme.TOGGLE_THEME,
+    type: Theme.TOGGLE_THEME,
   };
 }

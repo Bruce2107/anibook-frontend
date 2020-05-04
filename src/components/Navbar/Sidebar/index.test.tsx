@@ -16,7 +16,14 @@ describe('Sidebar', () => {
   beforeEach(() => {
     renderComponent();
   });
-  it('should have a Sun icon', () => {
-    expect(screen.getByTestId('Sun')).toBeInTheDocument();
+  it('should have a Moon icon', () => {
+    expect(screen.getByTestId('Moon')).toBeInTheDocument();
   });
+//   it('sidebar', () => {
+//     const headerClass = Sidebar({themeChange = ()=>{}, })?.type.styledComponentId;
+//     const MyHeaderRoots = document.getElementsByClassName(headerClass);
+//     const style = window.getComputedStyle(MyHeaderRoots[0])
+//     console.log(style)
+//     expect(screen.getByTestId('navbar')).toBeVisible();
+//   });
 });

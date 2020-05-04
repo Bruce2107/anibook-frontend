@@ -5,7 +5,7 @@ type SideNav = {
 };
 export const Container = styled.nav<SideNav>`
   height: 100vh;
-  width: 60vw;
+  width: 100vw;
   background: ${({ theme }) => theme.colors.primary};
   opacity: 0.9;
   box-sizing: border-box;

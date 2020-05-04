@@ -20,13 +20,31 @@ describe('Navbar', () => {
   beforeEach(() => {
     renderComponent();
   });
-  it('should have a Bars Icon', () => {
-    expect(screen.getByTestId('Sun')).toBeInTheDocument();
+
+  it('should haven a Moon Icon', () => {
+    expect(screen.getByTestId('Moon')).toBeInTheDocument();
   });
-  it('should have toggle theme button', () => {
+  it('should have a visible toggle theme button', () => {
     expect(screen.getByTestId('theme')).toBeVisible();
   });
   it('should have logo', () => {
-    expect(screen.getByTestId('logo')).toBeInTheDocument();
+    expect(screen.getByText('anibook', { exact: false })).toBeVisible();
+  });
+
+  // const resizeWindow = (x:number, y:number) => {
+  //   window.innerWidth = x;
+  //   window.innerHeight = y;
+  //   window.dispatchEvent(new Event('resize'));
+  // }
+
+  it("should't have a visible bars button", () => {
+    // resizeWindow(1024,1024)
+    expect(screen.getByTestId('sidemenu-icon')).toBeVisible();
+  });
+
+  it('navbar', () => {
+    const style = window.getComputedStyle(document.getElementById('navbar') as HTMLElement);
+    console.log(style);
+    expect(screen.getByTestId('navbar')).toBeVisible();
   });
 });

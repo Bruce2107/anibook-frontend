@@ -19,10 +19,10 @@ import Sidebar from './Sidebar';
 
 const Navbar: React.FC = () => {
   const { title } = useContext(ThemeContext);
-  const tema = useSelector((state: Theme) => state.theme.darkMode);
+  const theme = useSelector((state: Theme) => state.theme.darkMode);
   const dispacth = useDispatch();
   const themeChange = () => {
-    localStorage.setItem('theme', `${tema ? 'light' : 'dark'}`);
+    localStorage.setItem('theme', `${theme ? 'light' : 'dark'}`);
     dispacth(ToggleTheme());
   };
   const [sideOpen, setSideOpen] = useState(false);
@@ -32,8 +32,10 @@ const Navbar: React.FC = () => {
   return (
     <>
       <Sidebar title={title} themeChange={themeChange} visible={sideOpen} />
-      <StyledNavbar>
-        <StyledLogo title="Anibook" data-testid="logo">AniBook</StyledLogo>
+      <StyledNavbar data-testid="navbar" id="navbar">
+        <StyledLogo title="Anibook" data-testid="logo">
+          AniBook
+        </StyledLogo>
         <ul>
           <li>
             <StyledButton>
@@ -73,14 +75,18 @@ const Navbar: React.FC = () => {
               data-testid="theme"
             >
               {title === 'light' ? (
-                <FaMoon title="Alterar Tema" />
-              ) : (
                 <FaSun title="Aterar Tema" />
+              ) : (
+                <FaMoon title="Alterar Tema" />
               )}
             </StyledButton>
           </li>
         </ul>
-        <StyledButton id="bars" onClick={() => toggleSideBar()}>
+        <StyledButton
+          id="sidemenu-icon"
+          data-testid="sidemenu-icon"
+          onClick={() => toggleSideBar()}
+        >
           {sideOpen ? <IoMdClose /> : <FaBars />}
         </StyledButton>
       </StyledNavbar>

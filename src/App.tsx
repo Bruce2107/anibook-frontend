@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { useSelector } from 'react-redux';
 
@@ -9,14 +9,10 @@ import { Theme } from './constants/Types';
 import Home from './pages/Home';
 
 const App: React.FC = () => {
-  const tema = useSelector((state: Theme) => state.theme.darkMode);
-  useEffect(() => {
-    
-  }, []);
+  const theme = useSelector((state: Theme) => state.theme.darkMode);
   return (
-    <ThemeProvider theme={!tema ? light : dark}>
+    <ThemeProvider theme={!theme ? light : dark}>
       <GlobalStyle />
-      {/* <Navbar /> */}
       <Home />
     </ThemeProvider>
   );

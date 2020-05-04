@@ -16,13 +16,12 @@ export const StyledNavbar = styled.nav`
     list-style: none;
     display: flex;
   }
-  #bars{
+  #sidemenu-icon {
     display: none;
-    @media (max-width: 769px){
+    @media (max-width: 769px) {
       display: flex;
     }
   }
-  
 `;
 export const StyledLogo = styled.a`
   cursor: pointer;
@@ -37,7 +36,7 @@ export const StyledLogo = styled.a`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  &:hover {
+  &:hover{
     background: ${({ theme }) =>
       `-webkit-linear-gradient(100deg, ${theme.colors.upColor_inverted},${theme.colors.downColor_inverted})`};
     background-clip: text;
@@ -64,7 +63,7 @@ export const StyledButton = styled.a`
     cursor: pointer;
   }
   svg {
-    margin-top: 0.5em;
+    margin-top: 0.5em;   
   }
   @media (max-width: 770px) {
     display: none;
