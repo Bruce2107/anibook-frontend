@@ -1,6 +1,17 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, keyframes } from 'styled-components';
 import getImage from '../utils/backgroundImage';
 
+const squareAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
 export default createGlobalStyle`
   *{
     margin:0;
@@ -33,4 +44,16 @@ export default createGlobalStyle`
     box-shadow: inset 10px 0 10px #222f3e;
   }
   /* Fim Scrollbar */
+
+  /* Square mousemove */
+  .square{
+    z-index: -1;
+    height: 20px;
+    width: 20px;
+    opacity: 0;
+    border-radius: 15%;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    animation: ${squareAnimation} 1s 1;
+  }
 `;
