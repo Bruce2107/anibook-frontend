@@ -5,6 +5,7 @@ const theme: DefaultTheme = {
     primary: '#333333',
     secondary: '#cad0d8',
     background: '#444444',
+    background_card: '#333333',
     text: '#c0c0c0',
     footer: 'rgba(0,210,211, 0.5)',
     black: '#000',

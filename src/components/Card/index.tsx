@@ -1,7 +1,19 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { StyledCard, StyledLayer, StyledImage, StyledTitle } from './styles';
 
-export default function Card() {
-  return <Container>OI</Container>;
+interface Props {
+  image: string;
+  name: string;
 }
+const Card: React.FC<Props> = ({ image, name }) => {
+  return (
+    <StyledCard>
+      <StyledImage src={image} />
+      <StyledLayer className="layer" />
+      <StyledTitle>{name}</StyledTitle>
+    </StyledCard>
+  );
+};
+
+export default Card;

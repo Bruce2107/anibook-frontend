@@ -5,6 +5,7 @@ export const StyledNavbar = styled.nav`
   background: ${({ theme }) => theme.colors.primary};
   height: 50px;
   display: flex;
+  top:0;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
