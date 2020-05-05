@@ -1,23 +1,24 @@
 import { ImageCard } from '../constants/Types';
+import { Domain } from '../constants';
 
 export const cardImages: ImageCard[] = [
   {
     name: 'seitokaiyakuindomo',
     displayName: 'Seitokai Yakuindomo',
     filename: 'card',
-    extension: 'png',
+    extension: '.png',
   },
   {
     name: 'bokunohero',
     displayName: 'Boku no Hero',
     filename: 'card',
-    extension: 'png',
+    extension: '.png',
   },
   {
     name: 'swordartonline',
     displayName: 'Sword Art Online',
     filename: 'card',
-    extension: 'png',
+    extension: '.png',
   },
 ];
 export const randomArrayWithoutRepetition = (arraySize: number): number[] => {
@@ -53,6 +54,5 @@ export const objectWithSpecificImage = (name: string): ImageCard => {
   if (!object.length) {
     throw new Error('Não existe uma imagem associada a este nome');
   }
-
   return object[0];
 };
