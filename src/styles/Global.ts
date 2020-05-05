@@ -1,6 +1,7 @@
 import { createGlobalStyle, keyframes } from 'styled-components';
 import getImage from '../utils/backgroundImage';
 
+// Square mousemove
 const squareAnimation = keyframes`
   0% {
     opacity: 0;
