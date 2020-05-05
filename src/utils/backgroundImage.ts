@@ -1,4 +1,5 @@
 import { Image } from '../constants/Types';
+import { Domain } from '../constants';
 
 export const backgroundImages: Image[] = [
   { filename: 'AkariAkaza', extension: '.webp' },
@@ -77,7 +78,7 @@ export const generateRandomIndex = () => {
 const getImage = () => {
   const index = generateRandomIndex();
   const imageObject = backgroundImages[index];
-  return `https://anibook.com.br/React/background/${imageObject.filename}${imageObject.extension}`;
+  return `${Domain.URL_BASE}${Domain.BACKGROUND_IAMGES}${imageObject.filename}${imageObject.extension}`;
 };
 
 export default getImage;
