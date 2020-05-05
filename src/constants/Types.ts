@@ -13,7 +13,11 @@ export interface Theme {
 }
 
 export interface Image {
-  displayname?: string;
   filename: string;
   extension: string;
+}
+
+export interface ImageCard extends Image{
+  displayName: string;
+  name: string;
 }

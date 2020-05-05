@@ -20,7 +20,7 @@ describe('Navbar', () => {
     expect(screen.getByTestId('Sun')).toBeInTheDocument();
     fireEvent.click(screen.getByTestId('theme'));
     expect(screen.getByTestId('Moon')).toBeInTheDocument();
-    fireEvent.click(screen.getByTestId('theme'));
+    fireEvent.click(screen.getByTestId('theme')); 
     expect(screen.getByTestId('Sun')).toBeInTheDocument();
   });
 
