@@ -13,6 +13,7 @@ export interface Theme {
 }
 
 export interface Image {
-  name: string;
+  displayname?: string;
+  filename: string;
   extension: string;
 }
