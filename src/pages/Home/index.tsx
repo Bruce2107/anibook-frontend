@@ -14,16 +14,19 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Cards>
-        {cards.map((image) => (
-          <Card
-            image={`${getDomain(image.name)}${image.filename}${
-              image.extension
-            }`}
-            name={image.displayName}
-          />
-        ))}
-      </Cards>
+      <main>
+        <Cards>
+          {cards.map((image) => (
+            <Card
+              key={image.name}
+              image={`${getDomain(image.name)}${image.filename}${
+                image.extension
+              }`}
+              name={image.displayName}
+            />
+          ))}
+        </Cards>
+      </main>
     </>
   );
 }
