@@ -7,14 +7,14 @@ declare module 'styled-components' {
       primary: string;
       secondary: string;
       background: string;
-      background_card: string;
+      backgroundCard: string;
       text: string;
       footer: string;
       black: string;
       upColor: string;
-      upColor_inverted: string;
+      upColorInverted: string;
       downColor: string;
-      downColor_inverted: string;
+      downColorInverted: string;
     };
   }
 }

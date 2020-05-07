@@ -32,14 +32,12 @@ export default createGlobalStyle`
     background: "#576574";
     width: 5px;
   }
-  ::-webkit-scrollbar-thumb{
-    background: ${({ theme }) =>
-      `-webkit-linear-gradient(100deg, ${theme.colors.upColor},${theme.colors.downColor})`};
+  ::-webkit-scrollbar-thumb{ 
+    background: ${({ theme }) => `-webkit-linear-gradient(100deg, ${theme.colors.upColor},${theme.colors.downColor})`};
     border-radius: 21px;
   }
   ::-webkit-scrollbar-thumb:hover{
-    background: ${({ theme }) =>
-      `-webkit-linear-gradient(100deg, ${theme.colors.upColor_inverted},${theme.colors.downColor_inverted})`};
+    background: ${({ theme }) => `-webkit-linear-gradient(100deg, ${theme.colors.upColorInverted},${theme.colors.downColorInverted})`};
   }
   ::-webkit-scrollbar-track {
     box-shadow: inset 10px 0 10px #222f3e;

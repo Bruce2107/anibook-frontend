@@ -32,14 +32,12 @@ export const StyledLogo = styled.a`
   font-weight: bold;
   font-style: oblique;
   padding: 0 20px;
-  background: ${({ theme }) =>
-    `-webkit-linear-gradient(100deg, ${theme.colors.upColor},${theme.colors.downColor})`};
+  background: ${({ theme }) => `-webkit-linear-gradient(100deg, ${theme.colors.upColor},${theme.colors.downColor})`};
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   &:hover{
-    background: ${({ theme }) =>
-      `-webkit-linear-gradient(100deg, ${theme.colors.upColor_inverted},${theme.colors.downColor_inverted})`};
+    background: ${({ theme }) => `-webkit-linear-gradient(100deg, ${theme.colors.upColorInverted},${theme.colors.downColorInverted})`};
     background-clip: text;
     -webkit-background-clip: text;
   }
@@ -53,14 +51,12 @@ export const StyledButton = styled.a`
   width: 100px;
   padding: 0 35px;
   display: flex;
-  color: ${({ theme }) =>
-    theme.title === 'light' ? theme.colors.downColor : theme.colors.upColor};
+  color: ${({ theme }) => (theme.title === 'light' ? theme.colors.downColor : theme.colors.upColor)};
   &:hover {
     background: #ffea;
-    color: ${({ theme }) =>
-      theme.title === 'light'
-        ? theme.colors.upColor_inverted
-        : theme.colors.downColor_inverted};
+    color: ${({ theme }) => (theme.title === 'light'
+    ? theme.colors.upColorInverted
+    : theme.colors.downColorInverted)};
     cursor: pointer;
   }
   svg {

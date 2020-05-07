@@ -26,10 +26,10 @@ export const randomArrayWithoutRepetition = (arraySize: number): number[] => {
   const size = cardImages.length;
   let control = 0;
   while (control < arraySize) {
-    let index = Math.floor(Math.random() * size);
+    const index = Math.floor(Math.random() * size);
     if (!previousIndex.includes(index)) {
       previousIndex.push(index);
-      control++;
+      control += 1;
     }
     if (control === size) break;
   }

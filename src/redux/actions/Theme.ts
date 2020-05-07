@@ -5,3 +5,5 @@ export function ToggleTheme() {
     type: Theme.TOGGLE_THEME,
   };
 }
+
+export default ToggleTheme;

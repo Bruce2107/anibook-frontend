@@ -28,13 +28,13 @@ describe('Card Image', () => {
       objectWithSpecificImage('');
     }).toThrow();
   });
-  it('shoud return a error when image are not found',()=>{
-    expect(()=>{
-      objectWithSpecificImage('nomedaimagem')
-    }).toThrowError('Não existe uma imagem associada a este nome')
-  })
-  it('should return a specific image object',()=>{
+  it('shoud return a error when image are not found', () => {
+    expect(() => {
+      objectWithSpecificImage('nomedaimagem');
+    }).toThrowError('Não existe uma imagem associada a este nome');
+  });
+  it('should return a specific image object', () => {
     const image = objectWithSpecificImage('seito kaiyAkuindomo ');
-    expect(image.displayName).toBe('Seitokai Yakuindomo')
-  })
+    expect(image.displayName).toBe('Seitokai Yakuindomo');
+  });
 });

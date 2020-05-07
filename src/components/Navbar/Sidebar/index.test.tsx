@@ -6,12 +6,11 @@ import dark from '../../../styles/themes/dark';
 import Sidebar from '.';
 
 describe('Sidebar', () => {
-  const renderComponent = () =>
-    render(
-      <ThemeProvider theme={dark}>
-        <Sidebar themeChange={() => {}} title="dark" visible={false} />
-      </ThemeProvider>
-    );
+  const renderComponent = () => render(
+    <ThemeProvider theme={dark}>
+      <Sidebar themeChange={() => {}} title="dark" visible={false} />
+    </ThemeProvider>,
+  );
   afterEach(cleanup);
   beforeEach(() => {
     renderComponent();
@@ -29,6 +28,6 @@ describe('Sidebar', () => {
 
     const MyHeaderRoots = document.getElementsByClassName(headerClass);
     const style = window.getComputedStyle(MyHeaderRoots[0]);
-    expect(style.backgroundColor).toBe('rgb(51, 51, 51)')
+    expect(style.backgroundColor).toBe('rgb(51, 51, 51)');
   });
 });

@@ -6,3 +6,5 @@ export const Cards = styled.div`
   grid-gap: 20px;
   margin: 50px auto 100px;
 `;
+
+export const Container = styled.div``;

@@ -5,7 +5,7 @@ export const StyledCard = styled.div`
   width: 350px;
   height: 264px;
   margin: 0 auto;
-  background-color: ${({ theme }) => theme.colors.background_card};
+  background-color: ${({ theme }) => theme.colors.backgroundCard};
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
@@ -19,7 +19,7 @@ export const StyledCard = styled.div`
       }
     }
   }
-  @media (max-width: 770px){
+  @media (max-width: 770px) {
     padding: 10px;
     width: 330px;
   }
@@ -31,8 +31,7 @@ export const StyledLayer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) =>
-    `linear-gradient(${theme.colors.upColor},${theme.colors.downColor})`};
+  background: ${({ theme }) => `linear-gradient(${theme.colors.upColor},${theme.colors.downColor})`};
   transition: 0.5s;
   z-index: 1;
   @media (max-width: 770px) {
