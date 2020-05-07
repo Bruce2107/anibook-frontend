@@ -1,19 +1,19 @@
 import React from 'react';
 
-import { StyledCard, StyledLayer, StyledImage, StyledTitle } from './styles';
+import {
+  StyledCard, StyledLayer, StyledImage, StyledTitle,
+} from './styles';
 
 interface Props {
   image: string;
   name: string;
 }
-const Card: React.FC<Props> = ({ image, name }) => {
-  return (
-    <StyledCard>
-      <StyledImage src={image} />
-      <StyledLayer className="layer" />
-      <StyledTitle>{name}</StyledTitle>
-    </StyledCard>
-  );
-};
+const Card: React.FC<Props> = ({ image, name }) => (
+  <StyledCard>
+    <StyledImage src={image} />
+    <StyledLayer className="layer" />
+    <StyledTitle>{name}</StyledTitle>
+  </StyledCard>
+);
 
 export default Card;

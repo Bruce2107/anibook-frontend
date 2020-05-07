@@ -5,6 +5,7 @@ import Card from '../../components/Card';
 import { Cards } from './styles';
 import { randomObjectWithImages } from '../../utils/cardImage';
 import getDomain from '../../utils/getDomain';
+
 export default function Home() {
   const cards = randomObjectWithImages(3);
   useEffect(() => {
