@@ -1,5 +1,4 @@
 import { ImageCard } from '../constants/Types';
-import { Domain } from '../constants';
 
 export const cardImages: ImageCard[] = [
   {
