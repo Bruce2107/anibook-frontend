@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
+
 import Navbar from '../../components/Navbar';
 import Card from '../../components/Card';
-
-import { Cards } from './styles';
+import { Cards, Container } from './styles';
 import { randomObjectWithImages } from '../../utils/cardImage';
 import getDomain from '../../utils/getDomain';
 
@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <Container>
         <Cards>
           {cards.map((image) => (
             <Card
@@ -26,7 +26,7 @@ export default function Home() {
             />
           ))}
         </Cards>
-      </main>
+      </Container>
     </>
   );
 }

@@ -7,4 +7,6 @@ export const Cards = styled.div`
   margin: 50px auto 100px;
 `;
 
-export const Container = styled.div``;
+export const Container = styled.main`
+  margin-top: 100px
+`;

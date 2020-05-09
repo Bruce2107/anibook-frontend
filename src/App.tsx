@@ -11,7 +11,6 @@ import createAndRemoveSquare from './utils/SquareMouseFollowing';
 
 const App: React.FC = () => {
   const theme = useSelector((state: Theme) => state.theme.darkMode);
-
   useEffect(() => {
     document.addEventListener('mousemove', (event: MouseEvent) => {
       createAndRemoveSquare(event);

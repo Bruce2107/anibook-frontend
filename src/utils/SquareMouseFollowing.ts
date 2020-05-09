@@ -6,7 +6,7 @@ function randomColor() {
 function createAndRemoveSquare(ev: MouseEvent) {
   const square = document.createElement('div');
   square.style.top = `${ev.clientY}px`;
-  square.style.left = `${ev.clientY}px`;
+  square.style.left = `${ev.clientX}px`;
   square.style.background = randomColor();
   square.setAttribute('class', 'square');
   document.body.appendChild(square);

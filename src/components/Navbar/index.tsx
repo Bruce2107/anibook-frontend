@@ -71,7 +71,6 @@ const Navbar: React.FC = () => {
           <li>
             <StyledButton
               onClick={() => themeChange()}
-              as="button"
               data-testid="theme"
             >
               {title === 'light' ? (
