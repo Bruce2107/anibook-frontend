@@ -43,7 +43,7 @@ export const StyledLogo = styled.a`
   }
 `;
 
-export const StyledButton = styled.a`
+export const StyledButton = styled.button`
   font-size: 24px;
   border: none;
   background: none;
@@ -64,5 +64,8 @@ export const StyledButton = styled.a`
   }
   @media (max-width: 770px) {
     display: none;
+    svg{
+      margin-top: 0;
+    }
   }
 `;

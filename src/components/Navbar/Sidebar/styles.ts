@@ -26,7 +26,7 @@ export const Container = styled.nav<SideNav>`
   transition: transform 0.3s ease;
 `;
 
-export const StyledButton = styled.a`
+export const StyledButton = styled.button`
   font-size: 24px;
   border: none;
   background: none;
