@@ -16,6 +16,7 @@ import { StyledNavbar, StyledLogo, StyledButton } from './styles';
 import { ToggleTheme } from '../../redux/actions/Theme';
 import { Theme } from '../../constants/Types';
 import Sidebar from './Sidebar';
+import openLink from '../../utils/openLink';
 
 const Navbar: React.FC = () => {
   const { title } = useContext(ThemeContext);
@@ -31,9 +32,8 @@ const Navbar: React.FC = () => {
   };
   return (
     <>
-      <Sidebar title={title} themeChange={themeChange} visible={sideOpen} />
       <StyledNavbar data-testid="navbar" id="navbar">
-        <StyledLogo title="Anibook" data-testid="logo" as="h1">
+        <StyledLogo data-testid="logo" as="h1">
           AniBook
         </StyledLogo>
         <ul>
@@ -49,30 +49,27 @@ const Navbar: React.FC = () => {
           </li>
           <li>
             <StyledButton
-              href="https://twitter.com/AniBookOficial"
-              target="_blank"
+              onClick={() => openLink('https://twitter.com/AniBookOficial')}
             >
               <FaTwitter title="Twitter" />
             </StyledButton>
           </li>
           <li>
-            <StyledButton href="https://discord.gg/TsuMHBd" target="_blank">
+            <StyledButton
+              onClick={() => openLink('https://discord.gg/TsuMHBd')}
+            >
               <FaDiscord title="Discord" />
             </StyledButton>
           </li>
           <li>
             <StyledButton
-              href="https://github.com/Bruce2107/anibook-frontend"
-              target="_blank"
+              onClick={() => openLink('https://github.com/Bruce2107/anibook-frontend')}
             >
               <FaGithubAlt title="GitHub" />
             </StyledButton>
           </li>
           <li>
-            <StyledButton
-              onClick={() => themeChange()}
-              data-testid="theme"
-            >
+            <StyledButton onClick={() => themeChange()} data-testid="theme">
               {title === 'light' ? (
                 <FaSun title="Aterar Tema" />
               ) : (
@@ -89,6 +86,7 @@ const Navbar: React.FC = () => {
           {sideOpen ? <IoMdClose /> : <FaBars />}
         </StyledButton>
       </StyledNavbar>
+      <Sidebar title={title} themeChange={themeChange} visible={sideOpen} />
     </>
   );
 };
