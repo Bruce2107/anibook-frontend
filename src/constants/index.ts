@@ -7,3 +7,8 @@ export const Domain = {
   BACKGROUND_IMAGES: '/React/background/',
   CARD_IMAGES: '/React/images/',
 };
+
+export const Backend = {
+  URL_BASE: 'http://localhost:4000',
+  IMAGES: '/image',
+};

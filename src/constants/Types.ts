@@ -17,7 +17,18 @@ export interface Image {
   extension: string;
 }
 
-export interface ImageCard extends Image{
+export interface ImageCard extends Image {
   displayName: string;
   name: string;
 }
+
+export interface Data {
+  folder: string;
+  name: string;
+  photo: string;
+  images: Array<string>;
+  synopsis: string;
+  comment: string;
+}
+
+export type TypeCard = Pick<Data, 'folder' | 'name' | 'photo'>;
