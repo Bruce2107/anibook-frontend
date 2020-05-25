@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <StyledNavbar data-testid="navbar" id="navbar">
-        <StyledLogo data-testid="logo" as="h1">
+        <StyledLogo data-testid="logo" as="h1" lang="en">
           AniBook
         </StyledLogo>
         <ul>
@@ -51,21 +51,21 @@ const Navbar: React.FC = () => {
             <StyledButton
               onClick={() => openLink('https://twitter.com/AniBookOficial')}
             >
-              <FaTwitter title="Twitter" />
+              <FaTwitter title="Twitter" lang="en" />
             </StyledButton>
           </li>
           <li>
             <StyledButton
               onClick={() => openLink('https://discord.gg/TsuMHBd')}
             >
-              <FaDiscord title="Discord" />
+              <FaDiscord title="Discord" lang="en" />
             </StyledButton>
           </li>
           <li>
             <StyledButton
               onClick={() => openLink('https://github.com/Bruce2107/anibook-frontend')}
             >
-              <FaGithubAlt title="GitHub" />
+              <FaGithubAlt title="GitHub" lang="en" />
             </StyledButton>
           </li>
           <li>

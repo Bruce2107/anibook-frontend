@@ -19,7 +19,7 @@ type SideBarProps = {
 
 const Sidebar: React.FC<SideBarProps> = ({ title, themeChange, visible }) => (
   <Container visible={visible} data-testid="sidebar">
-    <ul>
+    <ul aria-hidden={!visible}>
       <li>
         <StyledButton>
           <GoDeviceDesktop title="Animes" />
@@ -32,21 +32,26 @@ const Sidebar: React.FC<SideBarProps> = ({ title, themeChange, visible }) => (
       </li>
       <li>
         <StyledButton
+          role="link"
           onClick={() => openLink('https://twitter.com/AniBookOficial')}
         >
-          <FaTwitter title="Twitter" />
-        </StyledButton>
-      </li>
-      <li>
-        <StyledButton onClick={() => openLink('https://discord.gg/TsuMHBd')}>
-          <FaDiscord title="Discord" />
+          <FaTwitter title="Twitter" lang="en" />
         </StyledButton>
       </li>
       <li>
         <StyledButton
+          role="link"
+          onClick={() => openLink('https://discord.gg/TsuMHBd')}
+        >
+          <FaDiscord title="Discord" lang="en" />
+        </StyledButton>
+      </li>
+      <li>
+        <StyledButton
+          role="link"
           onClick={() => openLink('https://github.com/Bruce2107/anibook-frontend')}
         >
-          <FaGithubAlt title="GitHub" />
+          <FaGithubAlt title="Github" lang="en" />
         </StyledButton>
       </li>
       <li>

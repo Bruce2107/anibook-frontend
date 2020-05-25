@@ -11,9 +11,9 @@ interface Props {
 
 const Card: React.FC<Props> = ({ image, name }) => (
   <StyledCard>
-    <StyledImage src={image} alt={name} onError={imageError} />
+    <StyledImage src={image} alt={name} onError={imageError} lang="en" />
     <StyledLayer className="layer" />
-    <StyledTitle>{name}</StyledTitle>
+    <StyledTitle lang="en">{name}</StyledTitle>
   </StyledCard>
 );
 
