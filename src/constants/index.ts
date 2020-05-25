@@ -9,6 +9,7 @@ export const Domain = {
 };
 
 export const Backend = {
-  URL_BASE: 'http://localhost:4000',
+  // URL_BASE: 'http://localhost:4000',
+  URL_BASE: 'http://anibook-backend.herokuapp.com',
   IMAGES: '/image',
 };
