@@ -1,8 +1,8 @@
-import { Theme } from '../../constants';
+import { TOGGLE_THEME } from '../../constants';
 
 export function ToggleTheme() {
   return {
-    type: Theme.TOGGLE_THEME,
+    type: TOGGLE_THEME,
   };
 }
 

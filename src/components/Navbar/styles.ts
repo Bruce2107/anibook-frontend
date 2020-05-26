@@ -19,7 +19,13 @@ export const StyledNavbar = styled.nav`
   }
   #sidemenu-icon {
     display: none;
+    svg{
+      margin-top: 0;
+    }
     @media (max-width: 769px) {
+      svg{
+        margin-top: 0.5em;
+      }
       display: flex;
     }
   }
@@ -64,8 +70,5 @@ export const StyledButton = styled.button`
   }
   @media (max-width: 770px) {
     display: none;
-    svg{
-      margin-top: 0;
-    }
   }
 `;

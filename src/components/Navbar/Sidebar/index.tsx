@@ -22,44 +22,47 @@ const Sidebar: React.FC<SideBarProps> = ({ title, themeChange, visible }) => (
     <ul aria-hidden={!visible}>
       <li>
         <StyledButton>
-          <GoDeviceDesktop title="Animes" />
+          <GoDeviceDesktop aria-label="Animes" />
         </StyledButton>
       </li>
       <li>
         <StyledButton>
-          <FaBookOpen title="Mangás" />
+          <FaBookOpen aria-label="Mangás" />
         </StyledButton>
       </li>
       <li>
         <StyledButton
           role="link"
           onClick={() => openLink('https://twitter.com/AniBookOficial')}
+          lang="en"
         >
-          <FaTwitter title="Twitter" lang="en" />
+          <FaTwitter aria-label="Twitter" />
         </StyledButton>
       </li>
       <li>
         <StyledButton
           role="link"
           onClick={() => openLink('https://discord.gg/TsuMHBd')}
+          lang="en"
         >
-          <FaDiscord title="Discord" lang="en" />
+          <FaDiscord aria-label="Discord" />
         </StyledButton>
       </li>
       <li>
         <StyledButton
           role="link"
           onClick={() => openLink('https://github.com/Bruce2107/anibook-frontend')}
+          lang="en"
         >
-          <FaGithubAlt title="Github" lang="en" />
+          <FaGithubAlt aria-label="Github" />
         </StyledButton>
       </li>
       <li>
         <StyledButton onClick={() => themeChange()} as="button">
           {title === 'light' ? (
-            <FaSun title="Aterar Tema" data-testid="Sun" />
+            <FaSun data-testid="Sun" aria-label="Alterar para escuro" />
           ) : (
-            <FaMoon title="Alterar Tema" data-testid="Moon" />
+            <FaMoon data-testid="Moon" aria-label="Alterar para claro" />
           )}
         </StyledButton>
       </li>

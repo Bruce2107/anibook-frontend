@@ -1,6 +1,5 @@
-export const Theme = {
-  TOGGLE_THEME: 'TOGGLE_THEME',
-};
+export const TOGGLE_THEME = 'TOGGLE_THEME';
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 
 export const Domain = {
   URL_BASE: 'https://anibook.com.br',
