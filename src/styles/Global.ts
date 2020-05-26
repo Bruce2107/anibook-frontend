@@ -1,5 +1,5 @@
 import { createGlobalStyle, keyframes } from 'styled-components';
-import getImage from '../utils/backgroundImage';
+import { getImageAPI } from '../utils/backgroundImage';
 
 // Square mousemove
 const squareAnimation = keyframes`
@@ -21,7 +21,7 @@ export default createGlobalStyle`
   }
   body{
     background: ${({ theme }) => theme.colors.background};
-    background-image: url(${getImage()});
+    background-image: url(${getImageAPI()});
     background-size: 240px;
     font-size: 14px;
     color: ${(props) => props.theme.colors.text};

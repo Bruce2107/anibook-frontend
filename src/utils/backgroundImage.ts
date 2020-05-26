@@ -1,5 +1,5 @@
 import { Image } from '../constants/Types';
-import { Domain } from '../constants';
+import { Domain, Backend } from '../constants';
 
 export const backgroundImages: Image[] = [
   { filename: 'AkariAkaza', extension: '.webp' },
@@ -79,5 +79,9 @@ const getImage = () => {
   const imageObject = backgroundImages[index];
   return `${Domain.URL_BASE}${Domain.BACKGROUND_IMAGES}${imageObject.filename}${imageObject.extension}`;
 };
+
+export function getImageAPI() {
+  return `${Backend.URL_BASE}${Backend.IMAGES}/background`;
+}
 
 export default getImage;
