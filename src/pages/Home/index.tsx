@@ -13,10 +13,13 @@ export default function Home() {
   const [cards, setCards] = useState<Array<TypeCard>>();
   useEffect(() => {
     setPageTitle('Home');
-    api.get('anime/card/random?limit=3').then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
-      setCards(res.data.data);
-    });
+    api
+      .get('anime/card/random?limit=3')
+      .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
+        setCards(res.data.data);
+      });
   }, []);
+
   return (
     <>
       <Navbar />

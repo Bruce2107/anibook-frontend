@@ -15,7 +15,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StyledNavbar, StyledLogo, StyledButton } from './styles';
 import { ToggleTheme } from '../../redux/actions/Theme';
 import { ToggleSidebar as ToggleSidebarAction } from '../../redux/actions/Sidebar';
-import { Theme, MobileScreen, Sidebar as ISidebar } from '../../constants/Types';
+import {
+  Theme,
+  MobileScreen,
+  Sidebar as ISidebar,
+} from '../../constants/Types';
 import Sidebar from './Sidebar';
 import openLink from '../../utils/openLink';
 
@@ -33,12 +37,20 @@ const Navbar: React.FC = () => {
     dispacth(ToggleSidebarAction());
   };
 
-  const isMobile = useSelector(
-    (state: MobileScreen) => state.mobileScreen,
-  );
+  const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
   return (
     <>
-      <StyledNavbar data-testid="navbar" id="navbar">
+      <StyledNavbar
+        data-testid="navbar"
+        id="navbar"
+        draggable
+        onDrag={() => {
+          if (isMobile) toggleSideBar();
+        }}
+        onTouchEnd={() => {
+          if (isMobile) toggleSideBar();
+        }}
+      >
         <StyledLogo data-testid="logo" as="h1" lang="en">
           AniBook
         </StyledLogo>
@@ -80,9 +92,9 @@ const Navbar: React.FC = () => {
           <li>
             <StyledButton onClick={() => themeChange()} data-testid="theme">
               {title === 'light' ? (
-                <FaSun aria-label="Aterar tema para escuro" />
+                <FaSun aria-label="Aterar para tema escuro" />
               ) : (
-                <FaMoon aria-label="Alterar tema para claro" />
+                <FaMoon aria-label="Alterar para tema claro" />
               )}
             </StyledButton>
           </li>

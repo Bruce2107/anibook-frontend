@@ -60,9 +60,9 @@ const Sidebar: React.FC<SideBarProps> = ({ title, themeChange, visible }) => (
       <li>
         <StyledButton onClick={() => themeChange()} as="button">
           {title === 'light' ? (
-            <FaSun data-testid="Sun" aria-label="Alterar para escuro" />
+            <FaSun data-testid="Sun" aria-label="Alterar para tema escuro" />
           ) : (
-            <FaMoon data-testid="Moon" aria-label="Alterar para claro" />
+            <FaMoon data-testid="Moon" aria-label="Alterar para tema claro" />
           )}
         </StyledButton>
       </li>
