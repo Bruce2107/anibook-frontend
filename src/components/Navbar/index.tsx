@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   FaSun,
   FaMoon,
@@ -40,17 +40,7 @@ const Navbar: React.FC = () => {
   const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
   return (
     <>
-      <StyledNavbar
-        data-testid="navbar"
-        id="navbar"
-        draggable
-        onDrag={() => {
-          if (isMobile) toggleSideBar();
-        }}
-        onTouchEnd={() => {
-          if (isMobile) toggleSideBar();
-        }}
-      >
+      <StyledNavbar data-testid="navbar" id="navbar">
         <StyledLogo data-testid="logo" as="h1" lang="en">
           AniBook
         </StyledLogo>
