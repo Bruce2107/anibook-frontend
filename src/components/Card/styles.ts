@@ -48,6 +48,7 @@ export const StyledImage = styled.img`
   cursor: pointer;
   z-index: 2;
   transition: 1s;
+  box-shadow: 0 10px 20px rgba(0,0,0,.4);
   &:hover {
     transform: scale(1.1);
   }

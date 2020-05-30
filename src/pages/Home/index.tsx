@@ -8,13 +8,14 @@ import { TypeCard } from '../../constants/Types';
 import api from '../../services/api';
 import Card from '../../components/Card';
 import setPageTitle from '../../utils/setPageTitle';
+import Carousel from '../../components/Carousel';
 
 export default function Home() {
   const [cards, setCards] = useState<Array<TypeCard>>();
   useEffect(() => {
     setPageTitle('Home');
     api
-      .get('anime/card/random?limit=3')
+      .get('animes/card/random?limit=3')
       .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
         setCards(res.data.data);
       });
@@ -24,6 +25,7 @@ export default function Home() {
     <>
       <Navbar />
       <Container>
+        {cards && <Carousel data={cards} />}
         {cards && (
           <Cards>
             {cards.map((card) => (
