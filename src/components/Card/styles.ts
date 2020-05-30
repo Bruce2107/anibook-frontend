@@ -33,6 +33,7 @@ export const StyledLayer = styled.div`
   height: 100%;
   background: ${({ theme }) => `linear-gradient(${theme.colors.upColor},${theme.colors.downColor})`};
   transition: 0.5s;
+  background-color: transparent;
   z-index: 1;
   @media (max-width: 770px) {
     top: 0;

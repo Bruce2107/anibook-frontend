@@ -26,18 +26,20 @@ import openLink from '../../utils/openLink';
 const Navbar: React.FC = () => {
   const { title } = useContext(ThemeContext);
   const theme = useSelector((state: Theme) => state.theme.darkMode);
+  const isOpen = useSelector((state: ISidebar) => state.sidebar.isOpen);
+  const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
+
   const dispacth = useDispatch();
+
   const themeChange = () => {
     localStorage.setItem('theme', `${theme ? 'light' : 'dark'}`);
     dispacth(ToggleTheme());
   };
-  const isOpen = useSelector((state: ISidebar) => state.sidebar.isOpen);
 
   const toggleSideBar = () => {
     dispacth(ToggleSidebarAction());
   };
 
-  const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
   return (
     <>
       <StyledNavbar data-testid="navbar" id="navbar">

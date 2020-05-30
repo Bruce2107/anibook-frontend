@@ -3,7 +3,7 @@ import styled from 'styled-components';
 type SideNav = {
   visible: boolean;
 };
-export const Container = styled.nav<SideNav>`
+export const Container = styled.div<SideNav>`
   height: 100vh;
   width: 100vw;
   background: ${({ theme }) => theme.colors.primary};

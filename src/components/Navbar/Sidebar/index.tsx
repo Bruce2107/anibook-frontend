@@ -18,7 +18,7 @@ type SideBarProps = {
 };
 
 const Sidebar: React.FC<SideBarProps> = ({ title, themeChange, visible }) => (
-  <Container visible={visible} data-testid="sidebar">
+  <Container visible={visible} data-testid="sidebar" role="complementary">
     <ul aria-hidden={!visible}>
       <li>
         <StyledButton>

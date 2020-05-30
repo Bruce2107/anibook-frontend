@@ -34,16 +34,16 @@ export const StyledLogo = styled.a`
   cursor: pointer;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 1.6rem;
+  font-weight: bolder;
   font-style: oblique;
   padding: 0 20px;
-  background: ${({ theme }) => `-webkit-linear-gradient(100deg, ${theme.colors.upColor},${theme.colors.downColor})`};
+  background: ${({ theme }) => `-webkit-linear-gradient(90deg, ${theme.colors.upColor},${theme.colors.downColor})`};
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   &:hover{
-    background: ${({ theme }) => `-webkit-linear-gradient(100deg, ${theme.colors.upColorInverted},${theme.colors.downColorInverted})`};
+    background: ${({ theme }) => `-webkit-linear-gradient(90deg, ${theme.colors.upColorInverted},${theme.colors.downColorInverted})`};
     background-clip: text;
     -webkit-background-clip: text;
   }
