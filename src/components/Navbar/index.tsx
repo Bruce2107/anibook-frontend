@@ -12,6 +12,7 @@ import { IoMdClose } from 'react-icons/io';
 import { GoDeviceDesktop } from 'react-icons/go';
 import { ThemeContext } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSwipeable } from 'react-swipeable';
 import { StyledNavbar, StyledLogo, StyledButton } from './styles';
 import { ToggleTheme } from '../../redux/actions/Theme';
 import { ToggleSidebar as ToggleSidebarAction } from '../../redux/actions/Sidebar';

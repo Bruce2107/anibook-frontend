@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { Card } from 'anibook';
 import { TypeCard } from '../../constants/Types';
 import CardDisplay from './CardDisplay';
 
 interface CarouselProps {
-  data: TypeCard[];
+  data: Card[];
 }
 
 const Carousel: React.FC<CarouselProps> = ({ data }) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 
 import { AxiosResponse } from 'axios';
 import Navbar from '../../components/Navbar';
@@ -25,7 +25,7 @@ export default function Home() {
     <>
       <Navbar />
       <Container>
-        {cards && <Carousel data={cards} />}
+        {/* {cards && <Carousel data={cards} />} */}
         {cards && (
           <Cards>
             {cards.map((card) => (
