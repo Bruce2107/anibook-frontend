@@ -25,27 +25,4 @@ describe('Navbar', () => {
     fireEvent.click(screen.getByTestId('theme'));
     expect(screen.getByTestId('Sun')).toBeInTheDocument();
   });
-
-  it('should open side menu', () => {
-    expect(screen.getByTestId('sidebar')).toHaveStyle(
-      'transform: translateX(-100%);',
-    );
-    fireEvent.click(screen.getByTestId('sidemenu-icon'));
-    expect(screen.getByTestId('sidebar')).toHaveStyle(
-      'transform: translateX(0);',
-    );
-    fireEvent.click(screen.getByTestId('sidemenu-icon'));
-    expect(screen.getByTestId('sidebar')).toHaveStyle(
-      'transform: translateX(-100%);',
-    );
-  });
-
-  it('should open side menu and toggle theme', () => {
-    fireEvent.click(screen.getByTestId('sidemenu-icon'));
-    expect(screen.getByTestId('sidebar')).toHaveStyle(
-      'transform: translateX(0);',
-    );
-    fireEvent.click(screen.getByTestId('theme'));
-    expect(screen.getByTestId('Moon')).toBeInTheDocument();
-  });
 });

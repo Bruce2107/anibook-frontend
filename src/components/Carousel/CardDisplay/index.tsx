@@ -6,9 +6,10 @@ import imageError from '../../../utils/imageError';
 
 interface CardProps {
   card: Card;
+  active: boolean;
 }
-const CardDisplay: React.FC<CardProps> = ({ card }) => (
-  <Container>
+const CardDisplay: React.FC<CardProps> = ({ card, active }) => (
+  <Container className={`${active ? 'active' : ''}`}>
     <Image
       src={`${getUrlImage(card.folder, card.photo)}`}
       alt={card.name}

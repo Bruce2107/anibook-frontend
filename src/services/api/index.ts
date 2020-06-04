@@ -1,7 +1,9 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const instace = axios.create({
-  baseURL: 'http://anibook-backend.herokuapp.com',
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 export default instace;
