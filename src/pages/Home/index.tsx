@@ -19,14 +19,21 @@ export default function Home() {
 
   useEffect(() => {
     setPageTitle('Home');
-    api
-      .get('/animes/card/random?limit=9')
-      .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
-        setCarousel(res.data.data.slice(0, 6));
-        setCards(res.data.data.slice(6));
-      });
-  }, []);
-
+    if (!isMobile) {
+      api
+        .get('/animes/card/random?limit=9')
+        .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
+          setCarousel(res.data.data.slice(0, 6));
+          setCards(res.data.data.slice(6));
+        });
+    } else {
+      api
+        .get('/animes/card/random?limit=3')
+        .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
+          setCards(res.data.data);
+        });
+    }
+  }, [isMobile]);
 
   return (
     <>
