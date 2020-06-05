@@ -2,8 +2,31 @@
   "name": "anibook-frontend",
   "version": "0.1.0",
   "private": true,
+  "description": "Fronted para a aplicação Anibook",
+  "main": "./src/index.tsx",
+  "author": {
+    "name": "Eduardo Henrique",
+    "email": "edu.ed322@gmail.com",
+    "url": "https://github.com/Bruce2107"
+  },
+  "bugs": {
+    "email": "edu.ed322@gmail.com",
+    "url": "https://github.com/Bruce2107/anibook-backend/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "react",
+    "anibook"
+  ],
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
-    "anibook": "^1.2.2",
+    "anibook": "^1.3.1",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "react": "^16.13.1",
@@ -15,12 +38,6 @@
     "redux": "^4.0.5",
     "styled-components": "^5.1.0",
     "typescript": "~3.8.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
