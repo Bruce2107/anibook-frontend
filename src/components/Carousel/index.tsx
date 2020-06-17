@@ -18,9 +18,6 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
   }, 5000);
   return (
     <>
-      <button onClick={toggleCard} type="button">
-        oi
-      </button>
       <Container
         style={{ transform: `translateX(-${cardPos * (300 / data.length)}%)` }}
         className={`active-card-${cardPos}`}

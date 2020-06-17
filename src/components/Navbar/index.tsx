@@ -9,6 +9,7 @@ import {
   FaBars,
 } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 import { GoDeviceDesktop } from 'react-icons/go';
 import { ThemeContext } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,19 +44,25 @@ const Navbar: React.FC = () => {
   return (
     <>
       <StyledNavbar data-testid="navbar" id="navbar">
-        <StyledLogo data-testid="logo" as="h1" lang="en">
-          AniBook
-        </StyledLogo>
+        <Link to="/">
+          <StyledLogo data-testid="logo" as="h1" lang="en">
+            AniBook
+          </StyledLogo>
+        </Link>
         <ul>
           <li>
-            <StyledButton>
-              <GoDeviceDesktop aria-label="Animes" />
-            </StyledButton>
+            <Link to="/list/animes">
+              <StyledButton>
+                <GoDeviceDesktop aria-label="Animes" />
+              </StyledButton>
+            </Link>
           </li>
           <li>
-            <StyledButton>
-              <FaBookOpen aria-label="Mangás" />
-            </StyledButton>
+            <Link to="/list/mangas">
+              <StyledButton>
+                <FaBookOpen aria-label="Mangás" />
+              </StyledButton>
+            </Link>
           </li>
           <li>
             <StyledButton

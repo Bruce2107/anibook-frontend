@@ -3,6 +3,7 @@ import {
   cleanup, render, screen, fireEvent,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import theme from '../../styles/themes/dark';
@@ -13,7 +14,9 @@ describe('Navbar', () => {
   const renderComponent = () => render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Navbar />
+        <BrowserRouter>
+          <Navbar />
+        </BrowserRouter>
       </ThemeProvider>
     </Provider>,
   );

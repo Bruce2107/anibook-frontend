@@ -8,6 +8,7 @@ import {
   FaSun,
 } from 'react-icons/fa';
 import { GoDeviceDesktop } from 'react-icons/go';
+import { Link } from 'react-router-dom';
 import { Container, StyledButton } from './styles';
 import openLink from '../../../utils/openLink';
 
@@ -21,14 +22,18 @@ const Sidebar: React.FC<SideBarProps> = ({ title, themeChange, visible }) => (
   <Container visible={visible} data-testid="sidebar" role="complementary">
     <ul aria-hidden={!visible}>
       <li>
-        <StyledButton>
-          <GoDeviceDesktop aria-label="Animes" />
-        </StyledButton>
+        <Link to="/list/animes">
+          <StyledButton>
+            <GoDeviceDesktop aria-label="Animes" />
+          </StyledButton>
+        </Link>
       </li>
       <li>
-        <StyledButton>
-          <FaBookOpen aria-label="Mangás" />
-        </StyledButton>
+        <Link to="/list/mangas">
+          <StyledButton>
+            <FaBookOpen aria-label="Mangás" />
+          </StyledButton>
+        </Link>
       </li>
       <li>
         <StyledButton

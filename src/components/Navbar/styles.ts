@@ -13,6 +13,9 @@ export const StyledNavbar = styled.nav`
   z-index: 999;
   opacity: 0.9;
   position: fixed;
+  a{
+    text-decoration: none;
+  }
   ul {
     list-style: none;
     display: flex;
