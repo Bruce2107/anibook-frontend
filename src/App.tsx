@@ -10,6 +10,7 @@ import { Theme, Sidebar } from './constants/Types';
 import Home from './pages/Home';
 import createAndRemoveSquare from './utils/SquareMouseFollowing';
 import ToggleSidebar from './redux/actions/Sidebar';
+import List from './pages/List';
 
 const App: React.FC = () => {
   const theme = useSelector((state: Theme) => state.theme.darkMode);
@@ -37,7 +38,8 @@ const App: React.FC = () => {
     <ThemeProvider theme={!theme ? light : dark}>
       <GlobalStyle />
       <div {...swipe}>
-        <Home />
+        {/* <Home /> */}
+        <List pageName="listagem de animes" type="animes" limitPerPage={4} />
       </div>
     </ThemeProvider>
   );

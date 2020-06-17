@@ -9,7 +9,14 @@ export interface ThemeState {
 export interface SidebarState {
   isOpen: boolean;
 }
-
+export interface PaginationState {
+  page: number;
+}
+export interface PaginationReduce {
+  pagination: {
+    page: number;
+  };
+}
 export interface Theme {
   theme: {
     darkMode: boolean;

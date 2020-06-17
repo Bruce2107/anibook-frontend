@@ -8,5 +8,5 @@ export const Cards = styled.div`
 `;
 
 export const Container = styled.main`
-  margin-top: 100px
+  margin-top: 100px;
 `;
