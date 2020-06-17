@@ -51,14 +51,14 @@ const Navbar: React.FC = () => {
         </Link>
         <ul>
           <li>
-            <Link to="/list/animes">
+            <Link to="/list/animes/1">
               <StyledButton>
                 <GoDeviceDesktop aria-label="Animes" />
               </StyledButton>
             </Link>
           </li>
           <li>
-            <Link to="/list/mangas">
+            <Link to="/list/mangas/1">
               <StyledButton>
                 <FaBookOpen aria-label="Mangás" />
               </StyledButton>

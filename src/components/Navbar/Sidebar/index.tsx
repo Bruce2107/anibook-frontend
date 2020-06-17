@@ -22,14 +22,14 @@ const Sidebar: React.FC<SideBarProps> = ({ title, themeChange, visible }) => (
   <Container visible={visible} data-testid="sidebar" role="complementary">
     <ul aria-hidden={!visible}>
       <li>
-        <Link to="/list/animes">
+        <Link to="/list/animes/1">
           <StyledButton>
             <GoDeviceDesktop aria-label="Animes" />
           </StyledButton>
         </Link>
       </li>
       <li>
-        <Link to="/list/mangas">
+        <Link to="/list/mangas/1">
           <StyledButton>
             <FaBookOpen aria-label="Mangás" />
           </StyledButton>

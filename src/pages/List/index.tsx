@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { AxiosResponse } from 'axios';
 import { Card as TypeCard } from 'anibook';
+import { useParams, useHistory } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import { Container, Cards, Pagination } from './styles';
 import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
 import Card from '../../components/Card';
 import getUrlImage from '../../utils/getImageUrl';
-import { PaginationReduce } from '../../constants/Types';
-import TogglePage from '../../redux/actions/Pagination';
 
 interface Props {
   pageName: string;
@@ -30,15 +28,8 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   const [totalRows, setTotalRows] = useState<number>(0);
   const [minPosition, setMinPosition] = useState<number>(0);
   const [maxPosition, setMaxPosition] = useState<number>(minPosition + 6);
-
-  const dispatch = useDispatch();
-  const currentPage = useSelector(
-    (state: PaginationReduce) => state.pagination.page,
-  );
-
-  const changePage = (page: number) => {
-    dispatch(TogglePage(page));
-  };
+  const { page } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     setPageTitle(pageName);
@@ -51,10 +42,12 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   }, [pageName, type]);
 
   useEffect(() => {
-    setMinPosition((currentPage - 1) * limitPerPage);
-    setMaxPosition(currentPage * limitPerPage);
-  }, [currentPage, limitPerPage]);
-
+    setMinPosition((page - 1) * limitPerPage);
+    setMaxPosition(page * limitPerPage);
+  }, [page, limitPerPage]);
+  const changePage = (num: number) => {
+    history.push(`/list/${type}/${num}`);
+  };
   const pages = arrayPages(Math.ceil(totalRows / limitPerPage));
   return (
     <>
