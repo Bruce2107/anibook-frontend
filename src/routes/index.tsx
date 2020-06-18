@@ -9,11 +9,17 @@ const Routes: React.FC = () => (
       <Route path="/" exact>
         <Home />
       </Route>
+      <Route path="/list/animes/" exact>
+        <List limitPerPage={2} pageName="animes" type="animes" />
+      </Route>
+      <Route path="/list/mangas/" exact>
+        <List limitPerPage={2} pageName="mangas" type="mangas" />
+      </Route>
       <Route path="/list/animes/:page" exact>
-        <List limitPerPage={4} pageName="animes" type="animes" />
+        <List limitPerPage={2} pageName="animes" type="animes" />
       </Route>
       <Route path="/list/mangas/:page" exact>
-        <List limitPerPage={4} pageName="mangas" type="mangas" />
+        <List limitPerPage={2} pageName="mangas" type="mangas" />
       </Route>
     </Switch>
   </BrowserRouter>

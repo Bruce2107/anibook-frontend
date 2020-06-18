@@ -19,14 +19,22 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box
   }
+  html, body, #root{
+    height: 100%;
+  }
   body{
     background: ${({ theme }) => theme.colors.background};
     background-image: url(${getImageAPI()});
     background-size: 240px;
     font-size: 14px;
     color: ${(props) => props.theme.colors.text};
-    font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', 'sans-serif';
     overflow-x: hidden;
+  }
+
+  *, button, input{
+    font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', 'sans-serif';
+    border: 0;
+    outline: 0;
   }
   /* Scrollbar */
   ::-webkit-scrollbar{

@@ -3,7 +3,9 @@ import { AxiosResponse } from 'axios';
 import { Card as TypeCard } from 'anibook';
 import { useParams, useHistory } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
-import { Container, Cards, Pagination } from './styles';
+import {
+  Container, Cards, Pagination, PaginationButton,
+} from './styles';
 import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
 import Card from '../../components/Card';
@@ -42,8 +44,8 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   }, [pageName, type]);
 
   useEffect(() => {
-    setMinPosition((page - 1) * limitPerPage);
-    setMaxPosition(page * limitPerPage);
+    setMinPosition(((page || 1) - 1) * limitPerPage);
+    setMaxPosition((page || 1) * limitPerPage);
   }, [page, limitPerPage]);
   const changePage = (num: number) => {
     history.push(`/list/${type}/${num}`);
@@ -66,15 +68,14 @@ export default function List({ pageName, type, limitPerPage }: Props) {
         )}
         {totalRows > 0 && (
           <Pagination>
-            {pages.map((num) => (
-              <div
+            {pages.map((num: number) => (
+              <PaginationButton
                 key={num}
                 onClick={() => changePage(num)}
-                role="link"
-                tabIndex={0}
+                visible={num >= Number(page) - 3 && num <= Number(page) + 3}
               >
                 {num}
-              </div>
+              </PaginationButton>
             ))}
           </Pagination>
         )}

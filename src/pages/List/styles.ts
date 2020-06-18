@@ -18,21 +18,26 @@ export const Pagination = styled.div`
   box-sizing: border-box;
   justify-content: center;
   margin-bottom: 50px;
-  div {
-    width: 40px;
-    height: 40px;
-    padding: 10px 0;
-    text-align: center;
-    color: ${({ theme }) => (theme.title === 'dark' ? theme.colors.downColorInverted : theme.colors.upColorInverted)};
-    font-weight: bolder;
-    font-size: 16px;
-    line-height: 16px;
-    border: 2px solid #000;
-    background-color: ${({ theme }) => (theme.title === 'light' ? theme.colors.downColor : theme.colors.upColor)};
+`;
 
-    transition: background-color ease 300ms;
-    &:hover {
-      background-color: transparent;
-    }
+export const PaginationButton = styled.button<{ visible: boolean }>`
+  width: 40px;
+  height: 40px;
+  padding: 10px 0;
+  text-align: center;
+  color: ${({ theme }) => (theme.title === 'dark'
+    ? theme.colors.downColorInverted
+    : theme.colors.upColorInverted)};
+  font-weight: bolder;
+  font-size: 16px;
+  line-height: 16px;
+  border: 2px solid #000;
+  background-color: ${({ theme }) => (theme.title === 'light' ? theme.colors.downColor : theme.colors.upColor)};
+  cursor: pointer;
+  transition: background-color ease 300ms;
+  &:hover {
+    background-color: transparent;
   }
+
+  display: ${({ visible }) => (visible ? 'block' : 'none')};
 `;
