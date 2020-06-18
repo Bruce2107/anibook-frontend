@@ -32,6 +32,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   const [maxPosition, setMaxPosition] = useState<number>(minPosition + 6);
   const { page } = useParams();
   const history = useHistory();
+  const pages = arrayPages(Math.ceil(totalRows / limitPerPage));
 
   useEffect(() => {
     setPageTitle(pageName);
@@ -47,10 +48,16 @@ export default function List({ pageName, type, limitPerPage }: Props) {
     setMinPosition(((page || 1) - 1) * limitPerPage);
     setMaxPosition((page || 1) * limitPerPage);
   }, [page, limitPerPage]);
+
+  useEffect(() => {
+    if (Number(page) > pages[pages.length - 1] || Number(page) < pages[0]) {
+      history.push('/notfound?type=page');
+    }
+  }, [page, pages, history]);
+
   const changePage = (num: number) => {
     history.push(`/list/${type}/${num}`);
   };
-  const pages = arrayPages(Math.ceil(totalRows / limitPerPage));
   return (
     <>
       <Navbar />
@@ -72,7 +79,9 @@ export default function List({ pageName, type, limitPerPage }: Props) {
               <PaginationButton
                 key={num}
                 onClick={() => changePage(num)}
-                visible={num >= Number(page) - 3 && num <= Number(page) + 3}
+                visible={
+                  num >= Number(page || 1) - 3 && num <= Number(page || 1) + 3
+                }
               >
                 {num}
               </PaginationButton>
