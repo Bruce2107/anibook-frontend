@@ -51,9 +51,9 @@ export default function List({ pageName, type, limitPerPage }: Props) {
 
   useEffect(() => {
     if (Number(page) > pages[pages.length - 1] || Number(page) < pages[0]) {
-      history.push('/notfound?type=page');
+      history.push(`/notfound?type=page&ref=list/${type}`);
     }
-  }, [page, pages, history]);
+  }, [page, pages, history, type]);
 
   const changePage = (num: number) => {
     history.push(`/list/${type}/${num}`);
