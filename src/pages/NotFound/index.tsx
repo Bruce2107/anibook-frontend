@@ -15,7 +15,7 @@ function getMessage(type: string | null, lastPage: string | null): GoTo {
   if (!type) {
     return {
       message: 'parece que vc se perdeu nesse monte de páginas',
-      local: 'inicio',
+      local: 'início',
       path: '/',
     };
   }
@@ -23,7 +23,7 @@ function getMessage(type: string | null, lastPage: string | null): GoTo {
     case 'page': {
       return {
         message:
-          'parece que vc errou o indice das páginas melhor voltar para o inicio da lista',
+          'parece que vc errou o índice das páginas melhor voltar para o início da lista',
         local: `${lastPage && lastPage.split('/')[1]}`,
         path: lastPage as string,
       };
@@ -31,8 +31,8 @@ function getMessage(type: string | null, lastPage: string | null): GoTo {
     default: {
       return {
         message:
-          'calma lá meu parceiro, que tal tentar voltar ao inicio e escolher um página?',
-        local: 'inicio',
+          'calma lá meu parceiro, que tal tentar voltar ao início e escolher um página?',
+        local: 'início',
         path: '/',
       };
     }

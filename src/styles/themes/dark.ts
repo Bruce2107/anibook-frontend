@@ -6,6 +6,7 @@ const theme: DefaultTheme = {
     primary: '#333333',
     secondary: '#cad0d8',
     background: '#444444',
+    backgroundWithOpacity: 'rgba(68, 68, 68, 0.8)',
     backgroundCard: '#333333',
     text: '#c0c0c0',
     footer: 'rgba(0,210,211, 0.5)',
@@ -15,7 +16,6 @@ const theme: DefaultTheme = {
     upColorInverted: '#ffd500',
     downColorInverted: '#ff1493',
   },
-
 };
 
 export default theme;
