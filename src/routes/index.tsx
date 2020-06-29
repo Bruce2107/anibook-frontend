@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import List from '../pages/List';
 import NotFound from '../pages/NotFound';
+import RequestFail from '../pages/Request/Fail';
 
 const limitPerPage = 4;
 
@@ -25,7 +26,11 @@ const Routes: React.FC = () => (
       <Route path="/list/mangas/:page" exact>
         <List limitPerPage={limitPerPage} pageName="mangas" type="mangas" />
       </Route>
-      {/** notfound */}
+      {/** request fail */}
+      <Route path="/request/fail" exact>
+        <RequestFail />
+      </Route>
+      {/** not found */}
       <Route path="/notfound" exact>
         <NotFound />
       </Route>

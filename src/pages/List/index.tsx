@@ -3,13 +3,11 @@ import { AxiosResponse } from 'axios';
 import { Card as TypeCard } from 'anibook';
 import { useParams, useHistory } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
-import {
-  Container, Cards, Pagination, PaginationButton,
-} from './styles';
 import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
 import Card from '../../components/Card';
 import getUrlImage from '../../utils/getImageUrl';
+import { Container, Cards, Pagination, PaginationButton } from './styles';
 
 interface Props {
   pageName: string;
@@ -41,8 +39,13 @@ export default function List({ pageName, type, limitPerPage }: Props) {
       .then((res: AxiosResponse<{ data: Array<TypeCard>; rows: number }>) => {
         setCards(res.data.data);
         setTotalRows(res.data.rows);
-      });
-  }, [pageName, type]);
+      })
+      .catch((error) =>
+        history.push(
+          `/request/fail?error=${error}&status=${error.response.status}`
+        )
+      );
+  }, [pageName, type, history]);
 
   useEffect(() => {
     setMinPosition(((page || 1) - 1) * limitPerPage);

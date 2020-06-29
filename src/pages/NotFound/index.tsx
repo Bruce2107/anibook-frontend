@@ -1,14 +1,12 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Title, Button, Container } from './styles';
+import useQuery from '../../utils/useQuery';
 
 interface GoTo {
   message: string;
   local: string;
   path: string;
-}
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
 }
 
 function getMessage(type: string | null, lastPage: string | null): GoTo {

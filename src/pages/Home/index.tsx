@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
 import { Card as TypeCard } from 'anibook';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import { Cards, Container } from './styles';
 import getUrlImage from '../../utils/getImageUrl';
@@ -16,6 +17,7 @@ export default function Home() {
   const [cards, setCards] = useState<Array<TypeCard>>();
   const [carousel, setCarousel] = useState<Array<TypeCard>>();
   const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
+  const history = useHistory();
 
   useEffect(() => {
     setPageTitle('Home');
@@ -25,15 +27,25 @@ export default function Home() {
         .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
           setCarousel(res.data.data.slice(0, 6));
           setCards(res.data.data.slice(6));
-        });
+        })
+        .catch((error) =>
+          history.push(
+            `/request/fail?error=${error}&status=${error.response.status}`
+          )
+        );
     } else {
       api
         .get('/animes/card/random?limit=3')
         .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
           setCards(res.data.data);
-        });
+        })
+        .catch((error) =>
+          history.push(
+            `/request/fail?error=${error}&status=${error.response.status}`
+          )
+        );
     }
-  }, [isMobile]);
+  }, [isMobile, history]);
 
   return (
     <>
