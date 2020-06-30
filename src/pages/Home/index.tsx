@@ -30,7 +30,7 @@ export default function Home() {
         })
         .catch((error) =>
           history.push(
-            `/request/fail?error=${error}&status=${error.response.status}`
+            `/request/fail?status=${error.response.status}`
           )
         );
     } else {
@@ -41,7 +41,7 @@ export default function Home() {
         })
         .catch((error) =>
           history.push(
-            `/request/fail?error=${error}&status=${error.response.status}`
+            `/request/fail?status=${error.response.status}`
           )
         );
     }

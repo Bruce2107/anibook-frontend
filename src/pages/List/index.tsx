@@ -42,7 +42,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
       })
       .catch((error) =>
         history.push(
-          `/request/fail?error=${error}&status=${error.response.status}`
+          `/request/fail?status=${error.response.status}`
         )
       );
   }, [pageName, type, history]);
