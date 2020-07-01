@@ -40,10 +40,14 @@ export default function List({ pageName, type, limitPerPage }: Props) {
         setCards(res.data.data);
         setTotalRows(res.data.rows);
       })
-      .catch((error) =>
-        history.push(
-          `/request/fail?status=${error.response.status}`
-        )
+      .catch((error) => {
+        if (!error.response.status) history.push('request/fail');
+        else {
+          history.push(
+            `/request/fail?status=${error.response.status}`
+          );
+        }
+      }
       );
   }, [pageName, type, history]);
 

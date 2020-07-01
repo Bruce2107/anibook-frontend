@@ -28,10 +28,11 @@ export default function Home() {
           setCarousel(res.data.data.slice(0, 6));
           setCards(res.data.data.slice(6));
         })
-        .catch((error) =>
-          history.push(
-            `/request/fail?status=${error.response.status}`
-          )
+        .catch((error) => {
+          if (!error.response) history.push('request/fail');
+          else { history.push(`/request/fail?status=${error.response.status}`); }
+        }
+
         );
     } else {
       api
@@ -39,10 +40,14 @@ export default function Home() {
         .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
           setCards(res.data.data);
         })
-        .catch((error) =>
-          history.push(
-            `/request/fail?status=${error.response.status}`
-          )
+        .catch((error) => {
+          if (!error.response) history.push('request/fail');
+          else {
+            history.push(
+              `/request/fail?status=${error.response.status}`
+            );
+          }
+        }
         );
     }
   }, [isMobile, history]);
