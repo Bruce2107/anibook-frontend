@@ -35,7 +35,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   useEffect(() => {
     setPageTitle(pageName);
     api
-      .get(`/${type}/card/sort?order=name`)
+      .get(`/${type}/card/sort/name`)
       .then((res: AxiosResponse<{ data: Array<TypeCard>; rows: number }>) => {
         setCards(res.data.data);
         setTotalRows(res.data.rows);
