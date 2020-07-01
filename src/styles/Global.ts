@@ -64,4 +64,7 @@ export default createGlobalStyle`
     transform: translate(-50%, 50%);
     animation: ${squareAnimation} 1s 1;
   }
+  a {
+    text-decoration: none;
+  }
 `;

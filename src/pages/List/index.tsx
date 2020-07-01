@@ -11,7 +11,7 @@ import { Container, Cards, Pagination, PaginationButton } from './styles';
 
 interface Props {
   pageName: string;
-  type: string;
+  type: 'animes' | 'mangas';
   limitPerPage: number;
 }
 
@@ -65,6 +65,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   const changePage = (num: number) => {
     history.push(`/list/${type}/${num}`);
   };
+
   return (
     <>
       <Navbar />
@@ -74,6 +75,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
             {cards.slice(minPosition, maxPosition).map((card) => (
               <Card
                 key={card.name}
+                type={type}
                 image={`${getUrlImage(card.folder, card.photo)}`}
                 name={card.name}
               />

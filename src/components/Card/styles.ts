@@ -54,7 +54,9 @@ export const StyledImage = styled.img`
   }
 `;
 
-export const StyledTitle = styled.a`
+export const StyledTitle = styled.p`
+  margin: 0;
+  padding: 0;
   position: relative;
   z-index: 2;
   color: #fff;

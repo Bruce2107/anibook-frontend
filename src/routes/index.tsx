@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import List from '../pages/List';
 import NotFound from '../pages/NotFound';
 import RequestFail from '../pages/Request/Fail';
+import Info from '../pages/Info';
 
 const limitPerPage = 4;
 
@@ -25,6 +26,13 @@ const Routes: React.FC = () => (
       </Route>
       <Route path="/list/mangas/:page" exact>
         <List limitPerPage={limitPerPage} pageName="mangas" type="mangas" />
+      </Route>
+      {/** info page */}
+      <Route path="/animes/:name" exact>
+        <Info />
+      </Route>
+      <Route path="/mangas/:name" exact>
+        <Info />
       </Route>
       {/** request fail */}
       <Route path="/request/fail" exact>

@@ -62,6 +62,7 @@ export default function Home() {
             {cards.map((card) => (
               <Card
                 key={card.name}
+                type="animes"
                 image={`${getUrlImage(card.folder, card.photo)}`}
                 name={card.name}
               />
