@@ -13,9 +13,13 @@ import setPageTitle from '../../utils/setPageTitle';
 import Carousel from '../../components/Carousel';
 import { MobileScreen } from '../../constants/Types';
 
+interface MyTypeCard extends TypeCard {
+  type: 'anime' | 'manga';
+}
+
 export default function Home() {
-  const [cards, setCards] = useState<Array<TypeCard>>();
-  const [carousel, setCarousel] = useState<Array<TypeCard>>();
+  const [cards, setCards] = useState<Array<MyTypeCard>>();
+  const [carousel, setCarousel] = useState<Array<MyTypeCard>>();
   const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
   const history = useHistory();
 
@@ -23,32 +27,29 @@ export default function Home() {
     setPageTitle('Home');
     if (!isMobile) {
       api
-        .get('/animes/card/random?limit=9')
-        .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
+        .get('/mixed/card/random?limit=9')
+        .then((res: AxiosResponse<{ data: Array<MyTypeCard> }>) => {
           setCarousel(res.data.data.slice(0, 6));
           setCards(res.data.data.slice(6));
         })
         .catch((error) => {
           if (!error.response) history.push('request/fail');
-          else { history.push(`/request/fail?status=${error.response.status}`); }
-        }
-
-        );
+          else {
+            history.push(`/request/fail?status=${error.response.status}`);
+          }
+        });
     } else {
       api
-        .get('/animes/card/random?limit=3')
-        .then((res: AxiosResponse<{ data: Array<TypeCard> }>) => {
+        .get('/mixed/card/random?limit=3')
+        .then((res: AxiosResponse<{ data: Array<MyTypeCard> }>) => {
           setCards(res.data.data);
         })
         .catch((error) => {
           if (!error.response) history.push('request/fail');
           else {
-            history.push(
-              `/request/fail?status=${error.response.status}`
-            );
+            history.push(`/request/fail?status=${error.response.status}`);
           }
-        }
-        );
+        });
     }
   }, [isMobile, history]);
 
@@ -62,7 +63,7 @@ export default function Home() {
             {cards.map((card) => (
               <Card
                 key={card.name}
-                type="animes"
+                type={card.type}
                 image={`${getUrlImage(card.folder, card.photo)}`}
                 name={card.name}
               />

@@ -7,7 +7,7 @@ import replaceSpaces from '../../utils/replaceSpaces';
 interface Props {
   image: string;
   name: string;
-  type: 'animes' | 'mangas';
+  type: 'anime' | 'manga';
 }
 
 const Card: React.FC<Props> = ({ image, name, type }) => (

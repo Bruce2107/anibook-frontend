@@ -16,22 +16,22 @@ const Routes: React.FC = () => (
       </Route>
       {/** listagem */}
       <Route path="/list/animes/" exact>
-        <List limitPerPage={limitPerPage} pageName="animes" type="animes" />
+        <List limitPerPage={limitPerPage} pageName="animes" type="anime" />
       </Route>
       <Route path="/list/mangas/" exact>
-        <List limitPerPage={limitPerPage} pageName="mangas" type="mangas" />
+        <List limitPerPage={limitPerPage} pageName="mangas" type="manga" />
       </Route>
       <Route path="/list/animes/:page" exact>
-        <List limitPerPage={limitPerPage} pageName="animes" type="animes" />
+        <List limitPerPage={limitPerPage} pageName="animes" type="anime" />
       </Route>
       <Route path="/list/mangas/:page" exact>
-        <List limitPerPage={limitPerPage} pageName="mangas" type="mangas" />
+        <List limitPerPage={limitPerPage} pageName="mangas" type="manga" />
       </Route>
       {/** info page */}
-      <Route path="/animes/:name" exact>
+      <Route path="/anime/:name" exact>
         <Info />
       </Route>
-      <Route path="/mangas/:name" exact>
+      <Route path="/manga/:name" exact>
         <Info />
       </Route>
       {/** request fail */}
