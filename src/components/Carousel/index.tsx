@@ -25,12 +25,9 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
       <Container
         style={{ transform: `translateX(-${cardPos * (300 / data.length)}%)` }}
       >
-        {data[0] && <CardDisplay card={data[0]} type={data[0].type} />}
-        {data[1] && <CardDisplay card={data[1]} type={data[1].type} />}
-        {data[2] && <CardDisplay card={data[2]} type={data[2].type} />}
-        {data[3] && <CardDisplay card={data[3]} type={data[3].type} />}
-        {data[4] && <CardDisplay card={data[4]} type={data[4].type} />}
-        {data[5] && <CardDisplay card={data[5]} type={data[5].type} />}
+        {data.map((card) => (
+          <CardDisplay key={card.name} card={card} type={card.type} />
+        ))}
       </Container>
     </>
   );
