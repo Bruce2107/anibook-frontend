@@ -5,7 +5,7 @@ export const StyledNavbar = styled.nav`
   background: ${({ theme }) => theme.colors.primary};
   height: 50px;
   display: flex;
-  top:0;
+  top: 0;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
@@ -13,7 +13,7 @@ export const StyledNavbar = styled.nav`
   z-index: 999;
   opacity: 0.9;
   position: fixed;
-  a{
+  a {
     text-decoration: none;
   }
   ul {
@@ -22,34 +22,19 @@ export const StyledNavbar = styled.nav`
   }
   #sidemenu-icon {
     display: none;
-    svg{
+    svg {
       margin-top: 0;
     }
     @media (max-width: 769px) {
-      svg{
+      svg {
         margin-top: 0.5em;
       }
       display: flex;
     }
   }
 `;
-export const StyledLogo = styled.a`
-  cursor: pointer;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
-  font-size: 1.6rem;
-  font-weight: bolder;
-  font-style: oblique;
+export const Logo = styled.a`
   padding: 0 20px;
-  background: ${({ theme }) => `-webkit-linear-gradient(90deg, ${theme.colors.upColor},${theme.colors.downColor})`};
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  &:hover{
-    background: ${({ theme }) => `-webkit-linear-gradient(90deg, ${theme.colors.upColorInverted},${theme.colors.downColorInverted})`};
-    background-clip: text;
-    -webkit-background-clip: text;
-  }
 `;
 
 export const StyledButton = styled.button`
@@ -60,16 +45,18 @@ export const StyledButton = styled.button`
   width: 100px;
   padding: 0 35px;
   display: flex;
-  color: ${({ theme }) => (theme.title === 'light' ? theme.colors.downColor : theme.colors.upColor)};
+  color: ${({ theme }) =>
+    theme.title === 'light' ? theme.colors.downColor : theme.colors.upColor};
   &:hover {
     background: #ffea;
-    color: ${({ theme }) => (theme.title === 'light'
-    ? theme.colors.upColorInverted
-    : theme.colors.downColorInverted)};
+    color: ${({ theme }) =>
+      theme.title === 'light'
+        ? theme.colors.upColorInverted
+        : theme.colors.downColorInverted};
     cursor: pointer;
   }
   svg {
-    margin-top: 0.5em;   
+    margin-top: 0.5em;
   }
   @media (max-width: 770px) {
     display: none;

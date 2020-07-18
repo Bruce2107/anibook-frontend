@@ -11,9 +11,10 @@ import {
 import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { GoDeviceDesktop } from 'react-icons/go';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext, useTheme } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledNavbar, StyledLogo, StyledButton } from './styles';
+import { TextLogo, Icon } from 'anibook-ui';
+import { StyledNavbar, StyledButton } from './styles';
 import { ToggleTheme } from '../../redux/actions/Theme';
 import { ToggleSidebar as ToggleSidebarAction } from '../../redux/actions/Sidebar';
 import {
@@ -26,28 +27,36 @@ import openLink from '../../utils/openLink';
 
 const Navbar: React.FC = () => {
   const { title } = useContext(ThemeContext);
+  const appTheme = useTheme();
   const theme = useSelector((state: Theme) => state.theme.darkMode);
   const isOpen = useSelector((state: ISidebar) => state.sidebar.isOpen);
   const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
 
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
 
   const themeChange = () => {
     localStorage.setItem('theme', `${theme ? 'light' : 'dark'}`);
-    dispacth(ToggleTheme());
+    dispatch(ToggleTheme());
   };
 
   const toggleSideBar = () => {
-    dispacth(ToggleSidebarAction());
+    dispatch(ToggleSidebarAction());
   };
 
   return (
     <>
       <StyledNavbar data-testid="navbar" id="navbar">
         <Link to="/">
-          <StyledLogo data-testid="logo" as="h1" lang="en">
-            AniBook
-          </StyledLogo>
+          <TextLogo
+            isGradient
+            text="AniBook"
+            fontStyle="oblique"
+            lineHeight="1.6rem"
+            size="1.6rem"
+            gradient={`-webkit-linear-gradient(90deg,${appTheme.colors.upColor},${appTheme.colors.downColor})`}
+            gradientHover={`-webkit-linear-gradient(90deg,${appTheme.colors.upColorInverted},${appTheme.colors.downColorInverted})`}
+            weight="700"
+          />
         </Link>
         <ul>
           <li>
@@ -82,7 +91,9 @@ const Navbar: React.FC = () => {
           </li>
           <li>
             <StyledButton
-              onClick={() => openLink('https://github.com/Bruce2107/anibook-frontend')}
+              onClick={() =>
+                openLink('https://github.com/Bruce2107/anibook-frontend')
+              }
               lang="en"
             >
               <FaGithubAlt aria-label="GitHub" />
@@ -91,7 +102,7 @@ const Navbar: React.FC = () => {
           <li>
             <StyledButton onClick={() => themeChange()} data-testid="theme">
               {title === 'light' ? (
-                <FaSun aria-label="Aterar para tema escuro" />
+                <FaSun aria-label="Alterar para tema escuro" />
               ) : (
                 <FaMoon aria-label="Alterar para tema claro" />
               )}
