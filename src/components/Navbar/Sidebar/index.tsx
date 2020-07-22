@@ -119,8 +119,14 @@ const Sidebar: React.FC<SideBarProps> = ({ title, toggleTheme, visible }) => {
     />,
   ];
   return (
-    <Container visible={visible} data-testid="sidebar" role="complementary">
-      <LibSidebar bgColor={appTheme.colors.primary} icons={Icons} />
+    <Container visible={visible} role="complementary">
+      <LibSidebar
+        bgColor={appTheme.colors.primary}
+        icons={Icons}
+        height="100vh"
+        width="100vw"
+        opacity={0.9}
+      />
     </Container>
   );
 };
