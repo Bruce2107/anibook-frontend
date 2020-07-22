@@ -126,6 +126,7 @@ const Sidebar: React.FC<SideBarProps> = ({ title, toggleTheme, visible }) => {
         height="100vh"
         width="100vw"
         opacity={0.9}
+        gap="20px 0"
       />
     </Container>
   );
