@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   FaSun,
   FaMoon,
@@ -11,10 +11,11 @@ import {
 import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { GoDeviceDesktop } from 'react-icons/go';
-import { ThemeContext, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextLogo, Icon, Navbar as LibNavbar } from 'anibook-ui';
-import { ToggleTheme } from '../../redux/actions/Theme';
+import { Container } from './style';
+import { ToggleTheme as ToggleThemeAction } from '../../redux/actions/Theme';
 import { ToggleSidebar as ToggleSidebarAction } from '../../redux/actions/Sidebar';
 import {
   Theme,
@@ -23,35 +24,26 @@ import {
 } from '../../constants/Types';
 import Sidebar from './Sidebar';
 import openLink from '../../utils/openLink';
+import { IconStyle } from './type';
 
 const Navbar: React.FC = () => {
-  const { title } = useContext(ThemeContext);
   const appTheme = useTheme();
-  const theme = useSelector((state: Theme) => state.theme.darkMode);
+  const isDarkMode = useSelector((state: Theme) => state.theme.darkMode);
   const isOpen = useSelector((state: ISidebar) => state.sidebar.isOpen);
   const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
-  const IconStyles = {
-    backgroundHover: '#ffea',
-    color:
-      appTheme.title === 'light'
-        ? appTheme.colors.downColor
-        : appTheme.colors.upColor,
-    colorHover:
-      appTheme.title === 'light'
-        ? appTheme.colors.upColorInverted
-        : appTheme.colors.downColorInverted,
-    width: '100px',
-  };
+  const IconStyles = IconStyle(appTheme);
+
   const dispatch = useDispatch();
 
-  const themeChange = () => {
-    localStorage.setItem('theme', `${theme ? 'light' : 'dark'}`);
-    dispatch(ToggleTheme());
+  const toggleTheme = () => {
+    localStorage.setItem('theme', `${isDarkMode ? 'light' : 'dark'}`);
+    dispatch(ToggleThemeAction());
   };
 
   const toggleSideBar = () => {
     dispatch(ToggleSidebarAction());
   };
+
   const Icons = {
     desktop: [
       <Link to="/list/animes">
@@ -61,6 +53,7 @@ const Navbar: React.FC = () => {
           backgroundHover={IconStyles.backgroundHover}
           colorHover={IconStyles.colorHover}
           width={IconStyles.width}
+          key="animes"
         />
       </Link>,
       <Link to="/list/mangas">
@@ -70,6 +63,7 @@ const Navbar: React.FC = () => {
           backgroundHover={IconStyles.backgroundHover}
           colorHover={IconStyles.colorHover}
           width={IconStyles.width}
+          key="mangas"
         />
       </Link>,
       <a
@@ -85,6 +79,7 @@ const Navbar: React.FC = () => {
           colorHover={IconStyles.colorHover}
           width={IconStyles.width}
           onClick={() => openLink('https://twitter.com/AniBookOficial')}
+          key="twitter"
         />
       </a>,
       <a
@@ -100,6 +95,7 @@ const Navbar: React.FC = () => {
           colorHover={IconStyles.colorHover}
           width={IconStyles.width}
           onClick={() => openLink('https://discord.gg/TsuMHBd')}
+          key="discord"
         />
       </a>,
       <a
@@ -114,15 +110,16 @@ const Navbar: React.FC = () => {
           backgroundHover={IconStyles.backgroundHover}
           colorHover={IconStyles.colorHover}
           width={IconStyles.width}
-          onClick={() =>
-            openLink('https://github.com/Bruce2107/anibook-frontend')
-          }
+          onClick={() => {
+            openLink('https://github.com/Bruce2107/anibook-frontend');
+          }}
+          key="github"
         />
       </a>,
       <Icon
         color={IconStyles.color}
         icon={
-          title === 'light' ? (
+          appTheme.title === 'light' ? (
             <FaSun aria-label="Alterar para tema escuro" />
           ) : (
             <FaMoon aria-label="Alterar para tema claro" />
@@ -131,7 +128,8 @@ const Navbar: React.FC = () => {
         backgroundHover={IconStyles.backgroundHover}
         colorHover={IconStyles.colorHover}
         width={IconStyles.width}
-        onClick={() => themeChange()}
+        onClick={() => toggleTheme()}
+        key="tema"
       />,
     ],
     mobile: [
@@ -148,34 +146,41 @@ const Navbar: React.FC = () => {
         colorHover={IconStyles.colorHover}
         width={IconStyles.width}
         onClick={() => toggleSideBar()}
+        key="abrir_menu"
       />,
     ],
   };
+  const logo = (
+    <Link to="/">
+      <TextLogo
+        isGradient
+        text="AniBook"
+        fontStyle="oblique"
+        lineHeight="1.6rem"
+        size="1.6rem"
+        gradient={`-webkit-linear-gradient(90deg,${appTheme.colors.upColor},${appTheme.colors.downColor})`}
+        gradientHover={`-webkit-linear-gradient(90deg,${appTheme.colors.upColorInverted},${appTheme.colors.downColorInverted})`}
+        weight="700"
+      />
+    </Link>
+  );
+
   return (
-    <>
+    <Container>
       <LibNavbar
         bgColor={appTheme.colors.primary}
-        logo={
-          <Link to="/">
-            <TextLogo
-              isGradient
-              text="AniBook"
-              fontStyle="oblique"
-              lineHeight="1.6rem"
-              size="1.6rem"
-              gradient={`-webkit-linear-gradient(90deg,${appTheme.colors.upColor},${appTheme.colors.downColor})`}
-              gradientHover={`-webkit-linear-gradient(90deg,${appTheme.colors.upColorInverted},${appTheme.colors.downColorInverted})`}
-              weight="700"
-            />
-          </Link>
-        }
+        logo={logo}
         icons={isMobile ? Icons.mobile : Icons.desktop}
       />
 
       {isMobile && (
-        <Sidebar title={title} themeChange={themeChange} visible={isOpen} />
+        <Sidebar
+          title={appTheme.title}
+          toggleTheme={toggleTheme}
+          visible={isOpen}
+        />
       )}
-    </>
+    </Container>
   );
 };
 
