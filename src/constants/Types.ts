@@ -33,3 +33,5 @@ export interface ImageCard extends Image {
   displayName: string;
   name: string;
 }
+
+export type DataType = 'anime' | 'manga';
