@@ -21,94 +21,94 @@ const CardDisplay: React.FC<CardProps> = ({ card, type }) => {
     />
   );
   const text = (
-    <Title>
-      <Text
-        text={card.name}
-        props={[
-          {
-            name: 'position',
-            value: 'absolute',
-          },
-          {
-            name: 'color',
-            value: '#ffffff',
-          },
-          {
-            name: 'text-transform',
-            value: 'capitalize',
-          },
-          {
-            name: 'z-index',
-            value: '2',
-          },
-          {
-            name: 'font-size',
-            value: '1.5rem',
-          },
-          {
-            name: 'font-style',
-            value: 'italic',
-          },
-          {
-            name: 'margin',
-            value: '0',
-          },
-          {
-            name: 'bottom',
-            value: '0',
-          },
-          {
-            name: 'left',
-            value: '0',
-          },
-          {
-            name: 'padding',
-            value: '10px',
-          },
-          {
-            name: 'width',
-            value: '100%',
-          },
-          {
-            name: 'text-align',
-            value: 'center',
-          },
-          {
-            name: 'background',
-            value: 'rgba(0, 0, 0, 0.5)',
-          },
-          {
-            name: 'font-weight',
-            value: 'bolder',
-          },
-        ]}
-      />
-    </Title>
+    <Link to={`/${type}/${replaceSpaces(card.name)}`}>
+      <Title>
+        <Text
+          text={card.name}
+          props={[
+            {
+              name: 'position',
+              value: 'absolute',
+            },
+            {
+              name: 'color',
+              value: '#ffffff',
+            },
+            {
+              name: 'text-transform',
+              value: 'capitalize',
+            },
+            {
+              name: 'z-index',
+              value: '2',
+            },
+            {
+              name: 'font-size',
+              value: '1.5rem',
+            },
+            {
+              name: 'font-style',
+              value: 'italic',
+            },
+            {
+              name: 'margin',
+              value: '0',
+            },
+            {
+              name: 'bottom',
+              value: '0',
+            },
+            {
+              name: 'left',
+              value: '0',
+            },
+            {
+              name: 'padding',
+              value: '10px',
+            },
+            {
+              name: 'width',
+              value: '100%',
+            },
+            {
+              name: 'text-align',
+              value: 'center',
+            },
+            {
+              name: 'background',
+              value: 'rgba(0, 0, 0, 0.5)',
+            },
+            {
+              name: 'font-weight',
+              value: 'bolder',
+            },
+          ]}
+        />
+      </Title>
+    </Link>
   );
   return (
-    <Link to={`/${type}/${replaceSpaces(card.name)}`}>
-      <CarouselCard
-        image={image}
-        text={text}
-        responsiveSizes={[
-          {
-            screen: '1080px',
-            height: '720px',
-            width: 'auto',
-          },
-          {
-            screen: '540px',
-            height: '360px',
-            width: 'auto',
-          },
-          {
-            screen: '380px',
-            height: '300px',
-            width: 'auto',
-          },
-        ]}
-      />
-    </Link>
+    <CarouselCard
+      image={image}
+      text={text}
+      responsiveSizes={[
+        {
+          screen: '1080px',
+          height: '720px',
+          width: 'auto',
+        },
+        {
+          screen: '540px',
+          height: '360px',
+          width: 'auto',
+        },
+        {
+          screen: '380px',
+          height: '300px',
+          width: 'auto',
+        },
+      ]}
+    />
   );
 };
 

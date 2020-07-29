@@ -21,8 +21,8 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
     speed: 500,
     autoplaySpeed: 5000,
     arrows: false,
-    cssEase: 'linear',
-    fade: true,
+    accessibility: true,
+    swipeToSlide: true,
   };
   return (
     <>
