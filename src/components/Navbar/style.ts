@@ -6,6 +6,9 @@ export const Container = styled.div`
   left: 0;
   z-index: 999;
   width: 100%;
+  > div:first-of-type {
+    transition: background-color 500ms ease;
+  }
 `;
 
 export default Container;

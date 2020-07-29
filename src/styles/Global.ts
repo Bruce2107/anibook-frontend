@@ -44,12 +44,13 @@ export default createGlobalStyle`
     width: 5px;
   }
   ::-webkit-scrollbar-thumb{ 
-    background: ${({ theme }) =>
+    background-image: ${({ theme }) =>
       `-webkit-linear-gradient(100deg, ${theme.colors.upColor},${theme.colors.downColor})`};
+    transition: background-image 500ms ease-in-out;
     border-radius: 21px;
   }
   ::-webkit-scrollbar-thumb:hover{
-    background: ${({ theme }) =>
+    background-image: ${({ theme }) =>
       `-webkit-linear-gradient(100deg, ${theme.colors.upColorInverted},${theme.colors.downColorInverted})`};
   }
   ::-webkit-scrollbar-track {
