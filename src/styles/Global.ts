@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { createGlobalStyle, keyframes } from 'styled-components';
 import { getImageAPI } from '../utils/backgroundImage';
 
@@ -23,12 +24,13 @@ export default createGlobalStyle`
     height: 100%;
   }
   body{
-    background: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.background};
     background-image: url(${getImageAPI()});
     background-size: 240px;
-    font-size: 14px;
+    font-size: 16px;
     color: ${(props) => props.theme.colors.text};
     overflow-x: hidden;
+    transition: background-color 500ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
   }
 
   *, button, input{
@@ -37,19 +39,27 @@ export default createGlobalStyle`
     outline: 0;
   }
   /* Scrollbar */
-  ::-webkit-scrollbar{
-    background: "#576574";
+  ::-webkit-scrollbar {
+    background: #576574;
     width: 5px;
   }
   ::-webkit-scrollbar-thumb{ 
-    background: ${({ theme }) => `-webkit-linear-gradient(100deg, ${theme.colors.upColor},${theme.colors.downColor})`};
+    background: ${({ theme }) =>
+      `-webkit-linear-gradient(100deg, ${theme.colors.upColor},${theme.colors.downColor})`};
     border-radius: 21px;
   }
   ::-webkit-scrollbar-thumb:hover{
-    background: ${({ theme }) => `-webkit-linear-gradient(100deg, ${theme.colors.upColorInverted},${theme.colors.downColorInverted})`};
+    background: ${({ theme }) =>
+      `-webkit-linear-gradient(100deg, ${theme.colors.upColorInverted},${theme.colors.downColorInverted})`};
   }
   ::-webkit-scrollbar-track {
     box-shadow: inset 10px 0 10px #222f3e;
+  }
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: ${({ theme }) =>
+      `${theme.colors.footer} ${theme.colors.downColor}`};
+    transition: scrollbar-color 500ms ease-in-out;
   }
   /* Fim Scrollbar */
 
