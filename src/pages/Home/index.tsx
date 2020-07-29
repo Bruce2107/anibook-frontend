@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
 import { Card as TypeCard } from 'anibook';
 import { useHistory } from 'react-router-dom';
+import 'slick-carousel/slick/slick.css';
 import Navbar from '../../components/Navbar';
 import { Cards, Container } from './styles';
 import getUrlImage from '../../utils/getImageUrl';
