@@ -43,12 +43,9 @@ export default function List({ pageName, type, limitPerPage }: Props) {
       .catch((error) => {
         if (!error.response.status) history.push('request/fail');
         else {
-          history.push(
-            `/request/fail?status=${error.response.status}`
-          );
+          history.push(`/request/fail?status=${error.response.status}`);
         }
-      }
-      );
+      });
   }, [pageName, type, history]);
 
   useEffect(() => {
@@ -89,7 +86,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
                 key={num}
                 onClick={() => changePage(num)}
                 visible={
-                  num >= Number(page || 1) - 3 && num <= Number(page || 1) + 3
+                  num >= Number(page || 1) - 2 && num <= Number(page || 1) + 2
                 }
               >
                 {num}

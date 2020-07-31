@@ -20,8 +20,8 @@ export const Title = styled.h1`
 `;
 
 export const Button = styled.button`
-  line-height: 32px;
-  font-size: 32px;
+  line-height: 2.5rem;
+  font-size: 2rem;
   cursor: pointer;
   font-weight: bold;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',

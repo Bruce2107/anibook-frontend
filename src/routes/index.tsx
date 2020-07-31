@@ -6,7 +6,7 @@ import NotFound from '../pages/NotFound';
 import RequestFail from '../pages/Request/Fail';
 import Info from '../pages/Info';
 
-const limitPerPage = 4;
+const limitPerPage = 2;
 
 const Routes: React.FC = () => (
   <BrowserRouter>
