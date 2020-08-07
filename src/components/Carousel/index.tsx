@@ -22,6 +22,7 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
     autoplaySpeed: 5000,
     arrows: false,
     accessibility: true,
+    lazyLoad: 'ondemand',
     swipeToSlide: true,
   };
   return (
