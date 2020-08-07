@@ -26,11 +26,33 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
   };
   return (
     <>
-      <Container>
+      <Container
+        responsiveSizes={[
+          {
+            screen: '1080px',
+            height: '450px',
+            width: '720px',
+          },
+          {
+            screen: '760px',
+            height: '300px',
+            width: '480px',
+          },
+          {
+            screen: '540px',
+            height: '200px',
+            width: '360px',
+          },
+          {
+            screen: '380px',
+            height: '150px',
+            width: '300px',
+          },
+        ]}
+      >
         <Slider {...settings}>
           {data.map((card) => (
             <CardDisplay key={card.name} card={card} type={card.type} />
-            // <h3 key={card.name}>{card.name}</h3>
           ))}
         </Slider>
       </Container>

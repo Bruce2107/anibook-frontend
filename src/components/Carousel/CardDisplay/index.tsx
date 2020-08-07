@@ -94,18 +94,23 @@ const CardDisplay: React.FC<CardProps> = ({ card, type }) => {
       responsiveSizes={[
         {
           screen: '1080px',
-          height: '720px',
-          width: 'auto',
+          height: '450px',
+          width: '720px',
+        },
+        {
+          screen: '760px',
+          height: '300px',
+          width: '480px',
         },
         {
           screen: '540px',
-          height: '360px',
-          width: 'auto',
+          height: '200px',
+          width: '360px',
         },
         {
           screen: '380px',
-          height: '300px',
-          width: 'auto',
+          height: '150px',
+          width: '300px',
         },
       ]}
     />
