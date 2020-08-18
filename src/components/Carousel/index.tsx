@@ -1,36 +1,61 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card } from 'anibook';
+import Slider, { Settings } from 'react-slick';
 import CardDisplay from './CardDisplay';
 import { Container } from './styles';
 
+interface MyCard extends Card {
+  type: 'anime' | 'manga';
+}
+
 interface CarouselProps {
-  data: Card[];
+  data: MyCard[];
 }
 
 const Carousel: React.FC<CarouselProps> = ({ data }) => {
-  const [cardPos, setCardPos] = useState(2);
-  function toggleCard() {
-    if (cardPos + 1 >= data.length) setCardPos(0);
-    else setCardPos(cardPos + 1);
-  }
-  setTimeout(() => {
-    toggleCard();
-  }, 5000);
+  const settings: Settings = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 5000,
+    arrows: false,
+    accessibility: true,
+    lazyLoad: 'ondemand',
+    swipeToSlide: true,
+  };
   return (
     <>
-      <button onClick={toggleCard} type="button">
-        oi
-      </button>
       <Container
-        style={{ transform: `translateX(-${cardPos * (300 / data.length)}%)` }}
-        className={`active-card-${cardPos}`}
+        responsiveSizes={[
+          {
+            screen: '1080px',
+            height: '450px',
+            width: '720px',
+          },
+          {
+            screen: '760px',
+            height: '300px',
+            width: '480px',
+          },
+          {
+            screen: '540px',
+            height: '200px',
+            width: '360px',
+          },
+          {
+            screen: '380px',
+            height: '150px',
+            width: '300px',
+          },
+        ]}
       >
-        {data[0] && <CardDisplay card={data[0]} active={cardPos === 0} />}
-        {data[1] && <CardDisplay card={data[1]} active={cardPos === 1} />}
-        {data[2] && <CardDisplay card={data[2]} active={cardPos === 2} />}
-        {data[3] && <CardDisplay card={data[3]} active={cardPos === 3} />}
-        {data[4] && <CardDisplay card={data[4]} active={cardPos === 4} />}
-        {data[5] && <CardDisplay card={data[5]} active={cardPos === 5} />}
+        <Slider {...settings}>
+          {data.map((card) => (
+            <CardDisplay key={card.name} card={card} type={card.type} />
+          ))}
+        </Slider>
       </Container>
     </>
   );

@@ -7,9 +7,9 @@ import GlobalStyle from './styles/Global';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
 import { Theme, Sidebar } from './constants/Types';
-import Home from './pages/Home';
 import createAndRemoveSquare from './utils/SquareMouseFollowing';
 import ToggleSidebar from './redux/actions/Sidebar';
+import Routes from './routes';
 
 const App: React.FC = () => {
   const theme = useSelector((state: Theme) => state.theme.darkMode);
@@ -37,7 +37,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={!theme ? light : dark}>
       <GlobalStyle />
       <div {...swipe}>
-        <Home />
+        <Routes />
       </div>
     </ThemeProvider>
   );
