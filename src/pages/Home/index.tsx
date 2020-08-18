@@ -5,7 +5,7 @@ import { Card as TypeCard } from 'anibook';
 import { useHistory } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import Navbar from '../../components/Navbar';
-import { Cards, Container } from './styles';
+import { Container } from './styles';
 import getUrlImage from '../../utils/getImageUrl';
 import api from '../../services/api';
 import Card from '../../components/Card';
@@ -43,7 +43,7 @@ export default function Home() {
       <Container>
         {carousel && <Carousel data={carousel} />}
         {cards && (
-          <Cards>
+          <div className="card-list">
             {cards.map((card) => (
               <Card
                 key={card.name}
@@ -52,7 +52,7 @@ export default function Home() {
                 name={card.name}
               />
             ))}
-          </Cards>
+          </div>
         )}
       </Container>
     </>

@@ -7,7 +7,7 @@ import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
 import Card from '../../components/Card';
 import getUrlImage from '../../utils/getImageUrl';
-import { Container, Cards, Pagination, PaginationButton } from './styles';
+import { Container, Pagination, PaginationButton } from './styles';
 
 interface Props {
   pageName: string;
@@ -68,7 +68,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
       <Navbar />
       <Container>
         {cards && (
-          <Cards>
+          <div className="card-list">
             {cards.slice(minPosition, maxPosition).map((card) => (
               <Card
                 key={card.name}
@@ -77,10 +77,10 @@ export default function List({ pageName, type, limitPerPage }: Props) {
                 name={card.name}
               />
             ))}
-          </Cards>
+          </div>
         )}
         {totalRows > 0 && (
-          <Pagination>
+          <div className="pagination">
             {pages.map((num: number) => (
               <PaginationButton
                 key={num}
@@ -92,7 +92,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
                 {num}
               </PaginationButton>
             ))}
-          </Pagination>
+          </div>
         )}
       </Container>
     </>

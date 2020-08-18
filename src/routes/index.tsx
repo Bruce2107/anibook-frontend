@@ -6,7 +6,7 @@ import NotFound from '../pages/NotFound';
 import RequestFail from '../pages/Request/Fail';
 import Info from '../pages/Info';
 
-const limitPerPage = 2;
+const limitPerPage = 6;
 // TODO: #5 rota do histórico
 const Routes: React.FC = () => (
   <BrowserRouter>

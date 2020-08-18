@@ -78,4 +78,11 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  .card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 20px;
+    margin: 50px auto 100px;
+  }
 `;
