@@ -48,7 +48,7 @@ export default function Home() {
               <Card
                 key={card.name}
                 type={card.type}
-                image={`${getUrlImage(card.folder, card.photo)}`}
+                image={`${getUrlImage(card.folder || '', card.photo)}`}
                 name={card.name}
               />
             ))}

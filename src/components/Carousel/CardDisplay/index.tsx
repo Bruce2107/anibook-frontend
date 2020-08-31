@@ -14,7 +14,7 @@ const CardDisplay: React.FC<CardProps> = ({ card, type }) => {
   const image = (
     <Image
       alt={card.name}
-      src={`${getUrlImage(card.folder, card.photo)}`}
+      src={`${getUrlImage(card.folder as string, card.photo)}`}
       height="100%"
       width="100%"
       zIndex={1}

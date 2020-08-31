@@ -73,7 +73,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
               <Card
                 key={card.name}
                 type={type}
-                image={`${getUrlImage(card.folder, card.photo)}`}
+                image={`${getUrlImage(card.folder || '', card.photo)}`}
                 name={card.name}
               />
             ))}
