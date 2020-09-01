@@ -7,3 +7,5 @@ export const Title = styled.span`
     }
   }
 `;
+
+export default Title;

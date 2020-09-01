@@ -15,5 +15,4 @@ function createAndRemoveSquare(ev: MouseEvent) {
   }, 1000);
 }
 
-
 export default createAndRemoveSquare;

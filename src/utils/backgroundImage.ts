@@ -4,4 +4,4 @@ export function getImageAPI() {
   return `${Backend.URL_BASE}${Backend.IMAGES}/background`;
 }
 
-export const image = {};
+export default getImageAPI;

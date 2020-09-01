@@ -7,8 +7,10 @@ export const StyledTitle = styled.span`
   font-style: oblique;
   text-decoration: none;
   &:hover {
-    color: #FFF;
+    color: #fff;
     text-decoration: underline;
     cursor: pointer;
   }
 `;
+
+export default StyledTitle;

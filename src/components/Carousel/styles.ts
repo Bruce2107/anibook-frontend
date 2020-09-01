@@ -8,6 +8,7 @@ interface ContainerProps {
     width: string;
   }>;
 }
+
 export const Container = styled.div<ContainerProps>`
   display: grid;
   place-items: center;

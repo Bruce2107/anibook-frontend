@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 
 const Info: FC = () => {
-  const { name }: { name: string } = useParams();
+  const { name } = useParams<{ name: string }>();
 
   return (
     <>
