@@ -7,7 +7,7 @@ import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
 import Card from '../../components/Card';
 import getUrlImage from '../../utils/getImageUrl';
-import { Container, Pagination, PaginationButton } from './styles';
+import { Container, PaginationButton } from './styles';
 
 interface Props {
   pageName: string;
@@ -28,7 +28,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   const [totalRows, setTotalRows] = useState<number>(0);
   const [minPosition, setMinPosition] = useState<number>(0);
   const [maxPosition, setMaxPosition] = useState<number>(minPosition + 6);
-  const { page } = useParams();
+  const { page } = useParams<{page: string}>();
   const history = useHistory();
   const pages = arrayPages(Math.ceil(totalRows / limitPerPage));
 
@@ -49,8 +49,8 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   }, [pageName, type, history]);
 
   useEffect(() => {
-    setMinPosition(((page || 1) - 1) * limitPerPage);
-    setMaxPosition((page || 1) * limitPerPage);
+    setMinPosition(((Number(page) || 1) - 1) * limitPerPage);
+    setMaxPosition((Number(page) || 1) * limitPerPage);
   }, [page, limitPerPage]);
 
   useEffect(() => {
