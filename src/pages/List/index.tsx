@@ -28,7 +28,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   const [totalRows, setTotalRows] = useState<number>(0);
   const [minPosition, setMinPosition] = useState<number>(0);
   const [maxPosition, setMaxPosition] = useState<number>(minPosition + 6);
-  const { page } = useParams<{page: string}>();
+  const { page } = useParams<{ page: string }>();
   const history = useHistory();
   const pages = arrayPages(Math.ceil(totalRows / limitPerPage));
 
