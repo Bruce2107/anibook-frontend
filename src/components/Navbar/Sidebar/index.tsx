@@ -19,7 +19,7 @@ import { IconStyle } from '../type';
 
 type SideBarProps = {
   title: string;
-  toggleTheme: Function;
+  toggleTheme: () => void;
   visible: boolean;
 };
 
@@ -114,7 +114,7 @@ const Sidebar: React.FC<SideBarProps> = ({ title, toggleTheme, visible }) => {
       backgroundHover={IconStyles.backgroundHover}
       colorHover={IconStyles.colorHover}
       width={IconStyles.width}
-      onClick={() => toggleTheme()}
+      onClick={toggleTheme}
       key="alterarTema_sidebar"
     />,
   ];

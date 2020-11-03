@@ -15,29 +15,23 @@ import { useTheme } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextLogo, Icon, Navbar as LibNavbar } from 'anibook-ui';
 import { Container } from './style';
-import { ToggleTheme as ToggleThemeAction } from '../../redux/actions/Theme';
 import { ToggleSidebar as ToggleSidebarAction } from '../../redux/actions/Sidebar';
-import {
-  Theme,
-  MobileScreen,
-  Sidebar as ISidebar,
-} from '../../constants/Types';
+import { MobileScreen, Sidebar as ISidebar } from '../../constants/Types';
 import Sidebar from './Sidebar';
 import openLink from '../../utils/openLink';
 import { IconStyle } from './type';
+import { useDarkMode } from '../../hooks/theme';
 
 const Navbar: React.FC = () => {
   const appTheme = useTheme();
-  const isDarkMode = useSelector((state: Theme) => state.theme.darkMode);
   const isOpen = useSelector((state: ISidebar) => state.sidebar.isOpen);
   const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
   const IconStyles = IconStyle(appTheme);
-
+  const { theme, setTheme } = useDarkMode();
   const dispatch = useDispatch();
 
   const toggleTheme = () => {
-    localStorage.setItem('theme', `${isDarkMode ? 'light' : 'dark'}`);
-    dispatch(ToggleThemeAction());
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   const toggleSideBar = () => {
