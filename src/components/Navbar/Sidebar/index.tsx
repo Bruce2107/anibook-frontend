@@ -11,23 +11,23 @@ import { GoDeviceDesktop } from 'react-icons/go';
 import { Sidebar as LibSidebar, Icon } from 'anibook-ui';
 import { useTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useRecoilState } from 'recoil';
 import { Container } from './styles';
 import openLink from '../../../utils/openLink';
-import { ToggleSidebar } from '../../../redux/actions/Sidebar';
 import { IconStyle } from '../type';
+import sidebar from '../../../recoil/atoms/sidebar';
+import { useDarkMode } from '../../../hooks/theme';
 
-type SideBarProps = {
-  title: string;
-  toggleTheme: () => void;
-  visible: boolean;
-};
-
-const Sidebar: React.FC<SideBarProps> = ({ title, toggleTheme, visible }) => {
+const Sidebar: React.FC = () => {
   const appTheme = useTheme();
-  const dispacth = useDispatch();
+  const [sidebarState, setSidebarState] = useRecoilState(sidebar);
   const toggleSideBar = () => {
-    dispacth(ToggleSidebar());
+    setSidebarState(!sidebarState);
+  };
+  const { theme, setTheme } = useDarkMode();
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
   const IconStyles = IconStyle(appTheme);
 
@@ -39,7 +39,7 @@ const Sidebar: React.FC<SideBarProps> = ({ title, toggleTheme, visible }) => {
         backgroundHover={IconStyles.backgroundHover}
         colorHover={IconStyles.colorHover}
         width={IconStyles.width}
-        onClick={() => toggleSideBar()}
+        onClick={toggleSideBar}
       />
     </Link>,
     <Link to="/list/mangas" key="mangas_sidebar">
@@ -49,7 +49,7 @@ const Sidebar: React.FC<SideBarProps> = ({ title, toggleTheme, visible }) => {
         backgroundHover={IconStyles.backgroundHover}
         colorHover={IconStyles.colorHover}
         width={IconStyles.width}
-        onClick={() => toggleSideBar()}
+        onClick={toggleSideBar}
       />
     </Link>,
     <a
@@ -105,7 +105,7 @@ const Sidebar: React.FC<SideBarProps> = ({ title, toggleTheme, visible }) => {
     <Icon
       color={IconStyles.color}
       icon={
-        title === 'light' ? (
+        theme === 'light' ? (
           <FaSun aria-label="Alterar para tema escuro" />
         ) : (
           <FaMoon aria-label="Alterar para tema claro" />
@@ -119,7 +119,7 @@ const Sidebar: React.FC<SideBarProps> = ({ title, toggleTheme, visible }) => {
     />,
   ];
   return (
-    <Container visible={visible} role="complementary">
+    <Container visible={sidebarState} role="complementary">
       <LibSidebar
         bgColor={appTheme.colors.primary}
         icons={Icons}

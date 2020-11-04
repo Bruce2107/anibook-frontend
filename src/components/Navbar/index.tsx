@@ -12,32 +12,28 @@ import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { GoDeviceDesktop } from 'react-icons/go';
 import { useTheme } from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
 import { TextLogo, Icon, Navbar as LibNavbar } from 'anibook-ui';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { Container } from './style';
-import { ToggleSidebar as ToggleSidebarAction } from '../../redux/actions/Sidebar';
-import { Sidebar as ISidebar } from '../../constants/Types';
 import Sidebar from './Sidebar';
 import openLink from '../../utils/openLink';
 import { IconStyle } from './type';
 import { useDarkMode } from '../../hooks/theme';
 import mobile from '../../recoil/atoms/mobile';
+import sidebar from '../../recoil/atoms/sidebar';
 
 const Navbar: React.FC = () => {
   const appTheme = useTheme();
-  const isOpen = useSelector((state: ISidebar) => state.sidebar.isOpen);
   const isMobile = useRecoilValue(mobile);
   const IconStyles = IconStyle(appTheme);
   const { theme, setTheme } = useDarkMode();
-  const dispatch = useDispatch();
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
-
+  const [sidebarState, setSidebarState] = useRecoilState(sidebar);
   const toggleSideBar = () => {
-    dispatch(ToggleSidebarAction());
+    setSidebarState(!sidebarState);
   };
 
   const Icons = {
@@ -124,7 +120,7 @@ const Navbar: React.FC = () => {
         backgroundHover={IconStyles.backgroundHover}
         colorHover={IconStyles.colorHover}
         width={IconStyles.width}
-        onClick={() => toggleTheme()}
+        onClick={toggleTheme}
         key="tema"
       />,
     ],
@@ -132,7 +128,7 @@ const Navbar: React.FC = () => {
       <Icon
         color={IconStyles.color}
         icon={
-          isOpen ? (
+          sidebarState ? (
             <IoMdClose title="Fechar menu" />
           ) : (
             <FaBars title="Abrir menu" />
@@ -169,13 +165,7 @@ const Navbar: React.FC = () => {
         icons={isMobile ? Icons.mobile : Icons.desktop}
       />
 
-      {isMobile && (
-        <Sidebar
-          title={appTheme.title}
-          toggleTheme={toggleTheme}
-          visible={isOpen}
-        />
-      )}
+      {isMobile && <Sidebar />}
     </Container>
   );
 };
