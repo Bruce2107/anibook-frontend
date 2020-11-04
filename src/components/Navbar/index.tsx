@@ -14,18 +14,20 @@ import { GoDeviceDesktop } from 'react-icons/go';
 import { useTheme } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextLogo, Icon, Navbar as LibNavbar } from 'anibook-ui';
+import { useRecoilValue } from 'recoil';
 import { Container } from './style';
 import { ToggleSidebar as ToggleSidebarAction } from '../../redux/actions/Sidebar';
-import { MobileScreen, Sidebar as ISidebar } from '../../constants/Types';
+import { Sidebar as ISidebar } from '../../constants/Types';
 import Sidebar from './Sidebar';
 import openLink from '../../utils/openLink';
 import { IconStyle } from './type';
 import { useDarkMode } from '../../hooks/theme';
+import mobile from '../../recoil/atoms/mobile';
 
 const Navbar: React.FC = () => {
   const appTheme = useTheme();
   const isOpen = useSelector((state: ISidebar) => state.sidebar.isOpen);
-  const isMobile = useSelector((state: MobileScreen) => state.mobileScreen);
+  const isMobile = useRecoilValue(mobile);
   const IconStyles = IconStyle(appTheme);
   const { theme, setTheme } = useDarkMode();
   const dispatch = useDispatch();
