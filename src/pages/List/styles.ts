@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   margin-top: 100px;
-
+  position: relative;
+  min-height: 100%;
+  overflow: scroll;
   .pagination {
     margin-bottom: 50px;
     display: grid;
@@ -15,11 +17,14 @@ export const Container = styled.main`
 
 // TODO: Arrumar alinhamento, usar grid + flex
 export const Pagination = styled.div`
-  margin-bottom: 50px;
-  display: grid;
-  place-items: center;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
   grid-gap: 5px;
-  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  /* grid-template-columns: repeat(5, 1fr); */
 `;
 
 export const PaginationButton = styled.button<{ visible: boolean }>`

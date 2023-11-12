@@ -7,7 +7,8 @@ import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
 import Card from '../../components/Card';
 import getUrlImage from '../../utils/getImageUrl';
-import { Container, PaginationButton } from './styles';
+import { Container, Pagination, PaginationButton } from './styles';
+import SearchBar, { RequestParam } from '../../components/Searchbar';
 
 interface Props {
   pageName: string;
@@ -63,10 +64,16 @@ export default function List({ pageName, type, limitPerPage }: Props) {
     history.push(`/list/${type}s/${num}`);
   };
 
+  const todo = async ({ filter, searchText }: RequestParam) => {
+    console.log(filter, searchText);
+    Promise.resolve(1);
+  };
+
   return (
     <>
       <Navbar />
       <Container>
+        <SearchBar requestFunc={todo} />
         {cards && (
           <div className="card-list">
             {cards.slice(minPosition, maxPosition).map((card) => (
@@ -80,7 +87,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
           </div>
         )}
         {totalRows > 0 && (
-          <div className="pagination">
+          <Pagination>
             {pages.map((num: number) => (
               <PaginationButton
                 key={num}
@@ -92,7 +99,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
                 {num}
               </PaginationButton>
             ))}
-          </div>
+          </Pagination>
         )}
       </Container>
     </>

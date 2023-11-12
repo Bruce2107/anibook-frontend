@@ -21,7 +21,8 @@ export default createGlobalStyle`
     box-sizing: border-box
   }
   html, body, #root{
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
   }
   body{
     background-color: ${({ theme }) => theme.colors.background};
@@ -31,6 +32,10 @@ export default createGlobalStyle`
     color: ${(props) => props.theme.colors.text};
     overflow-x: hidden;
     transition: background-color 500ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  #root > div {
+    height: 100%;
   }
 
   *, button, input{
