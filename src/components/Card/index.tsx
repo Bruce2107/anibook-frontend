@@ -4,15 +4,14 @@ import { Card, Image, Text } from 'anibook-ui';
 import { useTheme } from 'styled-components';
 import { StyledTitle } from './styles';
 import replaceSpaces from '../../utils/replaceSpaces';
-import { DataType } from '../../constants/Types';
 
 interface Props {
   image: string;
   name: string;
-  type: DataType;
+  // type: Serie;
 }
 
-const MyCard: React.FC<Props> = ({ image, name, type }) => {
+const MyCard: React.FC<Props> = ({ image, name }) => {
   const theme = useTheme();
 
   const imageComponent = (
@@ -46,7 +45,7 @@ const MyCard: React.FC<Props> = ({ image, name, type }) => {
     </StyledTitle>
   );
   return (
-    <Link to={`/${type}/${replaceSpaces(name)}`}>
+    <Link to={`/${replaceSpaces(name)}`}>
       <Card
         backgroundColor={theme.colors.backgroundCard}
         downColorLayer={theme.colors.downColor}

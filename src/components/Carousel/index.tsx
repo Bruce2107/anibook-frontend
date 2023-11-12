@@ -1,15 +1,11 @@
 import React from 'react';
-import { Card } from 'anibook';
 import Slider, { Settings } from 'react-slick';
 import CardDisplay from './CardDisplay';
 import { Container } from './styles';
-
-interface MyCard extends Card {
-  type: 'anime' | 'manga';
-}
+import { Serie } from '../../types/Serie';
 
 interface CarouselProps {
-  data: MyCard[];
+  data: Serie[];
 }
 
 const Carousel: React.FC<CarouselProps> = ({ data }) => {
@@ -53,7 +49,7 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
       >
         <Slider {...settings}>
           {data.map((card) => (
-            <CardDisplay key={card.name} card={card} type={card.type} />
+            <CardDisplay key={card.name} card={card} />
           ))}
         </Slider>
       </Container>

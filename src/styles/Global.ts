@@ -25,7 +25,7 @@ export default createGlobalStyle`
   }
   body{
     background-color: ${({ theme }) => theme.colors.background};
-    background-image: url(${getImageAPI()});
+    /* background-image: url(${getImageAPI()}); */
     background-size: 240px;
     font-size: 16px;
     color: ${(props) => props.theme.colors.text};

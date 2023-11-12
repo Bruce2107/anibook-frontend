@@ -72,7 +72,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
             {cards.slice(minPosition, maxPosition).map((card) => (
               <Card
                 key={card.name}
-                type={type}
+                // type={type}
                 image={`${getUrlImage(card.folder || '', card.photo)}`}
                 name={card.name}
               />

@@ -1,27 +1,26 @@
 import React from 'react';
-import { Card } from 'anibook';
 import { CarouselCard, Text, Image } from 'anibook-ui';
 import { Link } from 'react-router-dom';
 import { Title } from './styles';
 import replaceSpaces from '../../../utils/replaceSpaces';
-import getUrlImage from '../../../utils/getImageUrl';
+import { Serie } from '../../../types/Serie';
 
 interface CardProps {
-  card: Card;
-  type: string;
+  card: Serie;
+  // type: string;
 }
-const CardDisplay: React.FC<CardProps> = ({ card, type }) => {
+const CardDisplay: React.FC<CardProps> = ({ card }) => {
   const image = (
     <Image
       alt={card.name}
-      src={`${getUrlImage(card.folder as string, card.photo)}`}
+      src={card.cover}
       height="100%"
       width="100%"
       zIndex={1}
     />
   );
   const text = (
-    <Link to={`/${type}/${replaceSpaces(card.name)}`}>
+    <Link to={`/${replaceSpaces(card.name)}`}>
       <Title>
         <Text
           text={card.name}
