@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, Image, Text } from 'anibook-ui';
 import { useTheme } from 'styled-components';
 import { StyledTitle } from './styles';
-import replaceSpaces from '../../utils/replaceSpaces';
+import { replaceSpace } from '../../utils/string';
 
 interface Props {
   image: string;
@@ -45,7 +45,7 @@ const MyCard: React.FC<Props> = ({ image, name }) => {
     </StyledTitle>
   );
   return (
-    <Link to={`/${replaceSpaces(name)}`}>
+    <Link to={`details/${replaceSpace(name)}`}>
       <Card
         backgroundColor={theme.colors.backgroundCard}
         downColorLayer={theme.colors.downColor}

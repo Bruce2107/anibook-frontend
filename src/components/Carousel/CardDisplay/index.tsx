@@ -2,7 +2,7 @@ import React from 'react';
 import { CarouselCard, Text, Image } from 'anibook-ui';
 import { Link } from 'react-router-dom';
 import { Title } from './styles';
-import replaceSpaces from '../../../utils/replaceSpaces';
+import { replaceSpace } from '../../../utils/string';
 import { Serie } from '../../../types/Serie';
 
 interface CardProps {
@@ -20,7 +20,7 @@ const CardDisplay: React.FC<CardProps> = ({ card }) => {
     />
   );
   const text = (
-    <Link to={`/${replaceSpaces(card.name)}`}>
+    <Link to={`details/${replaceSpace(card.name)}`}>
       <Title>
         <Text
           text={card.name}

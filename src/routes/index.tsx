@@ -28,10 +28,13 @@ const Routes: React.FC = () => (
         <List limitPerPage={limitPerPage} pageName="mangas" type="manga" />
       </Route>
       {/** info page */}
-      <Route path="/anime/:name" exact>
+      {/* <Route path="/anime/:name" exact>
         <Info />
       </Route>
       <Route path="/manga/:name" exact>
+        <Info />
+      </Route> */}
+      <Route path="/details/:name" exact>
         <Info />
       </Route>
       {/** request fail */}
