@@ -35,7 +35,7 @@ const SearchBar: React.FC<Props> = ({ requestFunc }) => {
       filter: selectRef.current?.value || '',
       searchText: searchRef.current?.value || '',
     });
-    // await API.sendRequest();
+    setIsSending(false);
     if (isMounted.current) {
       setIsSending(false);
     }
@@ -43,11 +43,11 @@ const SearchBar: React.FC<Props> = ({ requestFunc }) => {
   return (
     <Container onSubmit={(e) => e.preventDefault()}>
       <StyledCombo ref={selectRef}>
-        <option value="Filme/Série">Filme/Série</option>
-        <option value="Diretor">Diretor</option>
-        <option value="Estúdio">Estúdio</option>
-        <option value="Usuário">Usuário</option>
-        <option value="Streaming">Streaming</option>
+        <option value="serie">Filme/Série</option>
+        <option value="author">Diretor</option>
+        <option value="studio">Estúdio</option>
+        <option value="user">Usuário</option>
+        <option value="streaming">Streaming</option>
       </StyledCombo>
       <StyledInput ref={searchRef} />
       <StyledButton onClick={sendRequest}>

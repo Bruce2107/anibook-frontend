@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
-import { Card as TypeCard } from 'anibook';
 import { useParams, useHistory } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
 import Card from '../../components/Card';
-import getUrlImage from '../../utils/getImageUrl';
 import { Container, Pagination, PaginationButton } from './styles';
 import SearchBar, { RequestParam } from '../../components/Searchbar';
+import { Serie } from '../../types/Serie';
+import Loading from '../../components/Loading';
 
 interface Props {
   pageName: string;
@@ -25,7 +25,8 @@ function arrayPages(pages: number) {
 }
 
 export default function List({ pageName, type, limitPerPage }: Props) {
-  const [cards, setCards] = useState<Array<TypeCard>>();
+  const [cards, setCards] = useState<Array<Serie>>();
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [totalRows, setTotalRows] = useState<number>(0);
   const [minPosition, setMinPosition] = useState<number>(0);
   const [maxPosition, setMaxPosition] = useState<number>(minPosition + 6);
@@ -35,10 +36,11 @@ export default function List({ pageName, type, limitPerPage }: Props) {
 
   useEffect(() => {
     setPageTitle(pageName);
+    setLoading(true);
     api
-      .get(`/${type}s/card/sort/name`)
-      .then((res: AxiosResponse<{ data: Array<TypeCard>; rows: number }>) => {
-        setCards(res.data.data);
+      .get('/graph/series')
+      .then((res: AxiosResponse<{ series: Array<Serie>; rows: number }>) => {
+        setCards(res.data.series);
         setTotalRows(res.data.rows);
       })
       .catch((error) => {
@@ -46,6 +48,9 @@ export default function List({ pageName, type, limitPerPage }: Props) {
         else {
           history.push(`/request/fail?status=${error.response.status}`);
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [pageName, type, history]);
 
@@ -64,29 +69,41 @@ export default function List({ pageName, type, limitPerPage }: Props) {
     history.push(`/list/${type}s/${num}`);
   };
 
-  const todo = async ({ filter, searchText }: RequestParam) => {
-    console.log(filter, searchText);
-    Promise.resolve(1);
-  };
+  const search = useCallback(
+    async ({ filter, searchText }: RequestParam) => {
+      try {
+        setLoading(true);
+        const res = await api.get<{ series: Array<Serie>; rows: number }>(
+          `/graph/series/${searchText}?filter=${filter}`
+        );
+        setCards(res.data.series);
+        setTotalRows(res.data.rows);
+      } catch (error: any) {
+        if (!error.response.status) history.push('request/fail');
+        else {
+          history.push(`/request/fail?status=${error.response.status}`);
+        }
+      } finally {
+        setLoading(false);
+      }
+    },
+    [history]
+  );
 
   return (
     <>
       <Navbar />
       <Container>
-        <SearchBar requestFunc={todo} />
-        {cards && (
+        <SearchBar requestFunc={search} />
+        {cards && !isLoading && (
           <div className="card-list">
             {cards.slice(minPosition, maxPosition).map((card) => (
-              <Card
-                key={card.name}
-                // type={type}
-                image={`${getUrlImage(card.folder || '', card.photo)}`}
-                name={card.name}
-              />
+              <Card key={card.name} image={card.cover} name={card.name} />
             ))}
           </div>
         )}
-        {totalRows > 0 && (
+        {isLoading && <Loading />}
+        {totalRows > limitPerPage && !isLoading && (
           <Pagination>
             {pages.map((num: number) => (
               <PaginationButton
