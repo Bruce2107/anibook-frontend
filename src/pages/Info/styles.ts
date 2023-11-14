@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  margin-top: 50px;
-  /* height: calc(100% - 50px); */
-  background-color: red;
+  height: calc(100% - 50px);
+  display: grid;
+  place-items: center;
+  padding-top: 50px;
 `;
 export const Field = styled.div``;

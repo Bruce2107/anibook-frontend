@@ -14,3 +14,7 @@ export type Serie = {
   streaming: string[];
   userStatus: UserStatus;
 };
+
+export type Details = Serie & {
+  detailsCounter: { [key in UserStatus]: number };
+};
