@@ -5,12 +5,10 @@ import {
   FaDiscord,
   FaTwitter,
   FaGithubAlt,
-  FaBookOpen,
   FaBars,
 } from 'react-icons/fa';
-import { IoMdClose } from 'react-icons/io';
+import { IoMdClose, IoMdSearch } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import { GoDeviceDesktop } from 'react-icons/go';
 import { useTheme } from 'styled-components';
 import { TextLogo, Icon, Navbar as LibNavbar } from 'anibook-ui';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -38,26 +36,36 @@ const Navbar: React.FC = () => {
 
   const Icons = {
     desktop: [
-      <Link to="/list/animes">
+      <Link to="/search">
         <Icon
           color={IconStyles.color}
-          icon={<GoDeviceDesktop aria-label="Animes" />}
+          icon={<IoMdSearch aria-label="Pesquisar" />}
           backgroundHover={IconStyles.backgroundHover}
           colorHover={IconStyles.colorHover}
           width={IconStyles.width}
-          key="animes"
+          key="search"
         />
       </Link>,
-      <Link to="/list/mangas">
-        <Icon
-          color={IconStyles.color}
-          icon={<FaBookOpen aria-label="Mangás" />}
-          backgroundHover={IconStyles.backgroundHover}
-          colorHover={IconStyles.colorHover}
-          width={IconStyles.width}
-          key="mangas"
-        />
-      </Link>,
+      // <Link to="/list/animes">
+      //   <Icon
+      //     color={IconStyles.color}
+      //     icon={<GoDeviceDesktop aria-label="Animes" />}
+      //     backgroundHover={IconStyles.backgroundHover}
+      //     colorHover={IconStyles.colorHover}
+      //     width={IconStyles.width}
+      //     key="animes"
+      //   />
+      // </Link>,
+      // <Link to="/list/mangas">
+      //   <Icon
+      //     color={IconStyles.color}
+      //     icon={<FaBookOpen aria-label="Mangás" />}
+      //     backgroundHover={IconStyles.backgroundHover}
+      //     colorHover={IconStyles.colorHover}
+      //     width={IconStyles.width}
+      //     key="mangas"
+      //   />
+      // </Link>,
       <a
         href="https://twitter.com/AniBookOficial"
         onClick={(e) => {

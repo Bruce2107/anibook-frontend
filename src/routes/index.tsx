@@ -27,6 +27,9 @@ const Routes: React.FC = () => (
       <Route path="/list/mangas/:page" exact>
         <List limitPerPage={limitPerPage} pageName="mangas" type="manga" />
       </Route>
+      <Route path="/search" exact>
+        <List limitPerPage={limitPerPage} pageName="Pesquisa" type="manga" />
+      </Route>
       {/** info page */}
       {/* <Route path="/anime/:name" exact>
         <Info />

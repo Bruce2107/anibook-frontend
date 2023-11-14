@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
@@ -30,7 +30,8 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   const [totalRows, setTotalRows] = useState<number>(0);
   const [minPosition, setMinPosition] = useState<number>(0);
   const [maxPosition, setMaxPosition] = useState<number>(minPosition + 6);
-  const { page } = useParams<{ page: string }>();
+  const location = useLocation();
+  const page = new URLSearchParams(location.search).get('page') || '1';
   const history = useHistory();
   const pages = arrayPages(Math.ceil(totalRows / limitPerPage));
 
@@ -66,7 +67,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   }, [page, pages, history, type]);
 
   const changePage = (num: number) => {
-    history.push(`/list/${type}s/${num}`);
+    history.push(`/search?page=${num}`);
   };
 
   const search = useCallback(
@@ -95,6 +96,8 @@ export default function List({ pageName, type, limitPerPage }: Props) {
       <Navbar />
       <Container>
         <SearchBar requestFunc={search} />
+        {/* TODO: NOT FOUND */}
+        {/* {totalRows === 0 && <p>nada</p>} */}
         {cards && !isLoading && (
           <div className="card-list">
             {cards.slice(minPosition, maxPosition).map((card) => (

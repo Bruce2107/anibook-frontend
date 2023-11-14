@@ -1,17 +1,16 @@
 import React from 'react';
 import {
   FaDiscord,
-  FaBookOpen,
   FaTwitter,
   FaGithubAlt,
   FaMoon,
   FaSun,
 } from 'react-icons/fa';
-import { GoDeviceDesktop } from 'react-icons/go';
 import { Sidebar as LibSidebar, Icon } from 'anibook-ui';
 import { useTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
+import { IoMdSearch } from 'react-icons/io';
 import { Container } from './styles';
 import openLink from '../../../utils/openLink';
 import { IconStyle } from '../type';
@@ -32,26 +31,36 @@ const Sidebar: React.FC = () => {
   const IconStyles = IconStyle(appTheme);
 
   const Icons = [
-    <Link to="/list/animes" key="animes_sidebar">
+    <Link to="/search">
       <Icon
         color={IconStyles.color}
-        icon={<GoDeviceDesktop aria-label="Animes" />}
+        icon={<IoMdSearch aria-label="Pesquisar" />}
         backgroundHover={IconStyles.backgroundHover}
         colorHover={IconStyles.colorHover}
         width={IconStyles.width}
-        onClick={toggleSideBar}
+        key="search"
       />
     </Link>,
-    <Link to="/list/mangas" key="mangas_sidebar">
-      <Icon
-        color={IconStyles.color}
-        icon={<FaBookOpen aria-label="Mangás" />}
-        backgroundHover={IconStyles.backgroundHover}
-        colorHover={IconStyles.colorHover}
-        width={IconStyles.width}
-        onClick={toggleSideBar}
-      />
-    </Link>,
+    // <Link to="/list/animes">
+    //   <Icon
+    //     color={IconStyles.color}
+    //     icon={<GoDeviceDesktop aria-label="Animes" />}
+    //     backgroundHover={IconStyles.backgroundHover}
+    //     colorHover={IconStyles.colorHover}
+    //     width={IconStyles.width}
+    //     key="animes"
+    //   />
+    // </Link>,
+    // <Link to="/list/mangas">
+    //   <Icon
+    //     color={IconStyles.color}
+    //     icon={<FaBookOpen aria-label="Mangás" />}
+    //     backgroundHover={IconStyles.backgroundHover}
+    //     colorHover={IconStyles.colorHover}
+    //     width={IconStyles.width}
+    //     key="mangas"
+    //   />
+    // </Link>,
     <a
       href="https://twitter.com/AniBookOficial"
       onClick={(e) => {
