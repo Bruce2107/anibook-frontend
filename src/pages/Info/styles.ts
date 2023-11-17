@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { StyledCombo } from '../../components/Searchbar/style';
+import CustomChart from '../../components/CustomChart';
 
 export const Container = styled.main`
   height: calc(100% - 50px);
@@ -7,7 +8,7 @@ export const Container = styled.main`
   place-items: start center;
   grid-template:
     'i d d'
-    '. t .';
+    'c t t';
   padding: 100px 10% 0;
   /* width: 100%; */
   @media (max-width: 600px) {
@@ -16,7 +17,8 @@ export const Container = styled.main`
     grid-template:
       'i i i'
       'd d d'
-      '. t .';
+      '. t .'
+      '. c .';
   }
 `;
 export const ImageStyle = styled.div`
@@ -80,4 +82,8 @@ export const TableStyle = styled.table`
   tr:hover td {
     transform: scale(1.1);
   }
+`;
+
+export const Chart = styled.div`
+  grid-area: c;
 `;

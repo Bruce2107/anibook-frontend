@@ -8,8 +8,9 @@ import { Details } from '../../types/Serie';
 import setPageTitle from '../../utils/setPageTitle';
 import { capitalize, replaceUnderscore } from '../../utils/string';
 import Loading from '../../components/Loading';
-import { Container, DescriptionStyle, ImageStyle, SelectStyle, TableStyle } from './styles';
+import { Chart, Container, DescriptionStyle, ImageStyle, SelectStyle, TableStyle } from './styles';
 import { getSerieStatus, getUserStatus, selectStatus } from '../../utils/getStatus';
+import CustomChart from '../../components/CustomChart';
 
 const Info: FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -75,15 +76,7 @@ const Info: FC = () => {
               lang="en"
             />
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia
-              deserunt mollit anim id est laborum
+              {card.synopsis}
             </p>
           </DescriptionStyle>
           <TableStyle>
@@ -106,6 +99,9 @@ const Info: FC = () => {
               </tr>
             </tbody>
           </TableStyle>
+          <Chart>
+            <CustomChart width={250} height={250} data={card.detailsCounter} />
+          </Chart>
         </Container>
       )}
     </>

@@ -38,6 +38,7 @@
     "react-scripts": "3.4.3",
     "react-slick": "^0.27.10",
     "react-swipeable": "^5.5.1",
+    "recharts": "^2.9.3",
     "recoil": "^0.1.2",
     "rimraf": "^3.0.2",
     "slick-carousel": "^1.8.1",
