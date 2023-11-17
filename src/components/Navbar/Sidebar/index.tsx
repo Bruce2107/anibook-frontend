@@ -19,10 +19,10 @@ import { useDarkMode } from '../../../hooks/theme';
 
 const Sidebar: React.FC = () => {
   const appTheme = useTheme();
-  const [sidebarState, setSidebarState] = useRecoilState(sidebar);
-  const toggleSideBar = () => {
-    setSidebarState(!sidebarState);
-  };
+  const [sidebarState] = useRecoilState(sidebar);
+  // const toggleSideBar = () => {
+  //   setSidebarState(!sidebarState);
+  // };
   const { theme, setTheme } = useDarkMode();
 
   const toggleTheme = () => {

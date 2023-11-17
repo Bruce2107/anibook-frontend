@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
-import { useParams, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
