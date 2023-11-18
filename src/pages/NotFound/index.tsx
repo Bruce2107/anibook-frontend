@@ -22,7 +22,8 @@ function getMessage(type: string | null, lastPage: string | null): GoTo {
       return {
         message:
           'parece que vc errou o índice das páginas melhor voltar para o início da lista',
-        local: `${lastPage && lastPage.split('/')[1]}`,
+        // local: `${lastPage && lastPage.split('/')[1]}`,
+        local: 'Pesquisar',
         path: lastPage as string,
       };
     }

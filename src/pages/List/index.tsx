@@ -12,7 +12,6 @@ import Loading from '../../components/Loading';
 
 interface Props {
   pageName: string;
-  type: 'anime' | 'manga';
   limitPerPage: number;
 }
 
@@ -24,9 +23,10 @@ function arrayPages(pages: number) {
   return array;
 }
 
-export default function List({ pageName, type, limitPerPage }: Props) {
+export default function List({ pageName, limitPerPage }: Props) {
   const [cards, setCards] = useState<Array<Serie>>();
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [hasSearch, setSearch] = useState<boolean>(false);
   const [totalRows, setTotalRows] = useState<number>(0);
   const [minPosition, setMinPosition] = useState<number>(0);
   const [maxPosition, setMaxPosition] = useState<number>(minPosition + 6);
@@ -53,7 +53,7 @@ export default function List({ pageName, type, limitPerPage }: Props) {
       .finally(() => {
         setLoading(false);
       });
-  }, [pageName, type, history]);
+  }, [pageName, history]);
 
   useEffect(() => {
     setMinPosition(((Number(page) || 1) - 1) * limitPerPage);
@@ -61,10 +61,12 @@ export default function List({ pageName, type, limitPerPage }: Props) {
   }, [page, limitPerPage]);
 
   useEffect(() => {
-    if (Number(page) > pages[pages.length - 1] || Number(page) < pages[0]) {
-      history.push(`/notfound?type=page&ref=list/${type}s`);
+    if ((Number(page) > pages[pages.length - 1]
+      || Number(page) < pages[0])
+      && !hasSearch) {
+      history.push('/notfound?type=page&ref=search');
     }
-  }, [page, pages, history, type]);
+  }, [page, pages, history, hasSearch]);
 
   const changePage = (num: number) => {
     history.push(`/search?page=${num}`);
@@ -74,11 +76,13 @@ export default function List({ pageName, type, limitPerPage }: Props) {
     async ({ filter, searchText }: RequestParam) => {
       try {
         setLoading(true);
+        setSearch(true);
         const res = await api.get<{ series: Array<Serie>; rows: number }>(
           `/graph/series/${searchText}?filter=${filter}`
         );
         setCards(res.data.series);
         setTotalRows(res.data.rows);
+        history.replace('/search?page=1');
       } catch (error: any) {
         if (!error.response.status) history.push('request/fail');
         else {
