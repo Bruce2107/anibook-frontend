@@ -5,6 +5,7 @@ import List from '../pages/List';
 import NotFound from '../pages/NotFound';
 import RequestFail from '../pages/Request/Fail';
 import Info from '../pages/Info';
+import SingUp from '../pages/SingUp';
 
 const limitPerPage = 6;
 // TODO: #5 rota do histórico
@@ -47,6 +48,10 @@ const Routes: React.FC = () => (
       {/** not found */}
       <Route path="/notfound" exact>
         <NotFound />
+      </Route>
+      {/* sing-up */}
+      <Route path="/singup" exact>
+        <SingUp />
       </Route>
       <Route>
         <NotFound />

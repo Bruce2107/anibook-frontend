@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { StyledCombo } from '../../components/Searchbar/style';
-import CustomChart from '../../components/CustomChart';
 
 export const Container = styled.main`
   height: calc(100% - 50px);
