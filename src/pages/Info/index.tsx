@@ -39,9 +39,28 @@ const Info: FC = () => {
       });
   }, [history, normalizedName]);
 
-  const selectChange = useCallback(() => {
-    console.log(selectRef.current?.value);
-  }, [selectRef]);
+  const selectChange = useCallback(async (): Promise<boolean> => {
+    if (selectRef.current?.value === null
+      || selectRef.current?.value === 'default') {
+      return false;
+    }
+    try {
+      const res = await api.patch('/graph/user/status/patch',
+        {
+          username: 'Eduardo',
+          serie: card?.name,
+          value: selectRef.current?.value
+        });
+      if (res.status === 204) {
+        console.log('sucesso');
+      } else {
+        console.log('outro staztus');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    return true;
+  }, [selectRef, card]);
   return (
     <>
       <Navbar />
