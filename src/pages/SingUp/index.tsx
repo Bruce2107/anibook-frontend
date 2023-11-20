@@ -1,11 +1,14 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Text } from 'anibook-ui';
 import { useHistory } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import TextFiled from '../../components/TextField';
 import { Container, PasswordFields, StyledButton } from './styles';
 import Navbar from '../../components/Navbar';
 import api from '../../services/api';
 import { validEmail, passwordCrypto } from '../../utils/formFields';
+import 'react-toastify/dist/ReactToastify.css';
+import showToast from '../../utils/Toast';
 
 const SingUp = () => {
   const [isLoading, setLoading] = useState(false);
@@ -17,37 +20,42 @@ const SingUp = () => {
 
   const validate = () => {
     if (userNameRef.current?.value === '' || !userNameRef.current?.value) {
-      console.log('preencha o nome');
+      showToast('warn', 'Informe um nome');
       return false;
     }
 
     if (emailRef.current?.value === '' || !emailRef.current?.value) {
-      console.log('preencha o email');
+      showToast('warn', 'Informe um e-mail');
       return false;
     }
 
     if (!validEmail(emailRef.current.value)) {
-      console.log('preencha um email valido');
+      showToast('error', 'Informe um e-mail válido');
       return false;
     }
 
     if (passwordRef.current?.value === '' || !passwordRef.current?.value) {
-      console.log('preencha a senha');
+      showToast('warn', 'Informe uma senha');
       return false;
     }
 
     if (passwordConfirmRef.current?.value === '' || !passwordConfirmRef.current?.value) {
-      console.log('preencha a senha de confirmação');
+      showToast('warn', 'Digite a senha novamente');
       return false;
     }
 
     if (passwordConfirmRef.current.value !== passwordRef.current.value) {
-      console.log('senhas n conferem');
+      showToast('error', 'As senhas não conferem');
       return false;
     }
-    console.log('valido');
 
     return true;
+  };
+
+  const cleanFields = () => {
+    [userNameRef, emailRef, passwordConfirmRef, passwordRef].forEach((i) => {
+      if (i.current?.value) i.current.value = '';
+    });
   };
 
   const singup = useCallback(
@@ -65,7 +73,8 @@ const SingUp = () => {
           );
 
           if (res.status === 201) {
-            console.log('criado');
+            showToast('success', 'Usuário criado');
+            cleanFields();
           }
         } else {
           setLoading(false);
@@ -75,7 +84,7 @@ const SingUp = () => {
       } catch (error: any) {
         if (!error.response.status) history.push('request/fail');
         else if (error.response.status === 409) {
-          console.log('conflito');
+          showToast('error', 'Usuário já registrado');
         } else {
           history.push(`/request/fail?status=${error.response.status}`);
         }
@@ -108,6 +117,18 @@ const SingUp = () => {
         </PasswordFields>
         <StyledButton onClick={singup}>Cadastrar</StyledButton>
       </Container>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 };

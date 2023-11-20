@@ -1864,6 +1864,13 @@
   dependencies:
     "react-swipeable" "*"
 
+"@types/react-toastify@^4.1.0":
+  "integrity" "sha512-u7Ie/7LHBsPVz/iJxi/WlRDS7Gh9csCJACTDXx+pSLuZCm94xpkwzhM3jV1L5ZxP/in0Gp2tFbJ91VrSGr1gyQ=="
+  "resolved" "https://registry.npmjs.org/@types/react-toastify/-/react-toastify-4.1.0.tgz"
+  "version" "4.1.0"
+  dependencies:
+    "react-toastify" "*"
+
 "@types/react@*", "@types/react@^16.9.49":
   "integrity" "sha512-DtLFjSj0OYAdVLBbyjhuV9CdGVHCkHn2R+xr3XkBvK2rS1Y1tkc14XSGjYgm5Fjjr90AxH9tiSzc1pCFMGO06g=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-16.9.49.tgz"
@@ -3432,6 +3439,11 @@
     "is-plain-object" "^2.0.4"
     "kind-of" "^6.0.2"
     "shallow-clone" "^3.0.0"
+
+"clsx@^1.1.1":
+  "integrity" "sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg=="
+  "resolved" "https://registry.npmjs.org/clsx/-/clsx-1.2.1.tgz"
+  "version" "1.2.1"
 
 "co@^4.6.0":
   "integrity" "sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ="
@@ -9566,7 +9578,7 @@
     "strip-ansi" "6.0.0"
     "text-table" "0.2.0"
 
-"react-dom@*", "react-dom@^0.14.0 || ^15.0.1 || ^16.0.0", "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.13.1", "react-dom@>= 16.8.0", "react-dom@>=15.0.0":
+"react-dom@*", "react-dom@^0.14.0 || ^15.0.1 || ^16.0.0", "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.13.1", "react-dom@>= 16.8.0", "react-dom@>=15.0.0", "react-dom@>=16":
   "integrity" "sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.13.1.tgz"
   "version" "16.13.1"
@@ -9720,6 +9732,13 @@
   dependencies:
     "prop-types" "^15.6.2"
 
+"react-toastify@*", "react-toastify@8.0.0":
+  "integrity" "sha512-7a5uhwbJ5Ivp5QyJN8P9M8g+7wksJt51QuYAZW0c3pDOh0Jx8lH7XzNHzzJg4NHup9n4zcqH9rwXknnyzYg2OA=="
+  "resolved" "https://registry.npmjs.org/react-toastify/-/react-toastify-8.0.0.tgz"
+  "version" "8.0.0"
+  dependencies:
+    "clsx" "^1.1.1"
+
 "react-transition-group@2.9.0":
   "integrity" "sha512-+HzNTCHpeQyl4MJ/bdE0u6XRMe9+XG/+aL4mCxVN4DnPBQ0/5bfHWPDuOZUzYdMj94daZaZdCCc1Dzt9R/xSSg=="
   "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-2.9.0.tgz"
@@ -9730,7 +9749,7 @@
     "prop-types" "^15.6.2"
     "react-lifecycles-compat" "^3.0.4"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^0.14.0 || ^15.0.1 || ^16.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.0.0-0", "react@^16.13.1", "react@>= 16.8.0", "react@>=15", "react@>=15.0.0":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^0.14.0 || ^15.0.1 || ^16.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.0.0-0", "react@^16.13.1", "react@>= 16.8.0", "react@>=15", "react@>=15.0.0", "react@>=16":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"

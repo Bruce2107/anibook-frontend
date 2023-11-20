@@ -2,6 +2,7 @@ import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { AxiosResponse } from 'axios';
 import { Text, Image } from 'anibook-ui';
+import { ToastContainer } from 'react-toastify';
 import Navbar from '../../components/Navbar';
 import api from '../../services/api';
 import { Details } from '../../types/Serie';
@@ -11,6 +12,8 @@ import Loading from '../../components/Loading';
 import { Chart, Container, DescriptionStyle, ImageStyle, SelectStyle, TableStyle } from './styles';
 import { getSerieStatus, getUserStatus, selectStatus } from '../../utils/getStatus';
 import CustomChart from '../../components/CustomChart';
+import 'react-toastify/dist/ReactToastify.css';
+import showToast from '../../utils/Toast';
 
 const Info: FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -52,12 +55,10 @@ const Info: FC = () => {
           value: selectRef.current?.value
         });
       if (res.status === 204) {
-        console.log('sucesso');
-      } else {
-        console.log('outro staztus');
+        showToast('success', 'Status atualizado com sucesso');
       }
     } catch (error) {
-      console.log(error);
+      showToast('error', 'Não foi possível atualizar o registro');
     }
     return true;
   }, [selectRef, card]);
@@ -121,6 +122,18 @@ const Info: FC = () => {
           <Chart>
             <CustomChart width={250} height={250} data={card.detailsCounter} />
           </Chart>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
         </Container>
       )}
     </>

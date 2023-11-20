@@ -15,7 +15,6 @@ export const Container = styled.main`
   }
 `;
 
-// TODO: Arrumar alinhamento, usar grid + flex
 export const Pagination = styled.div`
   position: absolute;
   bottom: 0;

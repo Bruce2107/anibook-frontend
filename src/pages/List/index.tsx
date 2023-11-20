@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
 import { useHistory, useLocation } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Navbar from '../../components/Navbar';
 import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
@@ -9,6 +10,8 @@ import { Container, Pagination, PaginationButton } from './styles';
 import SearchBar, { RequestParam } from '../../components/Searchbar';
 import { Serie } from '../../types/Serie';
 import Loading from '../../components/Loading';
+import 'react-toastify/dist/ReactToastify.css';
+import showToast from '../../utils/Toast';
 
 interface Props {
   pageName: string;
@@ -82,6 +85,9 @@ export default function List({ pageName, limitPerPage }: Props) {
         );
         setCards(res.data.series);
         setTotalRows(res.data.rows);
+        if (res.data.rows === 0) {
+          showToast('info', 'Nenhum registro encontrado');
+        }
         history.replace('/search?page=1');
       } catch (error: any) {
         if (!error.response.status) history.push('request/fail');
@@ -100,8 +106,6 @@ export default function List({ pageName, limitPerPage }: Props) {
       <Navbar />
       <Container>
         <SearchBar requestFunc={search} />
-        {/* TODO: NOT FOUND */}
-        {/* {totalRows === 0 && <p>nada</p>} */}
         {cards && !isLoading && (
           <div className="card-list">
             {cards.slice(minPosition, maxPosition).map((card) => (
@@ -125,6 +129,18 @@ export default function List({ pageName, limitPerPage }: Props) {
             ))}
           </Pagination>
         )}
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </Container>
     </>
   );
