@@ -10,6 +10,7 @@ export const StyledInput = styled.input`
   font: inherit;
   background-color: ${({ theme }) => theme.colors.footer};
   border: thin solid ${({ theme }) => theme.colors.upColor};
+  transition: all ease-in-out 0.5s;
   &:focus,
   &:hover {
     border-color: ${({ theme }) => theme.colors.downColor};
@@ -28,6 +29,7 @@ export const Field = styled.div`
   box-sizing: border-box;
   height: 100px;
   align-items: flex-start;
+  transition: all ease-in-out 0.5s;
   &:focus,
   &:hover {
     > label {

@@ -13,6 +13,7 @@ const TextFiled = forwardRef<HTMLInputElement, Props>((props, ref) => (
       type={props.itemType}
       aria-labelledby={`label-${props.itemType}`}
       id={`input-${props.itemType}`}
+      required={!!props['aria-required']}
       {...props}
     />
   </Field>
