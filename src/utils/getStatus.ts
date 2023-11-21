@@ -17,6 +17,15 @@ export function getUserStatus(value: UserStatus) {
   }[value];
 }
 
+export function getGraphStatus(value: UserStatus) {
+  return {
+    watched: 'Assistiram',
+    plan_to_watch: 'Pretendem ver',
+    dropped: 'Desistiram',
+    watching: 'Assistindo',
+  }[value];
+}
+
 export const selectStatus: Array<UserStatus> = [
   'watched',
   'watching',

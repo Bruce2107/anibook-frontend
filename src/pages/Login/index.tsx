@@ -10,11 +10,13 @@ import { passwordCrypto } from '../../utils/formFields';
 import 'react-toastify/dist/ReactToastify.css';
 import showToast, { showToastWithCallback } from '../../utils/Toast';
 import { useLogin } from '../../hooks/login';
+import useQuery from '../../utils/useQuery';
 
 const Login = () => {
   const history = useHistory();
   const userNameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const query = useQuery();
   const { setUser } = useLogin();
 
   const validate = () => {
@@ -51,7 +53,11 @@ const Login = () => {
                 email: '',
                 password: passwordCrypto(passwordRef.current?.value || '')
               });
-              history.push('/');
+              if (query.has('origin')) {
+                history.replace(`/details/${query.get('origin')}`);
+              } else {
+                history.push('/');
+              }
             });
           }
         }
@@ -64,7 +70,7 @@ const Login = () => {
         }
       }
     },
-    [history, setUser]
+    [history, setUser, query]
   );
 
   const goToSingUp = () => {

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 import { UserStatus } from '../../types/Serie';
+import { getGraphStatus } from '../../utils/getStatus';
 
 type Props = {
   width: number
@@ -11,20 +12,19 @@ type Props = {
 const COLORS: { [k in UserStatus]: string } = {
   watching: '#0088FE',
   watched: '#00C49F',
-  plan_to_watch: '#FFBB28',
+  plan_to_watch: '#151515',
   dropped: '#f65f14',
 };
 
-type ChardData = { name: UserStatus, value: number }
+type ChardData = { name: string, value: number, ref: UserStatus }
 
 const CustomChart = ({ width, height, data }: Props) => {
   const chartData: ChardData[] = useMemo(() => (
-    [
-      { name: 'watching', value: data.watching },
-      { name: 'watched', value: data.watched },
-      { name: 'plan_to_watch', value: data.plan_to_watch },
-      { name: 'dropped', value: data.dropped },
-    ]
+    (Object.keys(data) as UserStatus[]).map((key) => ({
+      name: getGraphStatus(key),
+      value: data[key],
+      ref: key
+    }))
   ), [data]);
   return (
     <PieChart width={width} height={height}>
@@ -39,7 +39,7 @@ const CustomChart = ({ width, height, data }: Props) => {
         label
       >
         {chartData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[entry.name]} />
+          <Cell key={`cell-${index}`} fill={COLORS[entry.ref]} />
         ))}
       </Pie>
       <Tooltip />

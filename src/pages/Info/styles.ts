@@ -69,7 +69,7 @@ export const TableStyle = styled.table`
     background-color: ${({ theme }) => theme.colors.footer};
     transition-delay: 0s, 0s;
     opacity: 1;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
   }
 
   td {

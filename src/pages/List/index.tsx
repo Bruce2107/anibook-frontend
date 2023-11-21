@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Navbar from '../../components/Navbar';
 import setPageTitle from '../../utils/setPageTitle';
@@ -12,6 +12,7 @@ import { Serie } from '../../types/Serie';
 import Loading from '../../components/Loading';
 import 'react-toastify/dist/ReactToastify.css';
 import showToast from '../../utils/Toast';
+import useQuery from '../../utils/useQuery';
 
 interface Props {
   pageName: string;
@@ -33,8 +34,8 @@ export default function List({ pageName, limitPerPage }: Props) {
   const [totalRows, setTotalRows] = useState<number>(0);
   const [minPosition, setMinPosition] = useState<number>(0);
   const [maxPosition, setMaxPosition] = useState<number>(minPosition + 6);
-  const location = useLocation();
-  const page = new URLSearchParams(location.search).get('page') || '1';
+  const query = useQuery();
+  const page = query.get('page') || '1';
   const history = useHistory();
   const pages = arrayPages(Math.ceil(totalRows / limitPerPage));
 

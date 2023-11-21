@@ -14,6 +14,7 @@ import { getSerieStatus, getUserStatus, selectStatus } from '../../utils/getStat
 import CustomChart from '../../components/CustomChart';
 import 'react-toastify/dist/ReactToastify.css';
 import showToast from '../../utils/Toast';
+import { useLogin } from '../../hooks/login';
 
 const Info: FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -21,13 +22,14 @@ const Info: FC = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [card, setCard] = useState<Details>();
   const selectRef = useRef<HTMLSelectElement>(null);
+  const { user } = useLogin();
   const history = useHistory();
 
   useEffect(() => {
     setPageTitle(capitalize(normalizedName));
     setLoading(true);
     api
-      .get(`/graph/report/details/${normalizedName}`)
+      .get(`/graph/report/details/${normalizedName}?user=${user.name}`)
       .then((res: AxiosResponse<{ data: Array<Details> }>) => {
         setCard(res.data.data[0]);
       })
@@ -40,17 +42,21 @@ const Info: FC = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [history, normalizedName]);
+  }, [history, normalizedName, user]);
 
   const selectChange = useCallback(async (): Promise<boolean> => {
     if (selectRef.current?.value === null
       || selectRef.current?.value === 'default') {
       return false;
     }
+    if (!user.name) {
+      history.replace(`/login?origin=${card?.name}`);
+      return false;
+    }
     try {
       const res = await api.patch('/graph/user/status/patch',
         {
-          username: 'Eduardo',
+          username: user.name,
           serie: card?.name,
           value: selectRef.current?.value
         });
@@ -61,7 +67,7 @@ const Info: FC = () => {
       showToast('error', 'Não foi possível atualizar o registro');
     }
     return true;
-  }, [selectRef, card]);
+  }, [selectRef, card, user, history]);
   return (
     <>
       <Navbar />
@@ -82,7 +88,11 @@ const Info: FC = () => {
             />
             <SelectStyle ref={selectRef} onChange={selectChange}>
               <option value="null">Selecione um status</option>
-              {selectStatus.map((i) => <option value={i}>{getUserStatus(i)}</option>)}
+              {selectStatus.map((i) => (
+                <option value={i} selected={i === card.userStatus}>
+                  {getUserStatus(i)}
+                </option>
+              ))}
             </SelectStyle>
           </ImageStyle>
           <DescriptionStyle>
