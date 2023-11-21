@@ -10,19 +10,19 @@ import { Sidebar as LibSidebar, Icon } from 'anibook-ui';
 import { useTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { IoMdSearch } from 'react-icons/io';
+import { IoMdLogIn, IoMdSearch } from 'react-icons/io';
+import { CgProfile } from 'react-icons/cg';
 import { Container } from './styles';
 import openLink from '../../../utils/openLink';
 import { IconStyle } from '../type';
 import sidebar from '../../../recoil/atoms/sidebar';
 import { useDarkMode } from '../../../hooks/theme';
+import { useLogin } from '../../../hooks/login';
 
 const Sidebar: React.FC = () => {
   const appTheme = useTheme();
   const [sidebarState] = useRecoilState(sidebar);
-  // const toggleSideBar = () => {
-  //   setSidebarState(!sidebarState);
-  // };
+  const { user } = useLogin();
   const { theme, setTheme } = useDarkMode();
 
   const toggleTheme = () => {
@@ -41,26 +41,16 @@ const Sidebar: React.FC = () => {
         key="search"
       />
     </Link>,
-    // <Link to="/list/animes">
-    //   <Icon
-    //     color={IconStyles.color}
-    //     icon={<GoDeviceDesktop aria-label="Animes" />}
-    //     backgroundHover={IconStyles.backgroundHover}
-    //     colorHover={IconStyles.colorHover}
-    //     width={IconStyles.width}
-    //     key="animes"
-    //   />
-    // </Link>,
-    // <Link to="/list/mangas">
-    //   <Icon
-    //     color={IconStyles.color}
-    //     icon={<FaBookOpen aria-label="Mangás" />}
-    //     backgroundHover={IconStyles.backgroundHover}
-    //     colorHover={IconStyles.colorHover}
-    //     width={IconStyles.width}
-    //     key="mangas"
-    //   />
-    // </Link>,
+    <Link to={user.name ? '/profile' : '/login'}>
+      <Icon
+        color={IconStyles.color}
+        icon={user.name ? <CgProfile aria-label="Perfil" /> : <IoMdLogIn aria-label="Login" />}
+        backgroundHover={IconStyles.backgroundHover}
+        colorHover={IconStyles.colorHover}
+        width={IconStyles.width}
+        key="Perfil"
+      />
+    </Link>,
     <a
       href="https://twitter.com/AniBookOficial"
       onClick={(e) => {

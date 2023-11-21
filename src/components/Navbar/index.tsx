@@ -6,8 +6,10 @@ import {
   FaTwitter,
   FaGithubAlt,
   FaBars,
+  FaBookOpen,
 } from 'react-icons/fa';
-import { IoMdClose, IoMdSearch } from 'react-icons/io';
+import { IoMdClose, IoMdSearch, IoMdLogIn } from 'react-icons/io';
+import { CgProfile } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 import { TextLogo, Icon, Navbar as LibNavbar } from 'anibook-ui';
@@ -19,12 +21,14 @@ import { IconStyle } from './type';
 import { useDarkMode } from '../../hooks/theme';
 import mobile from '../../recoil/atoms/mobile';
 import sidebar from '../../recoil/atoms/sidebar';
+import { useLogin } from '../../hooks/login';
 
 const Navbar: React.FC = () => {
   const appTheme = useTheme();
   const isMobile = useRecoilValue(mobile);
   const IconStyles = IconStyle(appTheme);
   const { theme, setTheme } = useDarkMode();
+  const { user } = useLogin();
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -46,26 +50,16 @@ const Navbar: React.FC = () => {
           key="search"
         />
       </Link>,
-      // <Link to="/list/animes">
-      //   <Icon
-      //     color={IconStyles.color}
-      //     icon={<GoDeviceDesktop aria-label="Animes" />}
-      //     backgroundHover={IconStyles.backgroundHover}
-      //     colorHover={IconStyles.colorHover}
-      //     width={IconStyles.width}
-      //     key="animes"
-      //   />
-      // </Link>,
-      // <Link to="/list/mangas">
-      //   <Icon
-      //     color={IconStyles.color}
-      //     icon={<FaBookOpen aria-label="Mangás" />}
-      //     backgroundHover={IconStyles.backgroundHover}
-      //     colorHover={IconStyles.colorHover}
-      //     width={IconStyles.width}
-      //     key="mangas"
-      //   />
-      // </Link>,
+      <Link to={user.name ? '/profile' : '/login'}>
+        <Icon
+          color={IconStyles.color}
+          icon={user.name ? <CgProfile aria-label="Perfil" /> : <IoMdLogIn aria-label="Login" />}
+          backgroundHover={IconStyles.backgroundHover}
+          colorHover={IconStyles.colorHover}
+          width={IconStyles.width}
+          key="Perfil"
+        />
+      </Link>,
       <a
         href="https://twitter.com/AniBookOficial"
         onClick={(e) => {

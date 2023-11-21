@@ -11,18 +11,19 @@ const toastOptions: ToastOptions = {
   theme: 'colored',
 };
 
-// export function showWarnToast(value: string) {
-//   toast.warn(value, toastOptions);
-// }
-// export function showErrorToast(value: string) {}
-
-// export function showSuccessToast(value: string) {}
-
 export function showToast(
   type: 'warn' | 'error' | 'success' | 'info',
   value: string
 ) {
   toast[type](value, toastOptions);
+}
+
+export function showToastWithCallback(
+  type: 'warn' | 'error' | 'success' | 'info',
+  value: string,
+  callback: () => void
+) {
+  toast[type](value, { ...toastOptions, autoClose: 2000, onClose: callback });
 }
 
 export default showToast;
