@@ -8,7 +8,8 @@ import Navbar from '../../components/Navbar';
 import api from '../../services/api';
 import { validEmail, passwordCrypto } from '../../utils/formFields';
 import 'react-toastify/dist/ReactToastify.css';
-import showToast from '../../utils/Toast';
+import showToast, { showToastWithCallback } from '../../utils/Toast';
+import useQuery from '../../utils/useQuery';
 
 const SingUp = () => {
   const [isLoading, setLoading] = useState(false);
@@ -17,6 +18,7 @@ const SingUp = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfirmRef = useRef<HTMLInputElement>(null);
+  const query = useQuery();
 
   const validate = () => {
     if (userNameRef.current?.value === '' || !userNameRef.current?.value) {
@@ -73,14 +75,18 @@ const SingUp = () => {
           );
 
           if (res.status === 201) {
-            showToast('success', 'Usuário criado');
+            showToastWithCallback('success', 'Usuário criado', () => {
+              if (query.has('origin')) {
+                history.replace(`/login?origin=${query.get('origin')}`);
+              } else {
+                history.push('/');
+              }
+            });
             cleanFields();
           }
         } else {
           setLoading(false);
         }
-
-        // history.replace('/search?page=1');
       } catch (error: any) {
         if (!error.response.status) history.push('request/fail');
         else if (error.response.status === 409) {
@@ -92,7 +98,7 @@ const SingUp = () => {
         setLoading(false);
       }
     },
-    [history]
+    [history, query]
   );
 
   return (

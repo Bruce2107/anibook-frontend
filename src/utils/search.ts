@@ -8,9 +8,8 @@ export const ListOptions: FilterOptions = [
 ];
 
 export const UserOptions: FilterOptions = [
-  { key: 'serie', value: 'Filme/Série' },
-  { key: 'author', value: 'Diretor' },
-  { key: 'studio', value: 'Estúdio' },
-  { key: 'user', value: 'Usuário' },
-  { key: 'streaming', value: 'Streaming' },
+  { key: 'watched', value: 'Assisti' },
+  { key: 'watching', value: 'Assistindo' },
+  { key: 'plan_to_watch', value: 'Pretendo ver' },
+  { key: 'dropped', value: 'Desisti' },
 ];

@@ -74,7 +74,7 @@ const Login = () => {
   );
 
   const goToSingUp = () => {
-    history.push('/singup');
+    history.push(`/singup?origin=${query.get('origin')}`);
   };
   return (
     <>
