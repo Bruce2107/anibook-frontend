@@ -34,6 +34,8 @@ export default function Profile({ pageName, limitPerPage }: Props) {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [hasSearch, setSearch] = useState<boolean>(false);
   const [totalRows, setTotalRows] = useState<number>(0);
+  const [ogCards, setOgCards] = useState<Array<Serie>>();
+  const [ogTotalRows, setOgTotalRows] = useState<number>(0);
   const [minPosition, setMinPosition] = useState<number>(0);
   const [maxPosition, setMaxPosition] = useState<number>(minPosition + 6);
   const query = useQuery();
@@ -53,6 +55,8 @@ export default function Profile({ pageName, limitPerPage }: Props) {
       .then((res: AxiosResponse<{ series: Array<Serie>; rows: number }>) => {
         setCards(res.data.series);
         setTotalRows(res.data.rows);
+        setOgCards(res.data.series);
+        setOgTotalRows(res.data.rows);
       })
       .catch((error) => {
         if (!error.response.status) history.push('request/fail');
@@ -84,16 +88,35 @@ export default function Profile({ pageName, limitPerPage }: Props) {
 
   const search = useCallback(
     async ({ filter, searchText }: RequestParam) => {
-      console.log(filter, searchText);
+      setSearch(true);
+      const textFilter = (ref: Array<Serie> | undefined) => {
+        if (searchText) {
+          const filteredByName = ref?.filter((s) => s.name.includes(searchText));
+          setCards(filteredByName);
+          setTotalRows(filteredByName?.length || 0);
+        } else {
+          setCards(ref);
+          setTotalRows(ref?.length || 0);
+        }
+      };
+      if (filter === 'all') {
+        setSearch(false);
+        setCards(ogCards);
+        setTotalRows(ogTotalRows);
+        textFilter(ogCards);
+      } else {
+        const filteredByStatus = ogCards?.filter((s) => s.userStatus === filter);
+        textFilter(filteredByStatus);
+      }
     },
-    []
+    [ogCards, ogTotalRows]
   );
 
   return (
     <>
       <Navbar />
       <Container>
-        <SearchBar requestFunc={search} filterOptions={UserOptions} />
+        <SearchBar requestFunc={search} filterOptions={UserOptions} canBeEmpty />
         {cards && !isLoading && (
           <div className="card-list">
             {cards.slice(minPosition, maxPosition).map((card) => (

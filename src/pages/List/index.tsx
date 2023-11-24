@@ -107,7 +107,7 @@ export default function List({ pageName, limitPerPage }: Props) {
     <>
       <Navbar />
       <Container>
-        <SearchBar requestFunc={search} filterOptions={ListOptions} />
+        <SearchBar requestFunc={search} filterOptions={ListOptions} canBeEmpty={false} />
         {cards && !isLoading && (
           <div className="card-list">
             {cards.slice(minPosition, maxPosition).map((card) => (

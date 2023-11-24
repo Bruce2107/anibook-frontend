@@ -46,7 +46,8 @@ const Info: FC = () => {
 
   const selectChange = useCallback(async (): Promise<boolean> => {
     if (selectRef.current?.value === null
-      || selectRef.current?.value === 'default') {
+      || selectRef.current?.value === 'default'
+      || selectRef.current?.value === 'null') {
       return false;
     }
     if (!user.name) {

@@ -12,9 +12,10 @@ export type RequestParam = {
 type Props = {
   requestFunc: ({ ...props }: RequestParam) => Promise<void>;
   filterOptions: FilterOptions
+  canBeEmpty: Boolean
 };
 
-const SearchBar: React.FC<Props> = ({ requestFunc, filterOptions }) => {
+const SearchBar: React.FC<Props> = ({ requestFunc, filterOptions, canBeEmpty }) => {
   const selectRef = useRef<HTMLSelectElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const [isSending, setIsSending] = useState(false);
@@ -25,10 +26,10 @@ const SearchBar: React.FC<Props> = ({ requestFunc, filterOptions }) => {
   }, []);
 
   const sendRequest = useCallback(async () => {
-    if (
+    if (!canBeEmpty && (
       isSending ||
       isEmpty(searchRef.current?.value) ||
-      isEmpty(selectRef.current?.value)
+      isEmpty(selectRef.current?.value))
     ) {
       return;
     }
@@ -41,7 +42,7 @@ const SearchBar: React.FC<Props> = ({ requestFunc, filterOptions }) => {
     if (isMounted.current) {
       setIsSending(false);
     }
-  }, [isSending, requestFunc]);
+  }, [isSending, requestFunc, canBeEmpty]);
   return (
     <Container onSubmit={(e) => e.preventDefault()}>
       <StyledCombo ref={selectRef}>

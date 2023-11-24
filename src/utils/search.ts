@@ -8,6 +8,7 @@ export const ListOptions: FilterOptions = [
 ];
 
 export const UserOptions: FilterOptions = [
+  { key: 'all', value: 'Todos' },
   { key: 'watched', value: 'Assisti' },
   { key: 'watching', value: 'Assistindo' },
   { key: 'plan_to_watch', value: 'Pretendo ver' },
