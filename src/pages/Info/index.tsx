@@ -50,7 +50,7 @@ const Info: FC = () => {
       return false;
     }
     if (!user.name) {
-      history.replace(`/login?origin=${card?.name}`);
+      history.replace(`/login?origin=details/${card?.name}`);
       return false;
     }
     try {

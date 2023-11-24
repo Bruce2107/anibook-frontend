@@ -54,7 +54,7 @@ const Login = () => {
                 password: passwordCrypto(passwordRef.current?.value || '')
               });
               if (query.has('origin')) {
-                history.replace(`/details/${query.get('origin')}`);
+                history.replace(`/${query.get('origin')}`);
               } else {
                 history.push('/');
               }
