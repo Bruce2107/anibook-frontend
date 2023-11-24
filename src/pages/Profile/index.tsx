@@ -6,14 +6,13 @@ import Navbar from '../../components/Navbar';
 import setPageTitle from '../../utils/setPageTitle';
 import api from '../../services/api';
 import Card from '../../components/Card';
-import { Container, Pagination, PaginationButton } from './styles';
+import { Container, Pagination, PaginationButton, SidedItem, StyledButton } from './styles';
 import SearchBar, { RequestParam } from '../../components/Searchbar';
 import { Serie } from '../../types/Serie';
 import Loading from '../../components/Loading';
 import 'react-toastify/dist/ReactToastify.css';
-import showToast from '../../utils/Toast';
 import useQuery from '../../utils/useQuery';
-import { ListOptions, UserOptions } from '../../utils/search';
+import { UserOptions } from '../../utils/search';
 import { useLogin } from '../../hooks/login';
 
 interface Props {
@@ -41,7 +40,7 @@ export default function Profile({ pageName, limitPerPage }: Props) {
   const query = useQuery();
   const page = query.get('page') || '1';
   const history = useHistory();
-  const { user } = useLogin();
+  const { user, logoff } = useLogin();
   const pages = arrayPages(Math.ceil(totalRows / limitPerPage));
 
   useEffect(() => {
@@ -108,14 +107,19 @@ export default function Profile({ pageName, limitPerPage }: Props) {
         const filteredByStatus = ogCards?.filter((s) => s.userStatus === filter);
         textFilter(filteredByStatus);
       }
+      history.replace('/profile?page=1');
     },
-    [ogCards, ogTotalRows]
+    [ogCards, ogTotalRows, history]
   );
 
   return (
     <>
       <Navbar />
       <Container>
+        <SidedItem>
+          <StyledButton onClick={() => { }}>Editar perfil</StyledButton>
+          <StyledButton onClick={() => { logoff(); history.replace('/'); }} secondary>Sair</StyledButton>
+        </SidedItem>
         <SearchBar requestFunc={search} filterOptions={UserOptions} canBeEmpty />
         {cards && !isLoading && (
           <div className="card-list">

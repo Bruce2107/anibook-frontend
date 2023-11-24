@@ -46,3 +46,38 @@ export const PaginationButton = styled.button<{ visible: boolean }>`
   }
   display: ${({ visible }) => (visible ? 'block' : 'none')};
 `;
+
+export const SidedItem = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 0 32px 32px 0;
+`;
+type BtnStyle = {
+  secondary?: boolean;
+};
+export const StyledButton = styled.button<BtnStyle>`
+  border-radius: 4px;
+  height: 48px;
+  width: 15%;
+  > * {
+    font: inherit;
+    font-size: calc(8px + 1.5625vw);
+  }
+  font: inherit;
+  background-color: ${({ theme, secondary }) =>
+    secondary ? 'transparent' : theme.colors.upColor};
+  border: thin solid ${({ theme }) => theme.colors.downColor};
+  transition: all ease-in 0.5s;
+  &:focus,
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.upColor};
+    background-color: ${({ theme, secondary }) =>
+      secondary ? theme.colors.backgroundCard : theme.colors.downColor};
+  }
+  &:hover {
+    cursor: pointer;
+  }
+`;

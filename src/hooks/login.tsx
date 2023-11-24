@@ -4,6 +4,7 @@ import atomLogin, { User } from '../recoil/atoms/login';
 export interface HookLogin {
   user: User;
   setUser: (user: User) => void;
+  logoff: () => void;
 }
 
 export function useLogin(): HookLogin {
@@ -14,5 +15,10 @@ export function useLogin(): HookLogin {
     window.localStorage.setItem('user', JSON.stringify(user));
   };
 
-  return { user: login, setUser: saveLogin };
+  const logoff = () => {
+    window.localStorage.removeItem('user');
+    setLogin({ email: '', name: '', password: '' });
+  };
+
+  return { user: login, setUser: saveLogin, logoff };
 }
