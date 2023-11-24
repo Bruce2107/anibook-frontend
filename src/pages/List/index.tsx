@@ -13,6 +13,7 @@ import Loading from '../../components/Loading';
 import 'react-toastify/dist/ReactToastify.css';
 import showToast from '../../utils/Toast';
 import useQuery from '../../utils/useQuery';
+import { ListOptions } from '../../utils/search';
 
 interface Props {
   pageName: string;
@@ -106,7 +107,7 @@ export default function List({ pageName, limitPerPage }: Props) {
     <>
       <Navbar />
       <Container>
-        <SearchBar requestFunc={search} />
+        <SearchBar requestFunc={search} filterOptions={ListOptions} />
         {cards && !isLoading && (
           <div className="card-list">
             {cards.slice(minPosition, maxPosition).map((card) => (

@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
 import StyledInput, { Container, StyledButton, StyledCombo } from './style';
 import isEmpty from '../../utils/isEmpty';
+import { FilterOptions } from '../../utils/search';
 
 export type RequestParam = {
   filter: string;
@@ -10,9 +11,10 @@ export type RequestParam = {
 };
 type Props = {
   requestFunc: ({ ...props }: RequestParam) => Promise<void>;
+  filterOptions: FilterOptions
 };
 
-const SearchBar: React.FC<Props> = ({ requestFunc }) => {
+const SearchBar: React.FC<Props> = ({ requestFunc, filterOptions }) => {
   const selectRef = useRef<HTMLSelectElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const [isSending, setIsSending] = useState(false);
@@ -43,11 +45,7 @@ const SearchBar: React.FC<Props> = ({ requestFunc }) => {
   return (
     <Container onSubmit={(e) => e.preventDefault()}>
       <StyledCombo ref={selectRef}>
-        <option value="serie">Filme/Série</option>
-        <option value="author">Diretor</option>
-        <option value="studio">Estúdio</option>
-        <option value="user">Usuário</option>
-        <option value="streaming">Streaming</option>
+        {filterOptions.map(({ key, value }) => (<option value={key}>{value}</option>))}
       </StyledCombo>
       <StyledInput ref={searchRef} />
       <StyledButton onClick={sendRequest}>
