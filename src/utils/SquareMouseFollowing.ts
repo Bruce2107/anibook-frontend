@@ -9,10 +9,10 @@ function createAndRemoveSquare(ev: MouseEvent) {
   square.style.left = `${ev.clientX}px`;
   square.style.background = randomColor();
   square.setAttribute('class', 'square');
-  document.body.appendChild(square);
-  setTimeout(() => {
-    document.body.removeChild(square);
-  }, 1000);
+  // document.body.appendChild(square);
+  // setTimeout(() => {
+  //   document.body.removeChild(square);
+  // }, 1000);
 }
 
 export default createAndRemoveSquare;

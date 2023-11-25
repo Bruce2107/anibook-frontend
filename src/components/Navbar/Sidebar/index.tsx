@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  FaDiscord,
-  FaTwitter,
   FaGithubAlt,
   FaMoon,
   FaSun,

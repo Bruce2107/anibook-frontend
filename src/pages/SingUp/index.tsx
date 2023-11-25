@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Text } from 'anibook-ui';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -13,7 +13,6 @@ import useQuery from '../../utils/useQuery';
 import setPageTitle from '../../utils/setPageTitle';
 
 const SingUp = () => {
-  const [isLoading, setLoading] = useState(false);
   const history = useHistory();
   const userNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -69,7 +68,6 @@ const SingUp = () => {
     async () => {
       try {
         if (validate()) {
-          setLoading(true);
           const res = await api.post(
             '/graph/user',
             {
@@ -89,8 +87,6 @@ const SingUp = () => {
             });
             cleanFields();
           }
-        } else {
-          setLoading(false);
         }
       } catch (error: any) {
         if (!error.response.status) history.push('request/fail');
@@ -99,8 +95,6 @@ const SingUp = () => {
         } else {
           history.push(`/request/fail?status=${error.response.status}`);
         }
-      } finally {
-        setLoading(false);
       }
     },
     [history, query]

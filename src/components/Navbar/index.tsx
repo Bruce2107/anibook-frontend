@@ -2,11 +2,8 @@ import React from 'react';
 import {
   FaSun,
   FaMoon,
-  FaDiscord,
-  FaTwitter,
   FaGithubAlt,
   FaBars,
-  FaBookOpen,
 } from 'react-icons/fa';
 import { IoMdClose, IoMdSearch, IoMdLogIn } from 'react-icons/io';
 import { CgProfile } from 'react-icons/cg';
