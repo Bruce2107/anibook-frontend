@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Text } from 'anibook-ui';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import showToast, { showToastWithCallback } from '../../utils/Toast';
 import { useLogin } from '../../hooks/login';
 import useQuery from '../../utils/useQuery';
+import setPageTitle from '../../utils/setPageTitle';
 
 const Login = () => {
   const history = useHistory();
@@ -33,6 +34,10 @@ const Login = () => {
     return true;
   };
 
+  useEffect(() => {
+    setPageTitle('Login');
+  }, []);
+
   const login = useCallback(
     async () => {
       try {
@@ -53,7 +58,7 @@ const Login = () => {
                 email: '',
                 password: passwordCrypto(passwordRef.current?.value || '')
               });
-              if (query.has('origin')) {
+              if (query.has('origin') && query.get('origin') !== 'null') {
                 history.replace(`/${query.get('origin')}`);
               } else {
                 history.push('/');

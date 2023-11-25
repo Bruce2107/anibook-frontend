@@ -19,7 +19,7 @@ export default function Home() {
   const history = useHistory();
 
   useEffect(() => {
-    setPageTitle('Home');
+    setPageTitle('Início');
     setLoading(true);
     api
       .get('/graph/report/home')

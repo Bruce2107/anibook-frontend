@@ -1,7 +1,9 @@
 import React, { HTMLAttributes, forwardRef } from 'react';
 import StyledInput, { Field } from './style';
 
-type Props = HTMLAttributes<HTMLInputElement>;
+type Props = HTMLAttributes<HTMLInputElement> & {
+  initialValue?: string
+};
 
 const TextFiled = forwardRef<HTMLInputElement, Props>((props, ref) => (
   <Field>
@@ -14,6 +16,7 @@ const TextFiled = forwardRef<HTMLInputElement, Props>((props, ref) => (
       aria-labelledby={`label-${props.itemType}`}
       id={`input-${props.itemType}`}
       required={!!props['aria-required']}
+      value={props.initialValue}
       {...props}
     />
   </Field>

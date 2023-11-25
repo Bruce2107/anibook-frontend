@@ -60,38 +60,38 @@ const Navbar: React.FC = () => {
           key="Perfil"
         />
       </Link>,
-      <a
-        href="https://twitter.com/AniBookOficial"
-        onClick={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <Icon
-          color={IconStyles.color}
-          icon={<FaTwitter aria-label="Twitter" />}
-          backgroundHover={IconStyles.backgroundHover}
-          colorHover={IconStyles.colorHover}
-          width={IconStyles.width}
-          onClick={() => openLink('https://twitter.com/AniBookOficial')}
-          key="twitter"
-        />
-      </a>,
-      <a
-        href="https://discord.gg/TsuMHBd"
-        onClick={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <Icon
-          color={IconStyles.color}
-          icon={<FaDiscord aria-label="Discord" />}
-          backgroundHover={IconStyles.backgroundHover}
-          colorHover={IconStyles.colorHover}
-          width={IconStyles.width}
-          onClick={() => openLink('https://discord.gg/TsuMHBd')}
-          key="discord"
-        />
-      </a>,
+      // <a
+      //   href="https://twitter.com/AniBookOficial"
+      //   onClick={(e) => {
+      //     e.preventDefault();
+      //   }}
+      // >
+      //   <Icon
+      //     color={IconStyles.color}
+      //     icon={<FaTwitter aria-label="Twitter" />}
+      //     backgroundHover={IconStyles.backgroundHover}
+      //     colorHover={IconStyles.colorHover}
+      //     width={IconStyles.width}
+      //     onClick={() => openLink('https://twitter.com/AniBookOficial')}
+      //     key="twitter"
+      //   />
+      // </a>,
+      // <a
+      //   href="https://discord.gg/TsuMHBd"
+      //   onClick={(e) => {
+      //     e.preventDefault();
+      //   }}
+      // >
+      //   <Icon
+      //     color={IconStyles.color}
+      //     icon={<FaDiscord aria-label="Discord" />}
+      //     backgroundHover={IconStyles.backgroundHover}
+      //     colorHover={IconStyles.colorHover}
+      //     width={IconStyles.width}
+      //     onClick={() => openLink('https://discord.gg/TsuMHBd')}
+      //     key="discord"
+      //   />
+      // </a>,
       <a
         href="https://github.com/Bruce2107/anibook-frontend"
         onClick={(e) => {

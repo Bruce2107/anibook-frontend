@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text } from 'anibook-ui';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -10,6 +10,7 @@ import { validEmail, passwordCrypto } from '../../utils/formFields';
 import 'react-toastify/dist/ReactToastify.css';
 import showToast, { showToastWithCallback } from '../../utils/Toast';
 import useQuery from '../../utils/useQuery';
+import setPageTitle from '../../utils/setPageTitle';
 
 const SingUp = () => {
   const [isLoading, setLoading] = useState(false);
@@ -59,6 +60,10 @@ const SingUp = () => {
       if (i.current?.value) i.current.value = '';
     });
   };
+
+  useEffect(() => {
+    setPageTitle('Cadastro');
+  }, []);
 
   const singup = useCallback(
     async () => {

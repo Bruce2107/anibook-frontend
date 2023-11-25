@@ -117,7 +117,7 @@ export default function Profile({ pageName, limitPerPage }: Props) {
       <Navbar />
       <Container>
         <SidedItem>
-          <StyledButton onClick={() => { }}>Editar perfil</StyledButton>
+          <StyledButton onClick={() => { history.replace('/profile/edit'); }}>Editar perfil</StyledButton>
           <StyledButton onClick={() => { logoff(); history.replace('/'); }} secondary>Sair</StyledButton>
         </SidedItem>
         <SearchBar requestFunc={search} filterOptions={UserOptions} canBeEmpty />

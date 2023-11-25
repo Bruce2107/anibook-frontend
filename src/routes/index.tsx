@@ -8,6 +8,7 @@ import Info from '../pages/Info';
 import SingUp from '../pages/SingUp';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
+import Edit from '../pages/Profile/Edit';
 
 const limitPerPage = 6;
 // TODO: #5 rota do histórico
@@ -61,6 +62,9 @@ const Routes: React.FC = () => (
       </Route>
       <Route path="/profile" exact>
         <Profile limitPerPage={limitPerPage} pageName="Perfil" />
+      </Route>
+      <Route path="/profile/edit" exact>
+        <Edit />
       </Route>
       <Route>
         <NotFound />
