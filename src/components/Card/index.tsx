@@ -13,7 +13,6 @@ interface Props {
 
 const MyCard: React.FC<Props> = ({ image, name }) => {
   const theme = useTheme();
-
   const imageComponent = (
     <Image
       alt={name}

@@ -7,7 +7,7 @@ import Navbar from '../../components/Navbar';
 import api from '../../services/api';
 import { Details } from '../../types/Serie';
 import setPageTitle from '../../utils/setPageTitle';
-import { capitalize, replaceUnderscore } from '../../utils/string';
+import { capitalize, replaceQuote, replaceUnderscore } from '../../utils/string';
 import Loading from '../../components/Loading';
 import { Chart, Container, DescriptionStyle, ImageStyle, SelectStyle, TableStyle } from './styles';
 import { getSerieStatus, getUserStatus, selectStatus } from '../../utils/getStatus';
@@ -18,7 +18,7 @@ import { useLogin } from '../../hooks/login';
 
 const Info: FC = () => {
   const { name } = useParams<{ name: string }>();
-  const normalizedName = replaceUnderscore(name);
+  const normalizedName = replaceQuote(replaceUnderscore(name));
   const [isLoading, setLoading] = useState<boolean>(false);
   const [card, setCard] = useState<Details>();
   const selectRef = useRef<HTMLSelectElement>(null);

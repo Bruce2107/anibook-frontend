@@ -25,7 +25,7 @@ export default function Home() {
       .get('/graph/report/home')
       .then((res: AxiosResponse<{ data: Array<Serie> }>) => {
         setCards(res.data.data.slice(0, 3));
-        setCarousel(res.data.data.slice(3, 6));
+        setCarousel(res.data.data.slice(3, 9));
       })
       .catch((error) => {
         if (!error.response) history.push('request/fail');
